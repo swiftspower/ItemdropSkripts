@@ -1,0 +1,1053 @@
+options:
+    prefix: <##00feef>&lI<##05ece1>&lt<##0bdad3>&le<##10c8c5>&lm <##15b7b8>&lD<##1aa5aa>&lr<##20939c>&lo<##25818e>&lp &8&l| &7
+    maincolor: <##00FEEF>
+    highlightcolor: <##25818E>
+    sellprice1: 10
+    sellprice2: 20
+    sellprice3: 35
+    sellprice4: 40
+    sellprice5: 60
+    sellprice6: 160                          
+    sellprice7: 300
+    sellprice8: 360
+    sellprice9: 400
+    sellprice10: 500           
+    sellprice11: 1200
+    sellprice12: 1050
+    sellprice13: 1200
+    sellprice14: 1350
+    sellprice15: 1500
+    sellprice16: 1800
+    sellprice17: 2100
+    sellprice18: 2400
+    sellprice19: 2750
+    sellprice20: 3100
+    sellprice21: 3500
+    sellprice22: 3900
+    sellprice23: 4400
+    sellprice24: 5000
+    sellprice25: 5700
+
+    upgrade1: 80
+    upgrade2: 500
+    upgrade3: 800
+    upgrade4: 3000
+    upgrade5: 7000
+    upgrade6: 10000
+    upgrade7: 30000
+    upgrade8: 50000
+    upgrade9: 80000
+    upgrade10: 120000
+    upgrade11: 300000
+    upgrade12: 800000
+    upgrade13: 2000000
+    upgrade14: 8000000
+    upgrade15: 10000000
+    upgrade16: 11000000
+    upgrade17: 13000000
+    upgrade18: 15000000
+    upgrade19: 18000000
+    upgrade20: 21000000
+    upgrade21: 25000000
+    upgrade22: 29000000
+    upgrade23: 34000000
+    upgrade24: 39000000
+
+on join:
+    if {gencap::%player's uuid%} < 30:
+        set {gencap::%player's uuid%} to 30
+    if {gencap::%player's uuid%} is not set:
+        set {gencap::%player's uuid%} to 30
+    if {placedgens::%player's uuid%} is not set:
+        set {placedgens::%player's uuid%} to 0
+    if {multi::%player's uuid%} is not set:
+        set {multi::%player's uuid%} to 1
+    if {minemulti::%player's uuid%} is not set:
+        set {minemulti::%player's uuid%} to 1
+
+
+command /addgens <player> <integer>:
+    permission: op
+    trigger:
+        add arg-2 to {gencap::%arg-1's uuid%}
+		
+		
+command /removegens <player> <integer>:
+    permission: op
+    trigger:
+        subtract arg-2 from {gencap::%arg-1's uuid%}
+
+command /resetgens <player>:
+    permission: op
+    trigger:
+        delete {gens::%arg-1's uuid%::*}
+        delete {placedgens::%arg-1's uuid%}
+        kick arg-1 due to "{@maincolor}Relog and your gens will be reset!"
+
+command /givegen <player> <integer> [<integer>]:
+    permission: options
+    trigger:
+        if arg-3 is set:
+            gengive(arg-1, arg-3, arg-2)
+            stop
+        gengive(arg-1, 1, arg-2)
+
+on place of any wool or any shulker box:
+    if {gencooldown::%player%} is not set:
+        set {gencooldown::%player%} to true
+        if name of player's tool contains "{@maincolor}" and "Generator":
+            if {placedgens::%player's uuid%} >= {gencap::%player's uuid%}:
+                cancel event
+                message(player, "fail", "{@maincolor} You have %{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}% {@maincolor} Gens Placed")
+                sound_no(player)
+                stop
+            wait 3 ticks
+            the event is not cancelled
+            sound_completed(player)
+            if event-block is white wool:
+                add location of event-block to {gens::%player's uuid%::1::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+                set {_loc} to location of event-block
+                add 1.3 to y-coordinate of {_loc}
+                create hologram "&e&lHOW TO UPGRADE" at {_loc} for 5 seconds
+                remove 0.4 from y-coordinate of {_loc}
+                create hologram "&7Shift-right click me to upgrade" at {_loc} for 5 seconds
+            if event-block is orange wool:
+                add location of event-block to {gens::%player's uuid%::2::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is magenta wool:
+                add location of event-block to {gens::%player's uuid%::3::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is light blue wool:
+                add location of event-block to {gens::%player's uuid%::4::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is yellow wool:
+                add location of event-block to {gens::%player's uuid%::5::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is lime wool:
+                add location of event-block to {gens::%player's uuid%::6::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is pink wool:
+                add location of event-block to {gens::%player's uuid%::7::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is gray wool:
+                add location of event-block to {gens::%player's uuid%::8::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is light gray wool:
+                add location of event-block to {gens::%player's uuid%::9::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is cyan wool:
+                add location of event-block to {gens::%player's uuid%::10::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is purple wool:
+                add location of event-block to {gens::%player's uuid%::11::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is blue wool:
+                add location of event-block to {gens::%player's uuid%::12::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is brown wool:
+                add location of event-block to {gens::%player's uuid%::13::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is green wool:
+                add location of event-block to {gens::%player's uuid%::14::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is red wool:
+                add location of event-block to {gens::%player's uuid%::15::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is black wool:
+                add location of event-block to {gens::%player's uuid%::16::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is white shulker box:
+                add location of event-block to {gens::%player's uuid%::17::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is orange shulker box:
+                add location of event-block to {gens::%player's uuid%::18::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is magenta shulker box:
+                add location of event-block to {gens::%player's uuid%::19::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is light blue shulker box:
+                add location of event-block to {gens::%player's uuid%::20::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is yellow shulker box:
+                add location of event-block to {gens::%player's uuid%::21::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is lime shulker box:
+                add location of event-block to {gens::%player's uuid%::22::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is pink shulker box:
+                add location of event-block to {gens::%player's uuid%::23::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is gray shulker box:
+                add location of event-block to {gens::%player's uuid%::24::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            if event-block is light gray shulker box:
+                add location of event-block to {gens::%player's uuid%::25::%chunk at event-block%::*}
+                add 1 to {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You have placed a generator &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            wait 1 tick
+            delete {gencooldown::%player%}
+    else:
+        send action bar "{@maincolor}You are on gen place cooldown!" to player
+        cancel event
+
+on right click on any shulker box:
+    wait 1 tick
+    close player's inventory
+
+on left click on an wool or any shulker box:
+    if {gens::%player's uuid%::1::%chunk at event-block%::*} contains location of event-block:
+        if event-block is white wool:
+            remove location of event-block from {gens::%player's uuid%::1::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 1)
+            set event-block to air
+            
+    else if {gens::%player's uuid%::2::%chunk at event-block%::*} contains location of event-block:
+        if event-block is orange wool:
+            remove location of event-block from {gens::%player's uuid%::2::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 2)
+            set event-block to air
+            
+    else if {gens::%player's uuid%::3::%chunk at event-block%::*} contains location of event-block:
+        if event-block is magenta wool:
+            remove location of event-block from {gens::%player's uuid%::3::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 3)
+            set event-block to air
+            
+    else if {gens::%player's uuid%::4::%chunk at event-block%::*} contains location of event-block:
+        if event-block is light blue wool:
+            remove location of event-block from {gens::%player's uuid%::4::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 4)
+            set event-block to air
+            
+    else if {gens::%player's uuid%::5::%chunk at event-block%::*} contains location of event-block:
+        if event-block is yellow wool:
+            remove location of event-block from {gens::%player's uuid%::5::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 5)
+            set event-block to air
+            
+    else if {gens::%player's uuid%::6::%chunk at event-block%::*} contains location of event-block:
+        if event-block is lime wool:
+            remove location of event-block from {gens::%player's uuid%::6::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 6)
+            set event-block to air
+            
+    else if {gens::%player's uuid%::7::%chunk at event-block%::*} contains location of event-block:
+        if event-block is pink wool:
+            remove location of event-block from {gens::%player's uuid%::7::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 7)
+            set event-block to air
+            
+    else if {gens::%player's uuid%::8::%chunk at event-block%::*} contains location of event-block:
+        if event-block is gray wool:
+            remove location of event-block from {gens::%player's uuid%::8::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 8)
+            set event-block to air
+            
+    else if {gens::%player's uuid%::9::%chunk at event-block%::*} contains location of event-block:
+        if event-block is light gray wool:
+            remove location of event-block from {gens::%player's uuid%::9::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 9)
+            set event-block to air
+            
+    else if {gens::%player's uuid%::10::%chunk at event-block%::*} contains location of event-block:
+        if event-block is cyan wool:
+            remove location of event-block from {gens::%player's uuid%::10::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 10)
+            set event-block to air
+            
+    else if {gens::%player's uuid%::11::%chunk at event-block%::*} contains location of event-block:
+        if event-block is purple wool:
+            remove location of event-block from {gens::%player's uuid%::11::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 11)
+            set event-block to air
+            
+    else if {gens::%player's uuid%::12::%chunk at event-block%::*} contains location of event-block:
+        if event-block is blue wool:
+            remove location of event-block from {gens::%player's uuid%::12::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 12)
+            set event-block to air
+            
+    else if {gens::%player's uuid%::13::%chunk at event-block%::*} contains location of event-block:
+        if event-block is brown wool:
+            remove location of event-block from {gens::%player's uuid%::13::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 13)
+            set event-block to air
+            
+    else if {gens::%player's uuid%::14::%chunk at event-block%::*} contains location of event-block:
+        if event-block is green wool:
+            remove location of event-block from {gens::%player's uuid%::14::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 14)
+            set event-block to air
+            
+    else if {gens::%player's uuid%::15::%chunk at event-block%::*} contains location of event-block:
+        if event-block is red wool:
+            remove location of event-block from {gens::%player's uuid%::15::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 15)
+            set event-block to air
+            
+    else if {gens::%player's uuid%::16::%chunk at event-block%::*} contains location of event-block:
+        if event-block is black wool:
+            remove location of event-block from {gens::%player's uuid%::16::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 16)
+            set event-block to air
+    
+
+
+    else if {gens::%player's uuid%::17::%chunk at event-block%::*} contains location of event-block:
+        if event-block is white shulker box:
+            remove location of event-block from {gens::%player's uuid%::17::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 17)
+            set event-block to air
+
+    else if {gens::%player's uuid%::18::%chunk at event-block%::*} contains location of event-block:
+        if event-block is orange shulker box:
+            remove location of event-block from {gens::%player's uuid%::18::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 18)
+            set event-block to air
+
+    else if {gens::%player's uuid%::19::%chunk at event-block%::*} contains location of event-block:
+        if event-block is magenta shulker box:
+            remove location of event-block from {gens::%player's uuid%::19::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 19)
+            set event-block to air
+
+    else if {gens::%player's uuid%::20::%chunk at event-block%::*} contains location of event-block:
+        if event-block is light blue shulker box:
+            remove location of event-block from {gens::%player's uuid%::20::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 20)
+            set event-block to air
+
+    else if {gens::%player's uuid%::21::%chunk at event-block%::*} contains location of event-block:
+        if event-block is yellow shulker box:
+            remove location of event-block from {gens::%player's uuid%::21::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 21)
+            set event-block to air
+
+    else if {gens::%player's uuid%::22::%chunk at event-block%::*} contains location of event-block:
+        if event-block is lime shulker box:
+            remove location of event-block from {gens::%player's uuid%::22::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 22)
+            set event-block to air
+
+    else if {gens::%player's uuid%::23::%chunk at event-block%::*} contains location of event-block:
+        if event-block is pink shulker box:
+            remove location of event-block from {gens::%player's uuid%::23::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 23)
+            set event-block to air
+
+    else if {gens::%player's uuid%::24::%chunk at event-block%::*} contains location of event-block:
+        if event-block is gray shulker box:
+            remove location of event-block from {gens::%player's uuid%::24::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 24)
+            set event-block to air
+
+    else if {gens::%player's uuid%::25::%chunk at event-block%::*} contains location of event-block:
+        if event-block is light gray shulker box:
+            remove location of event-block from {gens::%player's uuid%::25::%chunk at event-block%::*}
+            remove 1 from {placedgens::%player's uuid%}
+            send action bar "{@maincolor}You picked up a gen! &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+            sound_no(player)
+            gengive(player, 1, 25)
+            set event-block to air
+
+            
+        
+
+
+
+
+on right click on any wool or any shulker box:
+    player is sneaking
+    if {_lmaoidkwhattoputhere} is not set:
+        if player's held item is any wool or any shulker box:
+            send action bar "{@maincolor}You can't be holding a generator when upgrading!" to player
+            sound_no(player)
+            stop
+        if {gens::%player's uuid%::1::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade1}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade1}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::1::%chunk at event-block%::*}
+            remove {@upgrade1} from player's balance
+            set event-block to bedrock
+            sound_levelup(player)
+            wait 10 ticks
+            set event-block to orange wool
+            add location of event-block to {gens::%player's uuid%::2::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        else if {gens::%player's uuid%::2::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade2}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade2}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::2::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade2} from player's balance
+            wait 10 ticks
+            set event-block to magenta wool
+            add location of event-block to {gens::%player's uuid%::3::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        else if {gens::%player's uuid%::3::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade3}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade3}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::3::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade3} from player's balance
+            wait 10 ticks
+            set event-block to light blue wool
+            add location of event-block to {gens::%player's uuid%::4::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        else if {gens::%player's uuid%::4::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade4}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade4}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::4::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade4} from player's balance
+            wait 10 ticks
+            set event-block to yellow wool
+            add location of event-block to {gens::%player's uuid%::5::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        else if {gens::%player's uuid%::5::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade5}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade5}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::5::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade5} from player's balance
+            wait 10 ticks
+            set event-block to lime wool
+            add location of event-block to {gens::%player's uuid%::6::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+            send title "&4&lWARNING: " with subtitle "&eGen Drops will be every 20 seconds" to player
+            wait 3 seconds
+            send title "&4&lWARNING: " with subtitle "&eGen drops will sell for a huge amount more though"
+        else if {gens::%player's uuid%::6::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade6}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade6}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::6::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade6} from player's balance
+            wait 10 ticks
+            set event-block to pink wool
+            add location of event-block to {gens::%player's uuid%::7::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        else if {gens::%player's uuid%::7::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade7}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade7}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::7::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade7} from player's balance
+            wait 10 ticks
+            set event-block to gray wool
+            add location of event-block to {gens::%player's uuid%::8::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        else if {gens::%player's uuid%::8::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade8}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade8}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::8::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade8} from player's balance
+            wait 10 ticks
+            set event-block to light gray wool
+            add location of event-block to {gens::%player's uuid%::9::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        else if {gens::%player's uuid%::9::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade9}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade9}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::9::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade9} from player's balance
+            wait 10 ticks
+            set event-block to cyan wool
+            add location of event-block to {gens::%player's uuid%::10::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        else if {gens::%player's uuid%::10::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade10}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade10}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::10::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade10} from player's balance
+            wait 10 ticks
+            set event-block to purple wool
+            add location of event-block to {gens::%player's uuid%::11::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+            send title "&4&lWARNING: " with subtitle "&eGen Drops will be every 30 seconds" to player
+            wait 3 seconds
+            send title "&4&lWARNING: " with subtitle "&eGen drops will sell for a huge amount more though"
+        else if {gens::%player's uuid%::11::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade11}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade11}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::11::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade11} from player's balance
+            wait 10 ticks
+            set event-block to blue wool
+            add location of event-block to {gens::%player's uuid%::12::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        else if {gens::%player's uuid%::12::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade12}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade12}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::12::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade12} from player's balance
+            wait 10 ticks
+            set event-block to brown wool
+            add location of event-block to {gens::%player's uuid%::13::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        else if {gens::%player's uuid%::13::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade13}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade13}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::13::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade13} from player's balance
+            wait 10 ticks
+            set event-block to green wool
+            add location of event-block to {gens::%player's uuid%::14::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        else if {gens::%player's uuid%::14::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade14}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade14}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::14::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade14} from player's balance
+            wait 10 ticks
+            set event-block to red wool
+            add location of event-block to {gens::%player's uuid%::15::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        else if {gens::%player's uuid%::15::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade15}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade15}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::15::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade15} from player's balance
+            wait 10 ticks
+            set event-block to black wool
+            add location of event-block to {gens::%player's uuid%::16::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+            send title "&4&lWARNING: " with subtitle "&eGen Drops will be every 40 seconds" to player
+            wait 3 seconds
+            send title "&4&lWARNING: " with subtitle "&eGen drops will sell for a huge amount more though"
+        
+        else if {gens::%player's uuid%::16::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade16}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade16}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::16::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade16} from player's balance
+            wait 10 ticks
+            set event-block to white shulker box
+            add location of event-block to {gens::%player's uuid%::17::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        
+        else if {gens::%player's uuid%::17::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade17}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade17}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::17::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade17} from player's balance
+            wait 10 ticks
+            set event-block to orange shulker box
+            add location of event-block to {gens::%player's uuid%::18::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        
+
+
+
+
+
+        else if {gens::%player's uuid%::18::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade18}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade18}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::18::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade18} from player's balance
+            wait 10 ticks
+            set event-block to magenta shulker box
+            add location of event-block to {gens::%player's uuid%::19::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        
+        else if {gens::%player's uuid%::19::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade19}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade19}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::19::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade19} from player's balance
+            wait 10 ticks
+            set event-block to light blue shulker box
+            add location of event-block to {gens::%player's uuid%::20::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        
+        else if {gens::%player's uuid%::20::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade20}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade20}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::20::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade20} from player's balance
+            wait 10 ticks
+            set event-block to yellow shulker box
+            add location of event-block to {gens::%player's uuid%::21::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+            send title "&4&lWARNING: " with subtitle "&eGen Drops will be every 50 seconds" to player
+            wait 3 seconds
+            send title "&4&lWARNING: " with subtitle "&eGen drops will sell for a huge amount more though"
+            
+        
+        else if {gens::%player's uuid%::21::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade21}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade21}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::21::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade21} from player's balance
+            wait 10 ticks
+            set event-block to lime shulker box
+            add location of event-block to {gens::%player's uuid%::22::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        
+        else if {gens::%player's uuid%::22::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade22}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade22}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::22::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade22} from player's balance
+            wait 10 ticks
+            set event-block to pink shulker box
+            add location of event-block to {gens::%player's uuid%::23::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        
+        else if {gens::%player's uuid%::23::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade23}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade23}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::23::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade23} from player's balance
+            wait 10 ticks
+            set event-block to gray shulker box
+            add location of event-block to {gens::%player's uuid%::24::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        
+        else if {gens::%player's uuid%::24::%chunk at event-block%::*} contains location of event-block:
+            if player's balance < {@upgrade24}:
+                message(player, "fail", "You need a total of {@highlightcolor}${@upgrade24}.")
+                sound_no(player)
+                stop
+            remove location of event-block from {gens::%player's uuid%::24::%chunk at event-block%::*}
+            set event-block to bedrock
+            sound_levelup(player)
+            remove {@upgrade24} from player's balance
+            wait 10 ticks
+            set event-block to light gray shulker box
+            add location of event-block to {gens::%player's uuid%::25::%chunk at event-block%::*}
+            actionbar(player, "{@maincolor}You upgraded your generator!")
+        
+        else if {gens::%player's uuid%::25::%chunk at event-block%::*} contains location of event-block:
+            sound_no(player)
+            message(player, "fail", "This gen is already at a max level")
+        wait 10 ticks
+        delete {genplacecooldown::%player%}
+
+
+function gengive(p: player, amount: integer, tier: integer):
+    if {_tier} is 1:
+        give {_p} {_amount} of white wool named "{@highlightcolor}White Dye {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}1 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice1}" and "" and "&7&oShift right click to upgrade"
+    if {_tier} is 2:
+        give {_p} {_amount} of orange wool named "{@highlightcolor}Orange Dye {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}2 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice2}" and "" and "&7&oShift right click to upgrade"
+    if {_tier} is 3:
+        give {_p} {_amount} of magenta wool named "{@highlightcolor}Magenta Dye {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}3 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice3}" and "" and "&7&oShift right click to upgrade"
+    if {_tier} is 4:
+        give {_p} {_amount} of light blue wool named "{@highlightcolor}Light blue Dye {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}4 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice4}" and "" and "&7&oShift right click to upgrade"
+    if {_tier} is 5:
+        give {_p} {_amount} of yellow wool named "{@highlightcolor}Yellow Dye {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}5 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice5}" and "" and "&7&oShift right click to upgrade"
+    if {_tier} is 6:
+        give {_p} {_amount} of lime wool named "{@highlightcolor}Lime Dye {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}6 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice6}" and "" and "&7&oShift right click to upgrade"
+    if {_tier} is 7:
+        give {_p} {_amount} of pink wool named "{@highlightcolor}Pink Dye {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}7 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice7}" and "" and "&7&oShift right click to upgrade"
+    if {_tier} is 8:
+        give {_p} {_amount} of gray wool named "{@highlightcolor}Gray Dye {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}8 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice8}" and "" and "&7&oShift right click to upgrade"
+    if {_tier} is 9:
+        give {_p} {_amount} of light gray wool named "{@highlightcolor}Light gray Dye {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}9 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice9}" and "" and "&7&oShift right click to upgrade"
+    if {_tier} is 10:
+        give {_p} {_amount} of cyan wool named "{@highlightcolor}cyan Dye {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}10 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice10}" and "" and "&7&oShift right click to upgrade"
+    if {_tier} is 11:
+        give {_p} {_amount} of purple wool named "{@highlightcolor}Purple Dye {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}11 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice11}" and "" and "&7&oShift right click to upgrade"
+    if {_tier} is 12:
+        give {_p} {_amount} of blue wool named "{@highlightcolor}Blue Dye {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}12 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice12}" and "" and "&7&oShift right click to upgrade"
+    if {_tier} is 13:
+        give {_p} {_amount} of brown wool named "{@highlightcolor}Brown Dye {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}13 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice13}" and "" and "&7&oShift right click to upgrade"
+    if {_tier} is 14:
+        give {_p} {_amount} of green wool named "{@highlightcolor}Green Dye {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}14 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice14}" and "" and "&7&oShift right click to upgrade"
+    if {_tier} is 15:
+        give {_p} {_amount} of red wool named "{@highlightcolor}Red Dye {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}15 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice15}" and "" and "&7&oShift right click to upgrade"
+    if {_tier} is 16:
+        give {_p} {_amount} of black wool named "{@highlightcolor}Black Dye {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}16 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice16}" and "" and "&7&oShift right click to upgrade" 
+    
+
+    if {_tier} is 17:
+        give {_p} {_amount} of white shulker box named "{@highlightcolor}White Candle {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}17 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice17}" and "" and "&7&oShift right click to upgrade" 
+    if {_tier} is 18:
+        give {_p} {_amount} of orange shulker box named "{@highlightcolor}Orange Candle {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}18 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice18}" and "" and "&7&oShift right click to upgrade" 
+    if {_tier} is 19:
+        give {_p} {_amount} of magenta shulker box named "{@highlightcolor}Magenta Candle {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}19 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice19}" and "" and "&7&oShift right click to upgrade" 
+    if {_tier} is 20:
+        give {_p} {_amount} of light blue shulker box named "{@highlightcolor}Light blue Candle {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}20 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice20}" and "" and "&7&oShift right click to upgrade" 
+    if {_tier} is 21:
+        give {_p} {_amount} of yellow shulker box named "{@highlightcolor}Yellow Candle {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}21 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice21}" and "" and "&7&oShift right click to upgrade" 
+    if {_tier} is 22:
+        give {_p} {_amount} of lime shulker box named "{@highlightcolor}Lime Candle {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}22 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice22}" and "" and "&7&oShift right click to upgrade" 
+    if {_tier} is 23:
+        give {_p} {_amount} of pink shulker box named "{@highlightcolor}Pink Candle {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}23 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice23}" and "" and "&7&oShift right click to upgrade" 
+    if {_tier} is 24:
+        give {_p} {_amount} of gray shulker box named "{@highlightcolor}Gray Candle {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}24 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice24}" and "" and "&7&oShift right click to upgrade" 
+    if {_tier} is 25:
+        give {_p} {_amount} of light gray shulker box named "{@highlightcolor}Light Gray Candle {@maincolor} Generator" with lore "" and "{@highlightcolor}| {@maincolor}Tier {@highlightcolor}25 {@maincolor}Gen" and "{@highlightcolor}| {@maincolor}Drop sell: {@highlightcolor}${@sellprice25}" and "" and "&7&oShift right click to upgrade" 
+    
+
+
+
+on join:
+    while player is online:
+        wait 10 seconds
+        spawnitems(player, 1)
+
+on join:
+    while player is online:
+        wait 10 seconds
+        spawnitems(player, 2)
+on join:
+    while player is online:
+        wait 10 seconds
+        spawnitems(player, 3)
+on join:
+    while player is online:
+        wait 10 seconds
+        spawnitems(player, 4)
+on join:
+    while player is online:
+        wait 10 seconds
+        spawnitems(player, 5)
+on join:
+    while player is online:
+        wait 40 seconds
+        spawnitems(player, 6)
+on join:
+    while player is online:
+        wait 40 seconds
+        spawnitems(player, 7)
+on join:
+    while player is online:
+        wait 40 seconds
+        spawnitems(player, 8)
+on join:
+    while player is online:
+        wait 40 seconds
+        spawnitems(player, 9)
+on join:
+    while player is online:
+        wait 40 seconds
+        spawnitems(player, 10)
+on join:
+    while player is online:
+        wait 60 seconds
+        spawnitems(player, 11)
+on join:
+    while player is online:
+        wait 60 seconds
+        spawnitems(player, 12)
+on join:
+    while player is online:
+        wait 60 seconds
+        spawnitems(player, 13)
+on join:
+    while player is online:
+        wait 60 seconds
+        spawnitems(player, 14)
+on join:
+    while player is online:
+        wait 60 seconds
+        spawnitems(player, 15)
+on join:
+    while player is online:
+        wait 80 seconds
+        spawnitems(player, 16)
+
+on join:
+    while player is online:
+        wait 80 seconds
+        spawnitems(player, 17)
+on join:
+    while player is online:
+        wait 80 seconds
+        spawnitems(player, 18)
+on join:
+    while player is online:
+        wait 80 seconds
+        spawnitems(player, 19)
+on join:
+    while player is online:
+        wait 80 seconds
+        spawnitems(player, 20)
+on join:
+    while player is online:
+        wait 100 seconds
+        spawnitems(player, 21)
+on join:
+    while player is online:
+        wait 100 seconds
+        spawnitems(player, 22)
+on join:
+    while player is online:
+        wait 100 seconds
+        spawnitems(player, 23)
+on join:
+    while player is online:
+        wait 100 seconds
+        spawnitems(player, 24)
+on join:
+    while player is online:
+        wait 100 seconds
+        spawnitems(player, 25)
+
+
+        
+
+
+function spawnitems(p: player, tier: integer):
+    set {_uuid} to uuid of {_p}
+    loop indices of {gens::%{_uuid}%::%{_tier}%::*}:
+        set {_amount} to size of {gens::%{_uuid}%::%{_tier}%::%loop-value%::*}
+        set {_place} to random element of {gens::%{_uuid}%::%{_tier}%::%loop-value%::*}
+        if block at location of {_place} is any wool or any shulker box:
+            if {_tier} is 1:
+                drop {_amount} of white dye named "&fWhite dye" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice1}"  above {_place} without velocity
+            if {_tier} is 2:
+                drop {_amount} of orange dye named "&6Orange dye" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice2}"  above {_place} without velocity
+            if {_tier} is 3:
+                drop {_amount} of magenta dye named "&5Magenta dye" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice3}"  above {_place} without velocity
+            if {_tier} is 4:
+                drop {_amount} of light blue dye named "&bLight blue dye" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice4}"  above {_place} without velocity
+            if {_tier} is 5:
+                drop {_amount} of yellow dye named "&eYellow dye" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice5}"  above {_place} without velocity
+            if {_tier} is 6:
+                drop {_amount} of lime dye named "&aLime dye" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice6}"  above {_place} without velocity
+            if {_tier} is 7:
+                drop {_amount} of pink dye named "&dPink dye" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice7}"  above {_place} without velocity
+            if {_tier} is 8:
+                drop {_amount} of gray dye named "&8Gray dye" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice8}"  above {_place} without velocity
+            if {_tier} is 9:
+                drop {_amount} of light gray dye named "&7Light Gray dye" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice9}"  above {_place} without velocity
+            if {_tier} is 10:
+                drop {_amount} of cyan dye named "&3Cyan dye" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice10}"  above {_place} without velocity
+            if {_tier} is 11:
+                drop {_amount} of purple dye named "&5Purple dye" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice11}"  above {_place} without velocity
+            if {_tier} is 12:
+                drop {_amount} of blue dye named "&9Blue dye" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice12}"  above {_place} without velocity
+            if {_tier} is 13:
+                drop {_amount} of brown dye named "&7Brown dye" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice13}"  above {_place} without velocity
+            if {_tier} is 14:
+                drop {_amount} of green dye named "&2Green dye" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice14}"  above {_place} without velocity
+            if {_tier} is 15:
+                drop {_amount} of red dye named "&4Red dye" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice15}"  above {_place} without velocity
+            if {_tier} is 16:
+                drop {_amount} of black dye named "&0Black dye" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice16}"  above {_place} without velocity
+            
+            
+            if {_tier} is 17:
+                drop {_amount} of White candle named "&fWhite candle" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice17}"  above {_place} without velocity
+            if {_tier} is 18:
+                drop {_amount} of orange candle named "&6Orange candle" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice18}"  above {_place} without velocity
+            if {_tier} is 19:
+                drop {_amount} of magenta candle named "&5Magenta candle" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice19}"  above {_place} without velocity
+            if {_tier} is 20:
+                drop {_amount} of light blue candle named "&bLight blue candle" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice20}"  above {_place} without velocity
+            if {_tier} is 21:
+                drop {_amount} of yellow candle named "&eYellow candle" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice21}"  above {_place} without velocity
+            if {_tier} is 22:
+                drop {_amount} of lime candle named "&aLime candle" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice22}"  above {_place} without velocity
+            if {_tier} is 23:
+                drop {_amount} of pink candle named "&dPink candle" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice23}"  above {_place} without velocity
+            if {_tier} is 24:
+                drop {_amount} of light gray candle named "&7Light gray candle" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice24}"  above {_place} without velocity
+            if {_tier} is 25:
+                drop {_amount} of gray candle named "&8Gray candle" with lore "", "{@maincolor}| &7Generator Drop", "{@maincolor}| &7Sell with /sell", "{@maincolor}| &7Sell price: {@maincolor}${@sellprice25}"  above {_place} without velocity
+            
+
+function itemcheck(item: item, inventory: inventory, price: number) :: number:
+    set {_amount} to amount of {_item} in {_inventory}
+    remove {_amount} of {_item} from {_inventory}
+    set {_money} to {_amount}*{_price}
+    return  {_money}
+
+
+
+
+command /sell:
+    aliases: sellall, s
+    trigger:
+        set {_inventory} to inventory of player
+
+        set {_amount} to itemcheck(white dye, {_inventory}, {@sellprice1})
+        set {_amount} to {_amount} + itemcheck(orange dye, {_inventory}, {@sellprice2})
+        set {_amount} to {_amount} +  itemcheck(magenta dye, {_inventory}, {@sellprice3})
+        set {_amount} to {_amount} +  itemcheck(light blue dye, {_inventory}, {@sellprice4})
+        set {_amount} to {_amount} +  itemcheck(yellow dye, {_inventory}, {@sellprice5})
+        set {_amount} to {_amount} +  itemcheck(lime dye, {_inventory}, {@sellprice6})
+        set {_amount} to {_amount} +  itemcheck(pink dye, {_inventory}, {@sellprice7})
+        set {_amount} to {_amount} +  itemcheck(gray dye, {_inventory}, {@sellprice8})
+        set {_amount} to {_amount} +  itemcheck(light gray dye, {_inventory}, {@sellprice9})
+        set {_amount} to {_amount} +  itemcheck(cyan dye, {_inventory}, {@sellprice10})
+        set {_amount} to {_amount} +  itemcheck(purple dye, {_inventory}, {@sellprice11})
+        set {_amount} to {_amount} +  itemcheck(blue dye, {_inventory}, {@sellprice12})
+        set {_amount} to {_amount} +  itemcheck(brown dye, {_inventory}, {@sellprice13})
+        set {_amount} to {_amount} +  itemcheck(green dye, {_inventory}, {@sellprice14})
+        set {_amount} to {_amount} +  itemcheck(red dye, {_inventory}, {@sellprice15})
+        set {_amount} to {_amount} +  itemcheck(black dye, {_inventory}, {@sellprice16})
+
+        set {_amount} to {_amount} +  itemcheck(white candle, {_inventory}, {@sellprice17})
+        set {_amount} to {_amount} +  itemcheck(orange candle, {_inventory}, {@sellprice18})
+        set {_amount} to {_amount} +  itemcheck(magenta candle, {_inventory}, {@sellprice19})
+        set {_amount} to {_amount} +  itemcheck(light blue candle, {_inventory}, {@sellprice20})
+        set {_amount} to {_amount} +  itemcheck(yellow candle, {_inventory}, {@sellprice21})
+        set {_amount} to {_amount} +  itemcheck(lime candle, {_inventory}, {@sellprice22})
+        set {_amount} to {_amount} +  itemcheck(pink candle, {_inventory}, {@sellprice23})
+        set {_amount} to {_amount} +  itemcheck(light gray candle, {_inventory}, {@sellprice24})
+        set {_amount} to {_amount} +  itemcheck(gray candle, {_inventory}, {@sellprice25})
+
+        add {_amount}*{multi::%player's uuid%} to balance of player
+        actionbar(player, "{@maincolor}You got {@highlightcolor}$%{_amount}*{multi::%player's uuid%}%{@maincolor} From selling.")
+        sound_bit(player)

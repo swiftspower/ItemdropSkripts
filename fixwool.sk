@@ -1,0 +1,38 @@
+on join:
+    wait 1 second
+    replacewool(player, orange wool, 2)
+    replacewool(player, magenta wool, 3)
+    replacewool(player, light blue wool, 4)
+    replacewool(player, yellow wool, 5)
+    replacewool(player, lime wool, 6)
+    replacewool(player, pink wool, 7)
+    replacewool(player, gray wool, 8)
+    replacewool(player, light gray wool, 9)
+    replacewool(player, cyan wool, 10)
+    replacewool(player, purple wool, 11)
+    replacewool(player, blue wool, 12)
+    replacewool(player, brown wool, 13)
+    replacewool(player, green wool, 14)
+    replacewool(player, red wool, 15)
+    replacewool(player, black wool, 16)
+
+    replacewool(player, white shulker box, 17)
+    replacewool(player, orange shulker box, 18)
+    replacewool(player, magenta shulker box, 19)
+    replacewool(player, light blue shulker box, 20)
+    replacewool(player, yellow shulker box, 21)
+    replacewool(player, lime shulker box, 22)
+    replacewool(player, pink shulker box, 23)
+    replacewool(player, gray shulker box, 24)
+    replacewool(player, light gray shulker box, 25)
+
+
+function replacewool(p: player, i: item, t: integer):
+    set {_s} to amount of {_i} in {_p}'s inventory
+    remove all {_i} from {_p}'s inventory
+    if {_s} > 0:
+        gengive({_p}, {_s}, {_t})
+
+
+
+

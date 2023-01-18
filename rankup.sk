@@ -1,0 +1,362 @@
+command /rankup:
+    trigger:
+        create gui with virtual chest inventory with 4 rows named "&e&lRANKUP":
+            make gui slot 4 with book named "&e&lRANKUP GUI" with lore "" and "&7You must have the rank" and "&7Before the next rank" and "&7to be able to buy it"
+            if player does not have permission "amateur":
+                make gui slot 0, 1, 2, 9, 10, 18, 19, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
+                make gui slot 32 with book named "&b&lTITAN Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 31 with book named "<##86FF9D>Godest Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 30 with book named "<##2E009D>Wizard Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 24 with book named "&fExpert Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 23 with book named "<##C3C100>Champion Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 22 with book named "<##FF6F6F>President Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 21 with book named "<##00FF12>Mayor Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 20 with book named "<##4B81C8>Elite Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 15 with book named "<##D32975>Pro Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 14 with book named "<##B74B23>Boss Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 13 with book named "<##7A62B7>Teacher Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 12 with book named "<##5B5B5B>Worker Rank" with lore "&4&lERROR" and "&7You must claim Amateur rank" and "&7before claiming this!"
+                make gui slot 11 with paper named "<##FBBD6A>Amateur Rank" with lore "&bCost: &f5,000" and "&7 &e&lREWARDS:" and "&7+1 Gen slot" and "&71 Rankup crate key" and "&7+ 0.03 Sell multi":
+                    if player's balance >= 5000:
+                        remove 5000 from player's balance
+                        execute console command "addgens %player% 1"
+                        execute console command "crate givekey %player% rankup 1"
+                        execute console command "lp user %player% parent add amateur"
+                        add 0.03 to {multi::%player's uuid%}
+                        broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought <##FBBD6A>Amateur &bRank at &e/rankup"
+                        close player's inventory
+                    else:
+                        send action bar "&bRemember, you need &3$5,000 &bto do this!" to player
+                        close player's inventory
+            else if player does not have permission "worker":
+                make gui slot 0, 1, 2, 9, 10, 18, 19, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
+                make gui slot 32 with book named "&b&lTITAN Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 31 with book named "<##86FF9D>Godest Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 30 with book named "<##2E009D>Wizard Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 24 with book named "&fExpert Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 23 with book named "<##C3C100>Champion Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 22 with book named "<##FF6F6F>President Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 21 with book named "<##00FF12>Mayor Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 20 with book named "<##4B81C8>Elite Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 15 with book named "<##D32975>Pro Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 14 with book named "<##B74B23>Boss Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 13 with book named "<##7A62B7>Teacher Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 11 with paper named "<##FBBD6A>Amateur Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 12 with paper named "<##5B5B5B>Worker Rank" with lore "&bCost: &f25,000" and "&7 &e&lREWARDS:" and "&7+3 Gen slots" and "&71 Rankup crate key" and "&7+ 0.04 Sell multi" and "&7Permission for /craft":
+                    if player's balance >= 25000:
+                        remove 25000 from player's balance
+                        execute console command "addgens %player% 3"
+                        execute console command "crate givekey %player% rankup 1"
+                        execute console command "lp user %player% parent add worker"
+                        add 0.04 to {multi::%player's uuid%}
+                        broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought <##5B5B5B>Worker &bRank at &e/rankup"
+                        close player's inventory
+                    else:
+                        send action bar "&bRemember, you need &3$25,000 &bto do this!" to player
+                        close player's inventory
+            else if player does not have permission "teacher":
+                make gui slot 0, 1, 2, 9, 18, 19, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
+                make gui slot 32 with book named "&b&lTITAN Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 31 with book named "<##86FF9D>Godest Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 30 with book named "<##2E009D>Wizard Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 24 with book named "&fExpert Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 23 with book named "<##C3C100>Champion Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 22 with book named "<##FF6F6F>President Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 21 with book named "<##00FF12>Mayor Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 20 with book named "<##4B81C8>Elite Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 15 with book named "<##D32975>Pro Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 14 with book named "<##B74B23>Boss Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 11 with paper named "<##FBBD6A>Amateur Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 12 with paper named "<##5B5B5B>Worker Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 13 with paper named "<##7A62B7>Teacher Rank" with lore "&bCost: &f100,000" and "&7 &e&lREWARDS:" and "&7+5 Gen slots" and "&71 Rankup crate key" and "&7+ 0.05 Sell multi" and "&7Permission for /craft" and "&7Total 2 plots":
+                    if player's balance >= 100000:
+                        remove 100000 from player's balance
+                        execute console command "addgens %player% 3"
+                        execute console command "crate givekey %player% rankup 1"
+                        execute console command "lp user %player% parent add teacher"
+                        add 0.05 to {multi::%player's uuid%}
+                        broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought <##7A62B7>Teacher &bRank at &e/rankup"
+                        close player's inventory
+                    else:
+                        send action bar "&bRemember, you need &3$100,000 &bto do this!" to player
+                        close player's inventory
+            else if player does not have permission "Boss":
+                make gui slot 0, 1, 2, 9, 18, 19, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
+                make gui slot 32 with book named "&b&lTITAN Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 31 with book named "<##86FF9D>Godest Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 30 with book named "<##2E009D>Wizard Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 24 with book named "&fExpert Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 23 with book named "<##C3C100>Champion Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 22 with book named "<##FF6F6F>President Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 21 with book named "<##00FF12>Mayor Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 20 with book named "<##4B81C8>Elite Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 15 with book named "<##D32975>Pro Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 13 with paper named "<##7A62B7>Teacher Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 11 with paper named "<##FBBD6A>Amateur Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 12 with paper named "<##5B5B5B>Worker Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 14 with paper named "<##B74B23>Boss Rank" with lore "&bCost: &f500,000" and "&7 &e&lREWARDS:" and "&7+10 Gen slots" and "&71 Rankup crate key" and "&7+ 0.06 Sell multi" and "&7Permission for /craft" and "&7Total 2 plots" and "&7permission for /beezooka":
+                    if player's balance >= 500000:
+                        remove 500000 from player's balance
+                        execute console command "addgens %player% 10"
+                        execute console command "crate givekey %player% rankup 1"
+                        execute console command "lp user %player% parent add boss"
+                        add 0.06 to {multi::%player's uuid%}
+                        broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought <##B74B23>Boss &bRank at &e/rankup"
+                        close player's inventory
+                    else:
+                        send action bar "&bRemember, you need &3$500,000 &bto do this!" to player
+                        close player's inventory
+            else if player does not have permission "pro":
+                make gui slot 0, 1, 2, 9, 18, 19, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
+                make gui slot 32 with book named "&b&lTITAN Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 31 with book named "<##86FF9D>Godest Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 30 with book named "<##2E009D>Wizard Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 24 with book named "&fExpert Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 23 with book named "<##C3C100>Champion Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 22 with book named "<##FF6F6F>President Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 20 with book named "<##4B81C8>Elite Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 21 with book named "<##00FF12>Mayor Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 13 with paper named "<##7A62B7>Teacher Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 11 with paper named "<##FBBD6A>Amateur Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 12 with paper named "<##5B5B5B>Worker Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 14 with paper named "<##B74B23>Boss Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 15 with paper named "<##D32975>Pro Rank" with lore "&bCost: &f1,000,000" and "&7 &e&lREWARDS:" and "&7+13 Gen slots" and "&71 Rankup crate key" and "&7+ 0.07 Sell multi" and "&7Permission for /craft" and "&7Total 3 plots" and "&7permission for /beezooka":
+                    if player's balance >= 1000000:
+                        remove 1000000 from player's balance
+                        execute console command "addgens %player% 13"
+                        execute console command "crate givekey %player% rankup 1"
+                        execute console command "lp user %player% parent add pro"
+                        add 0.07 to {multi::%player's uuid%}
+                        broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought <##D32975>Pro &bRank at &e/rankup"
+                        close player's inventory
+                    else:
+                        send action bar "&bRemember, you need &3$1,000,000 &bto do this!" to player
+                        close player's inventory
+            else if player does not have permission "elite":
+                make gui slot 0, 1, 2, 9, 18, 19, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
+                make gui slot 32 with book named "&b&lTITAN Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 31 with book named "<##86FF9D>Godest Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 30 with book named "<##2E009D>Wizard Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 24 with book named "&fExpert Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 23 with book named "<##C3C100>Champion Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 22 with book named "<##FF6F6F>President Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 21 with book named "<##00FF12>Mayor Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 14 with paper named "<##B74B23>Boss Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 13 with paper named "<##7A62B7>Teacher Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 11 with paper named "<##FBBD6A>Amateur Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 12 with paper named "<##5B5B5B>Worker Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 15 with paper named "<##D32975>Pro Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 20 with paper named "<##4B81C8>Elite Rank" with lore "&bCost: &f5,000,000" and "&7 &e&lREWARDS:" and "&7+15 Gen slots" and "&71 Rankup crate key" and "&7+ 0.08 Sell multi" and "&7Permission for /craft" and "&7Total 3 plots" and "&7permission for /beezooka" and "&7permission for /ad":
+                    if player's balance >= 5000000:
+                        remove 5000000 from player's balance
+                        execute console command "addgens %player% 15"
+                        execute console command "crate givekey %player% rankup 1"
+                        execute console command "lp user %player% parent add elite"
+                        add 0.08 to {multi::%player's uuid%}
+                        broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought <##4B81C8>Elite &bRank at &e/rankup"
+                        close player's inventory
+                    else:
+                        send action bar "&bRemember, you need &3$5,000,000 &bto do this!" to player
+                        close player's inventory
+            else if player does not have permission "mayor":
+                make gui slot 0, 1, 2, 9, 18, 19, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
+                make gui slot 32 with book named "&b&lTITAN Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 31 with book named "<##86FF9D>Godest Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 30 with book named "<##2E009D>Wizard Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 24 with book named "&fExpert Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 23 with book named "<##C3C100>Champion Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 22 with book named "<##FF6F6F>President Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 20 with paper named "<##4B81C8>Elite Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 14 with paper named "<##B74B23>Boss Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 13 with paper named "<##7A62B7>Teacher Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 11 with paper named "<##FBBD6A>Amateur Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 12 with paper named "<##5B5B5B>Worker Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 15 with paper named "<##D32975>Pro Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 21 with paper named "<##00FF12>Mayor Rank" with lore "&bCost: &f15,000,000" and "&7 &e&lREWARDS:" and "&7+20 Gen slots" and "&71 Rankup crate key" and "&7+ 0.09 Sell multi" and "&7Permission for /craft" and "&7Total 3 plots" and "&7permission for /beezooka" and "&7permission for /ad" and "&7permission for /fly":
+                    if player's balance >= 15000000:
+                        remove 15000000 from player's balance
+                        execute console command "addgens %player% 20"
+                        execute console command "crate givekey %player% rankup 1"
+                        execute console command "lp user %player% parent add mayor"
+                        add 0.09 to {multi::%player's uuid%}
+                        broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought <##00FF12>Mayor &bRank at &e/rankup"
+                        close player's inventory
+                    else:
+                        send action bar "&bRemember, you need &3$15,000,000 &bto do this!" to player
+                        close player's inventory
+            else if player does not have permission "president":
+                make gui slot 0, 1, 2, 9, 18, 19, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
+                make gui slot 32 with book named "&b&lTITAN Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 31 with book named "<##86FF9D>Godest Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 30 with book named "<##2E009D>Wizard Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 24 with book named "&fExpert Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 23 with book named "<##C3C100>Champion Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 21 with paper named "<##00FF12>Mayor Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 20 with paper named "<##4B81C8>Elite Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 14 with paper named "<##B74B23>Boss Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 13 with paper named "<##7A62B7>Teacher Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 11 with paper named "<##FBBD6A>Amateur Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 12 with paper named "<##5B5B5B>Worker Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 15 with paper named "<##D32975>Pro Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 22 with paper named "<##FF6F6F>President Rank" with lore "&bCost: &f50,000,000" and "&7 &e&lREWARDS:" and "&7+30 Gen slots" and "&71 Rankup crate key" and "&7+ 0.10 Sell multi" and "&7Permission for /craft" and "&7Total 4 plots" and "&7permission for /beezooka" and "&7permission for /ad" and "&7permission for /fly":
+                    if player's balance >= 50000000:
+                        remove 50000000 from player's balance
+                        execute console command "addgens %player% 30"
+                        execute console command "crate givekey %player% rankup 1"
+                        execute console command "lp user %player% parent add president"
+                        add 0.1 to {multi::%player's uuid%}
+                        broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought <##FF6F6F>President &bRank at &e/rankup"
+                        close player's inventory
+                    else:
+                        send action bar "&bRemember, you need &3$50,000,000 &bto do this!" to player
+                        close player's inventory
+            else if player does not have permission "champion":
+                make gui slot 0, 1, 2, 9, 18, 19, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
+                make gui slot 32 with book named "&b&lTITAN Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 31 with book named "<##86FF9D>Godest Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 30 with book named "<##2E009D>Wizard Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 24 with book named "&fExpert Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 22 with paper named "<##FF6F6F>President Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 21 with paper named "<##00FF12>Mayor Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 20 with paper named "<##4B81C8>Elite Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 14 with paper named "<##B74B23>Boss Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 13 with paper named "<##7A62B7>Teacher Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 11 with paper named "<##FBBD6A>Amateur Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 12 with paper named "<##5B5B5B>Worker Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 15 with paper named "<##D32975>Pro Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 23 with paper named "<##C3C100>Champion Rank" with lore "&bCost: &f500,000,000" and "&7 &e&lREWARDS:" and "&7+40 Gen slots" and "&71 Rankup crate key" and "&7+ 0.11 Sell multi" and "&7Permission for /craft" and "&7Total 4 plots" and "&7permission for /beezooka" and "&7permission for /ad" and "&7permission for /fly" and "&7Permission for /kittycannon":
+                    if player's balance >= 500000000:
+                        remove 500000000 from player's balance
+                        execute console command "addgens %player% 40"
+                        execute console command "crate givekey %player% rankup 1"
+                        execute console command "lp user %player% parent add champion"
+                        add 0.11 to {multi::%player's uuid%}
+                        broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought <##C3C100>Champion &bRank at &e/rankup"
+                        close player's inventory
+                    else:
+                        send action bar "&bRemember, you need &3$500,000,000 &bto do this!" to player
+                        close player's inventory
+            else if player does not have permission "expert":
+                make gui slot 0, 1, 2, 9, 18, 19, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
+                make gui slot 32 with book named "&b&lTITAN Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 31 with book named "<##86FF9D>Godest Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 30 with book named "<##2E009D>Wizard Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 23 with paper named "<##C3C100>Champion Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 22 with paper named "<##FF6F6F>President Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 21 with paper named "<##00FF12>Mayor Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 20 with paper named "<##4B81C8>Elite Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 14 with paper named "<##B74B23>Boss Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 13 with paper named "<##7A62B7>Teacher Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 11 with paper named "<##FBBD6A>Amateur Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 12 with paper named "<##5B5B5B>Worker Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 15 with paper named "<##D32975>Pro Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 24 with paper named "&fExpert Rank" with lore "&bCost: &f1,000,000,000" and "&7 &e&lREWARDS:" and "&7+50 Gen slots" and "&71 Rankup crate key" and "&7+ 0.15 Sell multi" and "&7Permission for /craft" and "&7Total 4 plots" and "&7permission for /beezooka" and "&7permission for /ad" and "&7permission for /fly" and "&7Permission for /kittycannon" and "&7permission /chatcolor":
+                    if player's balance >= 1000000000:
+                        remove 1000000000 from player's balance
+                        execute console command "addgens %player% 50"
+                        execute console command "crate givekey %player% rankup 1"
+                        execute console command "lp user %player% parent add expert"
+                        add 0.15 to {multi::%player's uuid%}
+                        broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought &fExpert &bRank at &e/rankup"
+                        close player's inventory
+                    else:
+                        send action bar "&bRemember, you need &3$1,000,000,000 &bto do this!" to player
+                        close player's inventory
+            else if player does not have permission "wizard":
+                make gui slot 0, 1, 2, 9, 18, 19, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
+                make gui slot 32 with book named "&b&lTITAN Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 31 with book named "<##86FF9D>Godest Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 24 with paper named "&fExpert Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 23 with paper named "<##C3C100>Champion Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 22 with paper named "<##FF6F6F>President Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 21 with paper named "<##00FF12>Mayor Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 20 with paper named "<##4B81C8>Elite Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 14 with paper named "<##B74B23>Boss Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 13 with paper named "<##7A62B7>Teacher Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 11 with paper named "<##FBBD6A>Amateur Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 12 with paper named "<##5B5B5B>Worker Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 15 with paper named "<##D32975>Pro Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 30 with paper named "<##2E009D>Wizard Rank" with lore "&bCost: &f3,000,000,000" and "&7 &e&lREWARDS:" and "&7+60 Gen slots" and "&71 Rankup crate key" and "&7+ 0.20 Sell multi" and "&7Permission for /craft" and "&7Total 5 plots" and "&7permission for /beezooka" and "&7permission for /ad" and "&7permission for /fly" and "&7Permission for /kittycannon" and "&7permission /chatcolor" and "&7permission /nick":
+                    if player's balance >= 3000000000:
+                        remove 3000000000 from player's balance
+                        execute console command "addgens %player% 60"
+                        execute console command "crate givekey %player% rankup 1"
+                        execute console command "lp user %player% parent add wizard"
+                        add 0.20 to {multi::%player's uuid%}
+                        broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought <##2E009D>Wizard &bRank at &e/rankup"
+                        close player's inventory
+                    else:
+                        send action bar "&bRemember, you need &3$3,000,000,000 &bto do this!" to player
+                        close player's inventory
+            else if player does not have permission "godest":
+                make gui slot 0, 1, 2, 9, 18, 19, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
+                make gui slot 32 with book named "&b&lTITAN Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
+                make gui slot 30 with paper named "<##2E009D>Wizard Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 24 with paper named "&fExpert Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 23 with paper named "<##C3C100>Champion Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 22 with paper named "<##FF6F6F>President Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 21 with paper named "<##00FF12>Mayor Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 20 with paper named "<##4B81C8>Elite Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 14 with paper named "<##B74B23>Boss Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 13 with paper named "<##7A62B7>Teacher Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 11 with paper named "<##FBBD6A>Amateur Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 12 with paper named "<##5B5B5B>Worker Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 15 with paper named "<##D32975>Pro Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 31 with paper named "<##86FF9D>Godest Rank" with lore "&bCost: &f3,000,000,000" and "&7 &e&lREWARDS:" and "&7+75 Gen slots" and "&71 Rankup crate key" and "&7+ 0.30 Sell multi" and "&7Permission for /craft" and "&7Total 5 plots" and "&7permission for /beezooka" and "&7permission for /ad" and "&7permission for /fly" and "&7Permission for /kittycannon" and "&7permission /chatcolor" and "&7permission /nick":
+                    if player's balance >= 3000000000:
+                        remove 3000000000 from player's balance
+                        execute console command "addgens %player% 75"
+                        execute console command "crate givekey %player% rankup 1"
+                        execute console command "lp user %player% parent add godest"
+                        add 0.30 to {multi::%player's uuid%}
+                        broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought <##86FF9D>Godest &bRank at &e/rankup"
+                        close player's inventory
+                    else:
+                        send action bar "&bRemember, you need &3$3,000,000,000 &bto do this!" to player
+                        close player's inventory
+            else if player does not have permission "titan":
+                make gui slot 0, 1, 2, 9, 18, 19, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
+                make gui slot 31 with paper named "<##86FF9D>Godest Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 30 with paper named "<##2E009D>Wizard Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 24 with paper named "&fExpert Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 23 with paper named "<##C3C100>Champion Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 22 with paper named "<##FF6F6F>President Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 21 with paper named "<##00FF12>Mayor Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 20 with paper named "<##4B81C8>Elite Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 14 with paper named "<##B74B23>Boss Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 13 with paper named "<##7A62B7>Teacher Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 11 with paper named "<##FBBD6A>Amateur Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 12 with paper named "<##5B5B5B>Worker Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 15 with paper named "<##D32975>Pro Rank" with lore "&4&lERROR" and "&7You already have this!"
+                make gui slot 32 with paper named "&b&lTITAN Rank" with lore "&bCost: &f10,000,000,000" and "&7 &e&lREWARDS:" and "&7+100 Gen slots" and "&71 Rankup crate key" and "&7+ 1 Sell multi" and "&7Permission for /craft" and "&7Total 5 plots" and "&7permission for /beezooka" and "&7permission for /ad" and "&7permission for /fly" and "&7Permission for /kittycannon" and "&7permission /chatcolor" and "&7permission /nick" and "&7permission /glow" and "&7permission /bold" and "&7permission /underline" and "&7permision /italic":
+                    if player's balance >= 10000000000:
+                        remove 10000000000 from player's balance
+                        execute console command "addgens %player% 100"
+                        execute console command "crate givekey %player% rankup 1"
+                        execute console command "lp user %player% parent add titan"
+                        add 1 to {multi::%player's uuid%}
+                        broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought &b&lTITAN &bRank at &e/rankup"
+                        close player's inventory
+                    else:
+                        send action bar "&bRemember, you need &3$10,000,000,000 &bto do this!" to player
+                        close player's inventory
+            else:
+                if {rankup::past::%player's uuid%} is not set:
+                    set {rankup::past::%player's uuid%} to 1
+                make gui slot 0, 1, 2, 9, 18, 19, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
+                make gui slot 22 with paper named "&e&l%{rankup::past::%player's uuid%}% &6&lRank" with lore "" and "&7All perks from you current rank" and "&7+10 Gen Slots" and "&7+1 Rankup key" and "" and "&bCost: &3&l$%10000000000 * ({rankup::past::%player's uuid%}+ 1 * 2)%":
+                    send "tt" to player
+                    if player's balance >= (10000000000 * ({rankup::past::%player's uuid%}+ 1 * 2)):
+                        send "ttt" to player
+                        remove (10000000000 * ({rankup::past::%player's uuid%}+ 1 * 2)) from player's balance
+                        execute console command "addgens %player% 10"
+                        execute console command "crate givekey %player% rankup 1"
+                        execute console command "lp user %player% meta addprefix %{rankup::past::%player's uuid%} + 20% ""&e&l%{rankup::past::%player's uuid%}% """
+                        add 1 to {multi::%player's uuid%}
+                        broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought &e&l%{rankup::past::%player's uuid%}% &bRank at &e/rankup"
+                        close player's inventory
+                        add 1 to {rankup::past::%player's uuid%}
+                    else:
+                        send action bar "&bRemember, you need &3$%(10000000000 * ({rankup::past::%player's uuid%}+ 1 * 2))% &bto do this!" to player
+                        close player's inventory
+        open last gui to player 
