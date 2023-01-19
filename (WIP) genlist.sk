@@ -1,0 +1,14 @@
+command /genlist:
+    trigger:
+        create a new gui with virtual chest inventory with 5 rows named "&d&lGENLIST" to player
+            make gui slot 13 of player with shiny book named "&d&L GENLIST" with lore "", "Here you can find all obtainable generators."
+            make gui slot 19 of player with white_concrete named "Tier 1 | White Generator" with lore "", "Sell price: 10", "Upgrade price: 80"
+            make gui slot 20 of player with orange_concrete named "Tier 2 | Orange Generator" with lore "", "Sell price: 20", "Upgrade price: 500"
+            make gui slot 21 of player with magenta_concrete named "Tier 3 | Magenta Generator" with lore "", "Sell price: 35", "Upgrade price: 800" 
+            make gui slot 22 of player with light blue_concrete named "Tier 4 | Light Blue Generator" with lore "", "Sell price: 40", "Upgrade price: 3000"
+            make gui slot 23 of player with yellow_concrete named "Tier 5 | Yellow Generator" with lore "", "Sell price: 60", "Upgrade price: 7000"
+            make gui slot 24 of player with lime_concrete named "Tier 6 | Lime Generator" with lore "", "Sell price: 160", "Upgrade price: 10000"
+            make gui slot 25 of player with white_concrete named "Tier 7 | White Generator" with lore "", "Sell price: 10", "Upgrade price: 80"
+            make gui slot 26 of player with white_concrete named "Tier 8 | White Generator" with lore "", "Sell price: 10", "Upgrade price: 80"
+            make gui slot 27 of player with white_concrete named "Tier 9 | White Generator" with lore "", "Sell price: 10", "Upgrade price: 80"
+            make gui slot 28 of player with white_concrete named "Tier 10 | White Generator" with lore "", "Sell price: 10", "Upgrade price: 80"
