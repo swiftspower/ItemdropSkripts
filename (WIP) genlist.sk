@@ -9,3 +9,4 @@ command /genlist:
             if event-slot = 36
                 close (metadata tag "genlist" of player) to player
                 cancel event
+
