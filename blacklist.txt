@@ -1,0 +1,36 @@
+#place in /world/plots
+
+#denys all gravity blocks
+[armor_stand]
+ignore-groups=owner
+on-use=deny,tell,notify
+message=Sorry, armor stands are NOT allowed. If you think this is an error, please make a ticket on www.vekrotic.club!
+[gravel]
+ignore-groups=owner
+on-use=deny,tell,notify
+message=Sorry, gravel is NOT allowed. If you think this is an error, please make a ticket on www.vekrotic.club!
+[sand]
+ignore-groups=owner
+on-use=deny,tell,notify
+message=Sorry, sand is NOT allowed. If you think this is an error, please make a ticket on www.vekrotic.club!
+
+#denies redstone
+[redstone]
+ignore-groups=owner
+on-use=deny,tell,notify
+message=Sorry, redstone items are NOT allowed. If you think this is an error, please make a ticket on www.vekrotic.club!
+
+[redstone_block]
+ignore-groups=owner
+on-use=deny,tell,notify
+message=Sorry, redstone items are NOT allowed. If you think this is an error, please make a ticket on www.vekrotic.club!
+
+[redstone_repeater]
+ignore-groups=owner
+on-use=deny,tell,notify
+message=Sorry, redstone items are NOT allowed. If you think this is an error, please make a ticket on www.vekrotic.club!
+
+[redstone_repeater]
+ignore-groups=owner
+on-use=deny,tell,notify
+message=Sorry, redstone items are NOT allowed. If you think this is an error, please make a ticket on www.vekrotic.club!
