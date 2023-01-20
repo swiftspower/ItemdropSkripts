@@ -1,0 +1,90 @@
+on fish:
+    player's world = "spawn"
+    fish event state = caught fish
+    cancel event
+    if {fishcatch::cooldown::%player%} is not set:
+        set {fishcatch::cooldown::%player%} to true
+        set {_multi} to name of player's held item
+        replace all "&bToken Rod &3(&9Lvl. " and "&3)" in {_multi} with ""
+        set {_multi} to {_multi} parsed as integer
+        set {_untilLvlUp} to line 2 of the lore of player's held item
+        replace all "&7&oCatch Until Upgrade: " and "/10" in {_untilLvlUp} with ""
+        set {_untilLvlUp} to {_untilLvlUp} parsed as integer
+        remove 1 from {_untilLvlUp}
+        if {_untilLvlUp} <= 0:
+            add 1 to {_multi}
+            set player's held item to a fishing rod named "&bToken Rod &3(&9Lvl. %{_multi}%&3)" with lore "&7Fish at &e/fish" and "&7&oCatch Until Upgrade: 100"
+            send title "&e&lUPGRADE" with subtitle "&bYour fishing rod upgraded. +1 Fish Multi"
+            set {_reward} to random integer between 1 and 49
+            if {_reward} < 30:
+                set {_amount} to random integer between 10 and 30
+                set {_amount} to {_amount}*{_multi}
+                give player a raw cod named "&7Common Fish" with lore "&7Worth: &f%{_amount}% &7Tokens"
+            else if {_reward} < 40:
+                set {_amount} to random integer between 30 and 60
+                set {_amount} to {_amount}*{_multi}
+                give player a raw salmon named "&3Rare Fish" with lore "&7Worth: &f%{_amount}% &7Tokens"
+            else if {_reward} < 47:
+                set {_amount} to random integer between 60 and 100
+                set {_amount} to {_amount}*{_multi}
+                give player a tropical fish named "&5Epic Fish" with lore "&7Worth: &f%{_amount}% &7Tokens"
+            else if {_reward} < 50:
+                set {_amount} to random integer between 100 and 150
+                set {_amount} to {_amount}*{_multi}
+                give player a pufferfish named "&6Legendary Fish" with lore "&7Worth: &f%{_amount}% &7Tokens"
+        else:
+            set player's held item to a fishing rod named "&bToken Rod &3(&9Lvl. %{_multi}%&3)" with lore "&7Fish at &e/fish" and "&7&oCatch Until Upgrade: %{_untilLvlUp}%"
+            set {_reward} to random integer between 1 and 49
+            if {_reward} < 30:
+                set {_amount} to random integer between 10 and 30
+                set {_amount} to {_amount}*{_multi}
+                give player a raw cod named "&7Common Fish" with lore "&7Worth: &f%{_amount}% &7Tokens"
+            else if {_reward} < 40:
+                set {_amount} to random integer between 30 and 60
+                set {_amount} to {_amount}*{_multi}
+                give player a raw salmon named "&3Rare Fish" with lore "&7Worth: &f%{_amount}% &7Tokens"
+            else if {_reward} < 47:
+                set {_amount} to random integer between 60 and 100
+                set {_amount} to {_amount}*{_multi}
+                give player a tropical fish named "&5Epic Fish" with lore "&7Worth: &f%{_amount}% &7Tokens"
+            else if {_reward} < 50:
+                set {_amount} to random integer between 100 and 150
+                set {_amount} to {_amount}*{_multi}
+                give player a pufferfish named "&6Legendary Fish" with lore "&7Worth: &f%{_amount}% &7Tokens"
+        wait 1 second
+        delete {fishcatch::cooldown::%player%}
+
+on right click:
+    if player's held item is a raw cod named "&7Common Fish":
+        set {_give} to line 1 of the lore of player's held item
+        replace all "&7Worth: &f" and " &7Tokens" in {_give} with ""
+        set {_give} to {_give} parsed as integer
+        add {_give} to {tokens::%player's uuid%}
+        send "&3&lSUCCESS &8&l- &7You have recieved &e%{_give}% &7tokens" to player
+        remove 1 of player's held item from player's tool
+    else if player's held item is a raw salmon named "&3Rare Fish":
+        set {_give} to line 1 of the lore of player's held item
+        replace all "&7Worth: &f" and " &7Tokens" in {_give} with ""
+        set {_give} to {_give} parsed as integer
+        add {_give} to {tokens::%player's uuid%}
+        send "&3&lSUCCESS &8&l- &7You have recieved &e%{_give}% &7tokens" to player
+        remove 1 of player's held item from player's tool
+    else if player's held item is a tropical fish named "&5Epic Fish":
+        set {_give} to line 1 of the lore of player's held item
+        replace all "&7Worth: &f" and " &7Tokens" in {_give} with ""
+        set {_give} to {_give} parsed as integer
+        add {_give} to {tokens::%player's uuid%}
+        send "&3&lSUCCESS &8&l- &7You have recieved &e%{_give}% &7tokens" to player
+        remove 1 of player's held item from player's tool
+    else if player's held item is a pufferfish named "&6Legendary Fish":
+        set {_give} to line 1 of the lore of player's held item
+        replace all "&7Worth: &f" and " &7Tokens" in {_give} with ""
+        set {_give} to {_give} parsed as integer
+        add {_give} to {tokens::%player's uuid%}
+        send "&3&lSUCCESS &8&l- &7You have recieved &e%{_give}% &7tokens" to player
+        remove 1 of player's held item from player's tool
+
+command /giverod <player>:
+    permission: op
+    trigger:
+        give arg-1 a fishing rod named "&bToken Rod &3(&9Lvl. 1&3)" with lore "&7Fish at &e/fish" and "&7&oCatch Until Upgrade: 10"

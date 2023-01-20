@@ -1,0 +1,3 @@
+command /playtime <player>:
+	trigger:
+		send "%the time played of arg-1%" to player

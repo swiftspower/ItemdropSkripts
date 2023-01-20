@@ -1,0 +1,28 @@
+command /setskull [<text>]:
+    permission: op
+    trigger:
+        if arg-1 is "remove":
+            remove location of player's targeted block from {skull::locations::*}
+        else:
+            add location of player's targeted block to {skull::locations::*}
+
+on right click:
+    if {skull::locations::*} contains location of event-block:
+        if {skull::%player's uuid%::cought::*} contains location of event-block:
+            send "" to player
+            send "&7 &7 &7 &7 &7 &eYou already got that head!" to player
+            send "&a&oGo find some more!"
+        else:
+            add location of event-block to {skull::%player's uuid%::cought::*}
+            sound_levelup(player)
+            send "" to player 
+            send "&e&lYOU FOUND A HEAD!" to player
+            send "&aCongrats! Here is 1 More Gen Slot."
+            execute console command "addgens %player% 1"
+            if size of {skull::%player's uuid%::cought::*} < 20:
+                send " &8( &7&oFind all of them for a big reward &8)" to player 
+            else:
+                broadcast "&e&l%player% &bJust found &3ALL &bthe heads at &3/spawn"
+                execute console command "addgens %player% 4"
+                add 1000000 to player's balance
+                send "&eYou got &a5 &eMore genslots &3&lAND &e1 Million Dollars" to player

@@ -1,0 +1,13 @@
+options:
+	maincolor: <##8bb4ff>
+	
+command /discord:
+	trigger:
+		send formatted "<link:https://discord.gg/vekrotic>&4&lDISCORD &8&l <link:https://discord.gg/vekrotic>{@maincolor}Join our discord! <link:https://discord.gg/vekrotic>&e&l&nCLICK HERE" to player
+
+every 3 minutes:
+	send formatted "<link:https://discord.gg/vekrotic>&4&lDISCORD &8&l <link:https://discord.gg/vekrotic>{@maincolor}Join our discord for special giveaways! <link:https://discord.gg/vekrotic>&e&l&nCLICK HERE" to all players
+	wait 1 minute
+	send formatted "<link:https://vekrotic.tebex.io>&4&lSTORE &8&l <link:https://vekrotic.tebex.io/>{@maincolor}We have a non p2w store that helps keep the server up! <link:https://vekrotic.tebex.io/>&e&l&nCLICK HERE" to all players
+	wait 1 minute
+	broadcast "&3&lSKULLS &aA new update? &a&lYES! &aRight click skulls at &3/spawn &afor rewards!"

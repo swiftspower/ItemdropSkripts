@@ -1,0 +1,83 @@
+on mine of dark oak wood:
+    player's world = "spawn"
+    cancel event
+    set event-block to bedrock
+    give player a spruce wood named "&bMine Tokens" with lore "&7Found at /mine" and "&7Use at the villagers" and "&7to the right of /mine"
+    wait 5 seconds
+    set event-block to oak wood
+    wait 2 ticks
+    set event-block to dark oak wood
+    wait 2 ticks
+    set event-block to spruce wood
+    wait 2 ticks
+    set event-block to birch wood
+    wait 2 ticks
+    set event-block to jungle wood
+    wait 2 ticks
+    set event-block to acacia wood
+    wait 2 ticks
+    set event-block to oak wood
+    wait 2 ticks
+    set event-block to dark oak wood
+    wait 2 ticks
+    set event-block to spruce wood
+    wait 2 ticks
+    set event-block to birch wood
+    wait 2 ticks
+    set event-block to jungle wood
+    wait 2 ticks
+    set event-block to acacia wood
+    wait 2 ticks
+    set event-block to dark oak wood
+    set {_loc} to location of event-block
+    add 1 to y coordinate of {_loc}
+    create hologram "&7&oRegenerated" at {_loc} for 1 second
+
+command /givetokens <player> <integer>:
+    permission: op
+    trigger:
+        add arg-2 to {tokens::%arg-1's uuid%}
+        send "&b&lITEM &3&lDROP &8&l- &7You got &3%arg-2% &7tokens" to arg-1
+        send "&b&lITEM &3&lDROP &8&l- &3%arg-1%&7 got &3%arg-2% &7tokens" to player
+
+on mine of dark oak wood:
+    player's world = "spawn"
+    if player's held item is a diamond axe named "&bDoubler" with lore "&7Bought at /mine" and "&710%% To get 2 Mine Tokens":
+        chance of 20%:
+            send action bar "&e&lDOUBLER &8&l| &bYou got &32 &bmine tokens" to player
+            give player a spruce wood named "&bMine Tokens" with lore "&7Found at /mine" and "&7Use at the villagers" and "&7to the right of /mine"
+    else if player's held item is a diamond axe named "&bCash Finder" with lore "&7Bought at /mine" and "&75%% chance to get $100-200k":
+        chance of 5%:
+            set {_money} to random integer between 100000 and 200000
+            send action bar "&e&lCASH FINDER &8&l| &bYou got &3$%convert({_money})%" to player
+            add {_money} to player's balance
+    else if player's held item is a diamond axe named "&bKey Greed" with lore "&7Bought at /mine" and "&75%% Chance to get" and "&7a &bmine&7 crate key":
+        chance of 5%:
+            execute console command "crate givekey %player% mine 1"
+            send action bar "&e&lKEYGREED &8&l| &bYou got a &3Mine &bcrate key" to player
+    else if player's held item is a diamond axe named "&bKey Greed &32" with lore "&7recieved at /crates" and "&77%% Chance to get" and "&7a &bmine&7 crate key":
+        chance of 7%:
+            execute console command "crate givekey %player% mine 1"
+            send action bar "&e&lKEYGREED 2 &8&l| &bYou got a &3Mine &bcrate key" to player
+command /invert:
+    trigger:
+        set {_amount} to amount of spruce wood named "&bMine Tokens" with lore "&7Found at /mine" and "&7Use at the villagers" and "&7to the right of /mine" in player's inventory
+        remove all spruce wood from player's inventory
+        set {_amount} to {_amount}*{minemulti::%player's uuid%}
+        if {_amount} > 0:
+            send action bar "&b&lITEM &3&lDROP &8&l- &7you sold mine tokens for &3%{_amount}%&7 total tokens" to player
+            add {_amount} to {tokens::%player's uuid%}
+        else:
+            send "&b&lITEM &3&lDROP &8&l- &7You need to have &3mine tokens &7to be able to convert" to player
+
+command /customaxe <player> <text>:
+    permission: op
+    trigger:
+        if arg-2 is "doubler":
+            give arg-1 a diamond axe named "&bDoubler" with lore "&7Bought at /mine" and "&710%% To get 2 Mine Tokens"
+        else if arg-2 is "Cash Finder":
+            give arg-1 a diamond axe named "&bCash Finder" with lore "&7Bought at /mine" and "&75%% chance to get $100-200k"
+        else if arg-2 is "keygreed":
+            give arg-1 a diamond axe named "&bKey Greed" with lore "&7Bought at /mine" and "&75%% Chance to get" and "&7a &bmine&7 crate key"
+        else if arg-2 is "keygreed 2":
+            give arg-1 a diamond axe named "&bKey Greed &32" with lore "&7recieved at /crates" and "&77%% Chance to get" and "&7a &bmine&7 crate key"

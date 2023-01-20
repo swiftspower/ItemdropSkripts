@@ -1,0 +1,90 @@
+options:
+    prefix: &b&lItem &3&lDrop &8&l| &7
+    maincolor: <##8bb4ff>
+    highlightcolor: <##e29999>
+    sellprice1: 10
+    sellprice2: 20
+    sellprice3: 35
+    sellprice4: 40
+    sellprice5: 60
+    sellprice6: 160                          
+    sellprice7: 300
+    sellprice8: 360
+    sellprice9: 400
+    sellprice10: 500           
+    sellprice11: 1200
+    sellprice12: 1050
+    sellprice13: 1200
+    sellprice14: 1350
+    sellprice15: 1500
+    sellprice16: 1800
+    sellprice17: 2100
+    sellprice18: 2400
+    sellprice19: 2750
+    sellprice20: 3100
+    sellprice21: 3500
+    sellprice22: 3900
+    sellprice23: 4400
+    sellprice24: 5000
+    sellprice25: 5700
+
+on place of chest:
+	add location of event-block to {chests::%player's uuid%::*}
+	
+on break of chest:
+	remove event-location from {chests::%player's uuid%::*}
+
+
+on right click on chest:
+    if player's held item is a stick:
+        if {chests::%player's uuid%::*} contains location of event-block:
+            cancel event
+            set {_multi} to name of player's held item
+            replace all "&4&lSellwand &8&l| &7x" in {_multi} with ""
+            set {_multi} to ({_multi} parsed as number)
+            set {_inventory} to inventory of event-block
+            set {_amount} to itemcheck(white dye, {_inventory}, {@sellprice1})
+            set {_amount} to {_amount} + itemcheck(orange dye, {_inventory}, {@sellprice2})
+            set {_amount} to {_amount} +  itemcheck(magenta dye, {_inventory}, {@sellprice3})
+            set {_amount} to {_amount} +  itemcheck(light blue dye, {_inventory}, {@sellprice4})
+            set {_amount} to {_amount} +  itemcheck(yellow dye, {_inventory}, {@sellprice5})
+            set {_amount} to {_amount} +  itemcheck(lime dye, {_inventory}, {@sellprice6})
+            set {_amount} to {_amount} +  itemcheck(pink dye, {_inventory}, {@sellprice7})
+            set {_amount} to {_amount} +  itemcheck(gray dye, {_inventory}, {@sellprice8})
+            set {_amount} to {_amount} +  itemcheck(light gray dye, {_inventory}, {@sellprice9})
+            set {_amount} to {_amount} +  itemcheck(cyan dye, {_inventory}, {@sellprice10})
+            set {_amount} to {_amount} +  itemcheck(purple dye, {_inventory}, {@sellprice11})
+            set {_amount} to {_amount} +  itemcheck(blue dye, {_inventory}, {@sellprice12})
+            set {_amount} to {_amount} +  itemcheck(brown dye, {_inventory}, {@sellprice13})
+            set {_amount} to {_amount} +  itemcheck(green dye, {_inventory}, {@sellprice14})
+            set {_amount} to {_amount} +  itemcheck(red dye, {_inventory}, {@sellprice15})
+            set {_amount} to {_amount} +  itemcheck(black dye, {_inventory}, {@sellprice16})
+
+            set {_amount} to {_amount} +  itemcheck(white candle, {_inventory}, {@sellprice17})
+            set {_amount} to {_amount} +  itemcheck(orange candle, {_inventory}, {@sellprice18})
+            set {_amount} to {_amount} +  itemcheck(magenta candle, {_inventory}, {@sellprice19})
+            set {_amount} to {_amount} +  itemcheck(light blue candle, {_inventory}, {@sellprice20})
+            set {_amount} to {_amount} +  itemcheck(yellow candle, {_inventory}, {@sellprice21})
+            set {_amount} to {_amount} +  itemcheck(lime candle, {_inventory}, {@sellprice22})
+            set {_amount} to {_amount} +  itemcheck(pink candle, {_inventory}, {@sellprice23})
+            set {_amount} to {_amount} +  itemcheck(gray candle, {_inventory}, {@sellprice24})
+            set {_amount} to {_amount} +  itemcheck(light gray candle, {_inventory}, {@sellprice25})
+            
+            set {_amount} to {_amount}*{_multi}*{multi::%player's uuid%}
+            add {_amount} to player's balance
+            actionbar(player, "{@maincolor}You got {@highlightcolor}$%{_amount}%{@maincolor} From selling that chest.")
+            sound_bit(player)
+        else:
+            actionbar(player, "{@maincolor}Please replace this chest, We have added a system so you can only sell your chests!")
+            sound_bit(player)
+            cancel event
+
+
+command /sellwand [<player>] [<number>]:
+    permission: op
+    trigger:
+        if arg-1 is set:
+            if arg-2 is set:
+                give arg-1 a stick named "&4&lSellwand &8&l| &7x%arg-2%" with lore "" and "&7Right click a chest" and "&7It will sell the items in it"
+                send "{@prefix} &7You got a %arg-2%&7x sellwand" to arg-1
+                send "{@prefix} &7You gave %arg-1% &7a %arg-2%&7x sellwand"

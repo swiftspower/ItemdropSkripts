@@ -1,0 +1,13 @@
+command /clearchat:
+	permission: cc.2g
+	trigger:	
+		loop 300 times:
+			send " " to all players
+		send "&b&l%player% &bhas cleared chat!" to all players
+		
+command /cc:
+	permission: cc.2g
+	trigger:	
+		loop 300 times:
+			send " " to all players
+		send "&b&l%player% &bhas cleared chat!" to all players

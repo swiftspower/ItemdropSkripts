@@ -1,0 +1,47 @@
+command /start:
+    trigger:
+        if {started::%player%} is not set:
+            set {started::%player%} to true
+            make player execute "p auto"
+            execute console command "sellwand %player% 1"
+            execute console command "givegen %player% 1 5"
+            execute console command "eco give %player% 1000"
+            execute console command "giverod %player%"
+            give player a diamond pickaxe of efficiency 5
+            give player a diamond shovel of efficiency 5
+            send title "&b&lItem &3&lDrop" with subtitle "&7Welcome! Ill give you a bit of a tutorial."
+            wait 3 seconds
+            send title "&e&lPLOT" with subtitle "&7Inside the lime wool is your plot."
+            wait 3 seconds
+            send title "&e&lPLOT" with subtitle "&7You can build and place gens in your plot."
+            wait 3 seconds
+            send title "&e&lGENERATORS" with subtitle "&7Generators are wool, some better then others."
+            wait 3 seconds
+            send title "&e&lGENERATORS" with subtitle "&7Place a wool for it to generate dye every 10 seconds."
+            wait 3 seconds
+            send title "&e&lUPGRADE" with subtitle "&7You can upgrade a gen by shift-right clicking it."
+            wait 3 seconds
+            send title "&e&lSELL" with subtitle "&7You can sell the dye it gives you with /sell."
+            wait 3 seconds
+            send title "&e&lSHOP" with subtitle "&7Get more items and blocks to make your plot better at /shop."
+            wait 3 seconds
+            send title "&e&lTOKENS" with subtitle "&7You can also spend tokens in /shop."
+            wait 3 seconds
+            send title "&e&lTOKENS" with subtitle "&7Get tokens by fishing, mining or farming &8(&7&o/fish, /farm, /mine)"
+            wait 3 seconds
+            send title "&e&lSUCCESS" with subtitle "&7You now know how to play!"
+            wait 3 seconds
+            send title "&e&lAFK" with subtitle "&7AFK as much as possible, your gens don't spawn if you're offline."
+        else:
+            send "&b&lITEM &3&lDROP &8&l- &7You already claimed this reward"
+
+on first join:
+    start(player)
+
+function start(p: player):
+    if {started::%{_p}%} is not set:
+        send title "&e&lSTART" with subtitle "&7Start your adventure with &e&n/start" to {_p}
+        wait 3 seconds 
+        start({_p})
+    else:
+        stop

@@ -1,0 +1,30 @@
+on chat:
+	if player has permission "staffchat.use":
+		if first character of message is "@":
+			set {_g} to message
+			replace all "@" with "" in {_g}
+			cancel event
+			send "&b[&3&lSC&b] &3%player%: &b%{_g}%" to all players where [input has permission "staffchat.use"]
+			
+command /staffchat [<text>]:
+	aliases: sc
+	trigger:
+		if player has permission "staffchat.use":
+			if {staffchat.%player%} is set:
+				delete {staffchat.%player%} 
+				send "&3&l»&f Staffchat has been disabled." to player
+				stop
+			if {staffchat.%player%} is not set:
+				set {staffchat.%player%} to "true"
+				send "&3&l»&f Staffchat has been enabled." to player
+				stop
+		
+on chat:
+    if {staffchat.%player%} is "true":
+        loop all players:
+            if loop-player has permission "staffchat.use":
+                cancel event
+                send "&b[&3&lSC&b] &3%player%: &b%message%" to loop-players
+		
+
+

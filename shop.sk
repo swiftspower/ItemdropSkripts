@@ -1,0 +1,1151 @@
+options:
+    CoalRankCost: 100
+    BurnRankCost: 100
+    FlameRankCost: 100
+    FireRankCost: 100
+    prefix: &4&lFRGens &8&l| &7
+
+command /shop [<text>]:
+    trigger:
+        if arg-1 is not set:
+            create a gui with virtual chest inventory with 3 rows named "&8Shop":
+                make gui slot 10 with brick block named "&e&lBuilding" with lore "&fPurchase useful blocks":
+                    make player execute "shop building"
+                    play sound "block_note_block_pling" at volume 10
+                make gui slot 12 with water bucket named "&e&lMisc." with lore "&fPurchase random items":
+                    make player execute "shop misc"
+                    play sound "block_note_block_pling" at volume 10
+                make gui slot 14 with oxeye daisy named "&e&lDecor." with lore "&fEnlighten your plot!":
+                    make player execute "shop decor"
+                    play sound "block_note_block_pling" at volume 10
+                make gui slot 16 with hay block named "&e&lGens" with lore "&fPurchase Gens.":
+                    make player execute "shop gens"
+                    play sound "block_note_block_pling" at volume 10
+                make gui slot 22 with red glazed terracotta named "&e&lToken shop":
+                    make player execute command "shop token"
+                    play sound "block_note_block_pling" at volume 10
+            open last gui to player
+        if arg-1 is "building":
+            create a gui with virtual chest inventory with 6 rows named "&8Shop > &eBuilding Blocks":
+                make gui slot 0 with grass named "&e64x Grass" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 grass
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 1 with dirt named "&e64x Dirt" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 dirt
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 2 with stone named "&e64x Stone" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 stone
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 3 with granite named "&e64x Granite" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 granite
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 4 with polished granite named "&e64x Polished Granite" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 polished granite
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 5 with diorite named "&e64x Diorite" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 diorite
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 6 with polished diorite named "&e64x Polished Diorite" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 polished diorite
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 7 with andesite named "&e64x Andesite" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 andesite
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 8 with polished andesite named "&e64x Polished Andesite" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 polished andesite
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 9 with cobblestone named "&e64x Cobblestone" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 cobblestone
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 10 with oak log named "&e64x Oak Wood" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 oak log
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 11 with spruce log named "&e64x Spruce Wood" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 spruce log
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 12 with birch log named "&e64x Birch Wood" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 birch log
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 13 with jungle log named "&e64x Jungle Wood" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 jungle log
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 14 with acacia log named "&e64x Acacia Wood" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 acacia log
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 15 with dark oak log named "&e64x Dark Oak Wood" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 dark oak log
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 16 with red sand named "&e64x Red Sand" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 red sand
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 17 with sand named "&e64x Sand" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 sand
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 18 with mossy cobblestone named "&e64x Mossy Cobblestone" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 mossy cobblestone
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 19 with stone brick named "&e64x Stone Bricks" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 stone brick
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 20 with mossy stone brick named "&e64x Mossy Stone Brick" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 mossy stone brick
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 21 with cracked stone brick named "&e64x Cracked Stone Brick" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 cracked stone brick
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 22 with smooth stone slab named "&e64x Smooth Stone Slab" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 smooth stone slab
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 23 with quartz block named "&e64x Block of Quartz" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 quartz block
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 24 with chiseled quartz block named "&e64x Chiseled Quartz Block" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 chiseled quartz block
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 25 with quartz pillar named "&e64x Pillar Quartz Block" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 quartz pillar
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 26 with nether quartz slab named "&e64x Quartz Slab" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 nether quartz slab
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 27 with cut red sandstone named "&e64x Cut Red Sandstone" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 cut red sandstone
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 28 with smooth red sandstone named "&e64x Smooth Red Sandstone" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 smooth red sandstone
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 29 with red sandstone named "&e64x Red Sandstone" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 red sandstone
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 30 with red sandstone slab named "&e64x Red Sandstone Slab" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 red sandstone slab
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 31 with packed ice named "&e64x Packed Ice" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 packed ice
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 32 with sandstone named "&e64x Sandstone" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 sandstone
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 33 with smooth sandstone named "&e64x Smooth Sandstone" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 smooth sandstone
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 34 with soul sand named "&e1x Soul Sand" with lore "&fClick to purchase." and "&eCost: &f$2500":
+                    if player's balance is more than or equal to 2500:
+                        remove 2500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 1 soul sand
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 35 with glass named "&e64x Glass" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 glass
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 36 with gray stained glass pane named " "
+                make gui slot 37 with gray stained glass pane named " "
+                make gui slot 38 with yellow stained glass pane named " "
+                make gui slot 39 with yellow stained glass pane named " "
+                make gui slot 40 with yellow stained glass pane named " "
+                make gui slot 41 with yellow stained glass pane named " "
+                make gui slot 42 with yellow stained glass pane named " "
+                make gui slot 43 with gray stained glass pane named " "
+                make gui slot 44 with gray stained glass pane named " "
+                make gui slot 45 with arrow named "&e&l Go Back" with lore "&7&oGo back to the previous page.":
+                    close player's inventory
+                    make player execute "shop"
+                make gui slot 53 with arrow named "&e&lNext Page &7&m-->" with lore "&7&oView more items":
+                    make player execute "shop blocks2"
+            open last gui to player
+        if arg-1 is "misc":
+            create a gui with virtual chest inventory with 6 rows named "&8Shop > &eMiscellaneous":
+                make gui slot 0 with water bucket named "&e1x Water Bucket" with lore "&fClick to purchase." and "&eCost: &f$100":
+                    if player's balance is more than or equal to 100:
+                        remove 100 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 1 water bucket
+                    else:
+                        send "&cYou do not have enough money. You need &f$100&c."
+                        play sound "block_note_block_pling" at volume 5
+                make gui slot 1 with chest named "&e64x Chest" with lore "&fClick to purchase." and "&eCost: &f$100":
+                    if player's balance is more than or equal to 100:
+                        remove 100 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 chest
+                    else:
+                        send "&cYou do not have enough money. You need &f$100&c."
+                        play sound "block_note_block_pling" at volume 5
+                make gui slot 2 with hopper named "&e10x Hopper" with lore "&fClick to purchase." and "&eCost: &f$100":
+                    if player's balance is more than or equal to 100:
+                        remove 100 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 10 hopper
+                    else:
+                        send "&cYou do not have enough money. You need &f$100&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 3 with lava bucket named "&e1x Lava Bucket" with lore "&fClick to purchase." and "&eCost: &f$100":
+                    if player's balance is more than or equal to 100:
+                        remove 100 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 1 lava bucket
+                    else:
+                        send "&cYou do not have enough money. You need &f$100&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 4 with diamond pickaxe named "&eDiamond Pickaxe" with lore "&fClick to purchase." and "&eCost: &f$100":
+                    if player's balance is more than or equal to 100:
+                        remove 100 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 1 diamond pickaxe
+                    else:
+                        send "&cYou do not have enough money. You need &f$100&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 5 with diamond shovel named "&eDiamond Shovel" with lore "&fClick to purchase." and "&eCost: &f$100":
+                    if player's balance is more than or equal to 100:
+                        remove 100 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 1 diamond shovel
+                    else:
+                        send "&cYou do not have enough money. You need &f$100&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 36 with gray stained glass pane named " "
+                make gui slot 37 with gray stained glass pane named " "
+                make gui slot 38 with yellow stained glass pane named " "
+                make gui slot 39 with yellow stained glass pane named " "
+                make gui slot 40 with yellow stained glass pane named " "
+                make gui slot 41 with yellow stained glass pane named " "
+                make gui slot 42 with yellow stained glass pane named " "
+                make gui slot 43 with gray stained glass pane named " "
+                make gui slot 44 with gray stained glass pane named " "
+                make gui slot 45 with arrow named "&e&l Go Back" with lore "&7&oGo back to the previous page.":
+                    make player execute "shop"
+            open last gui to player
+        if arg-1 is "decor":
+            create a gui with virtual chest inventory with 6 rows named "&8Shop > &eDecoration":
+                make gui slot 0 with oak sapling named "&e16x Oak Sapling" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 16 oak sapling
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 1 with oak leaves named "&e64x Oak Leaves" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 oak leaves
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 2 with spruce leaves named "&e64x Spruce Leaves" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 spruce leaves
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 3 with birch leaves named "&e64x Birch Leaves" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 birch leaves
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 4 with jungle leaves named "&e64x Jungle Leaves" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 jungle leaves
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 5 with dark oak leaves named "&e64x Dark Oak Leaves" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 dark oak leaves
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 6 with acacia leaves named "&e64x Acacia Leaves" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 acacia leaves
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 7 with grass named "&e64x Grass" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 grass
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 8 with fern named "&e64x Fern" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 fern
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 9 with allium named "&e16x Allium" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 16 allium
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 10 with red flower named "&e16x Poppy" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 16 red flower
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 11 with azure bluet named "&e16x Azure Bluet" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 16 azure bluet
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 12 with red tulip named "&e16x Red Tulip" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 16 red tulip
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 13 with white tulip named "&e16x White Tulip" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 16 white tulip
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 14 with oxeye daisy named "&e16x Oxeye Daisy" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 16 oxeye daisy
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 15 with blue orchid named "&e16x Blue Orchid" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 16 blue orchid
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 16 with lilac named "&e16x Lilac" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 16 lilac
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 17 with torch named "&e64x Torch" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 torch
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 18 with cobblestone wall named "&e64x Cobblestone Wall" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 cobblestone wall
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 19 with mossy cobblestone wall named "&e64x Mossy Cobblestone Wall" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 mossy cobblestone wall
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 20 with tall grass named "&e64x Tall Grass" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 tall grass
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 21 with large fern named "&e64x Large Fern" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 large fern
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 22 with sea lantern named "&e64x Sea Lantern" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 sea lantern
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 23 with glowstone named "&e64x Glowstone" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 glowstone
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 24 with paper named "&eALL banners" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give 1 piglin banner pattern and 1 banner pattern and 1 mojang banner pattern and 1 flower charge banner pattern and 1 creeper charge banner pattern and skull charge banner pattern to player
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                make gui slot 25 with podzol named "&e64x Podzol" with lore "&fClick to buy." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 podzol
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 36 with gray stained glass pane named " "
+                make gui slot 37 with gray stained glass pane named " "
+                make gui slot 38 with yellow stained glass pane named " "
+                make gui slot 39 with yellow stained glass pane named " "
+                make gui slot 40 with yellow stained glass pane named " "
+                make gui slot 41 with yellow stained glass pane named " "
+                make gui slot 42 with yellow stained glass pane named " "
+                make gui slot 43 with gray stained glass pane named " "
+                make gui slot 44 with gray stained glass pane named " "
+                make gui slot 45 with arrow named "&e&l Go Back" with lore "&7&oGo back to the previous page.":
+                    make player execute "shop"
+            open last gui to player
+        if arg-1 is "blocks2":
+            create a gui with virtual chest inventory with 6 rows named "&8Shop > &eBuilding Blocks 2":
+                make gui slot 0 with book named "&e16x Lantern" with lore "&7This block is unsupported by Tuske" and "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 16 lantern
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 1 with ladder named "&e64x Ladder" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 ladder
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 2 with netherrack named "&e64x Netherrack" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 netherrack
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 3 with purpur block named "&e64x Purpur Block" with lore "&fClick to purchase." and "&eCost: &f$1000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 purpur block
+                    else:
+                        send "&cYou do not have enough money. You need &f$1000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 4 with snow block named "&e64x Snow Block" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 snow block
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 5 with smooth stone named "&e64x Smooth Stone" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 smooth stone
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                make gui slot 6 with cobweb named "&e64x Cobweb" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 cobweb
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                make gui slot 7 with honeycomb block named "&e64x Honeycomb" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 honeycomb block
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                make gui slot 8 with ice named "&e64x Ice" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 ice
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                make gui slot 9 with white wool named "&e64x White wool" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 white wool
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                make gui slot 10 with brick block named "&e64x Bricks" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 brick block
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                make gui slot 11 with Vine named "&e64x Vine" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 Vine
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                make gui slot 12 with dark prismarine named "&e64x Dark Prismarine" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 Dark prismarine
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                make gui slot 13 with end rod named "&e64x End rod" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 end rod
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                make gui slot 14 with book named "&e64x Books" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 book
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                make gui slot 15 with flower pot named "&e64x Flower Pots" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 flower pot
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                make gui slot 18 with prismarine brick named "&e64x Prismarine Brick" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 Prismarine Brick
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                make gui slot 19 with netherrack named "&e64x NetherRack" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 NetherRack
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                make gui slot 20 with nether Bricks named "&e64x Nether Bricks" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 Nether Bricks
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                make gui slot 21 with sponge named "&e64x Sponge" with lore "&fClick to purchase." and "&eCost: &f$500":
+                    if player's balance is more than or equal to 500:
+                        remove 500 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 Sponge
+                    else:
+                        send "&cYou do not have enough money. You need &f$500&c."
+                make gui slot 36 with gray stained glass pane named " "
+                make gui slot 37 with gray stained glass pane named " "
+                make gui slot 38 with yellow stained glass pane named " "
+                make gui slot 39 with yellow stained glass pane named " "
+                make gui slot 40 with yellow stained glass pane named " "
+                make gui slot 41 with yellow stained glass pane named " "
+                make gui slot 42 with yellow stained glass pane named " "
+                make gui slot 43 with gray stained glass pane named " "
+                make gui slot 44 with gray stained glass pane named " "
+                make gui slot 45 with arrow named "&e&l Go Back" with lore "&7&oGo back to the previous page.":
+                    make player execute "shop building"
+                make gui slot 53 with arrow named "&e&lNext Page &7&m-->" with lore "&7&oView more items":
+                    make player execute "shop blocks3"
+            open last gui to player
+        if arg-1 is "blocks3":
+            create a gui with virtual chest inventory with 6 rows named "&8Shop > &eBuilding Blocks 3":
+                make gui slot 0 with white concrete named "&e64x White Concrete" with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 white concrete
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 1 with orange concrete named "&e64x Orange Concrete" with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 orange concrete
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 2 with magenta concrete named "&e64x Magenta Concrete" with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 magenta concrete
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 3 with light blue concrete named "&e64x Light Blue Concrete" with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 light blue concrete
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 4 with yellow concrete named "&e64x Yellow Concrete" with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 yellow concrete
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 5 with lime concrete named "&e64x Lime Concrete" with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 lime concrete
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 6 with pink concrete named "&e64x Pink Concrete" with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 pink concrete
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 7 with gray concrete named "&e64x Gray Concrete" with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 gray concrete
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 8 with light gray concrete named "&e64x Light Gray Concrete" with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 light gray concrete
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 9 with cyan concrete named "&e64x Cyan Concrete" with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 cyan concrete
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 10 with purple concrete named "&e64x Purple Concrete" with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 purple concrete
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 11 with blue concrete named "&e64x Blue Concrete" with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 blue concrete
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 12 with brown concrete named "&e64x Brown Concrete" with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 brown concrete
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 13 with green concrete named "&e64x Green Concrete" with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 green concrete
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 14 with red concrete named "&e64x Red Concrete" with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 red concrete
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 15 with black concrete named "&e64x Black Concrete" with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 black concrete
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 16 with white Stained Glass named "&e64x White Stained Glass " with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 white Stained Glass
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 17 with orange Stained Glass named "&e64x Orange Stained Glass " with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 orange Stained Glass
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 18 with magenta Stained Glass named "&e64x Magenta Stained Glass " with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 magenta Stained Glass
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 19 with light blue Stained Glass named "&e64x Light Blue Stained Glass " with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 light blue Stained Glass
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 20 with yellow Stained Glass named "&e64x Yellow Stained Glass " with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 yellow Stained Glass
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 21 with lime Stained Glass named "&e64x Lime Stained Glass " with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 lime Stained Glass
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 22 with pink Stained Glass named "&e64x Pink Stained Glass " with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 pink Stained Glass
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 23 with gray Stained Glass named "&e64x Gray Stained Glass " with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 gray Stained Glass
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 24 with light gray Stained Glass named "&e64x Light Gray Stained Glass " with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 light gray Stained Glass
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 25 with cyan Stained Glass named "&e64x Cyan Stained Glass " with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 cyan Stained Glass
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 26 with purple Stained Glass named "&e64x Purple Stained Glass " with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 purple Stained Glass
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 27 with blue Stained Glass named "&e64x Blue Stained Glass " with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 blue Stained Glass
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 28 with brown Stained Glass named "&e64x Brown Stained Glass " with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 brown Stained Glass
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 29 with green Stained Glass named "&e64x Green Stained Glass " with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 green Stained Glass
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 30 with red Stained Glass named "&e64x Red Stained Glass " with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 red Stained Glass
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 31 with black Stained Glass named "&e64x Black Stained Glass " with lore "&fClick to purchase." and "&eCost: &f$1,000":
+                    if player's balance is more than or equal to 1000:
+                        remove 1000 from player's balance
+                        play sound "block_note_block_pling" at volume 5
+                        give player 64 black Stained Glass
+                    else:
+                        send "&cYou do not have enough money. You need &f$1,000&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 36 with gray stained glass pane named " "
+                make gui slot 37 with gray stained glass pane named " "
+                make gui slot 38 with yellow stained glass pane named " "
+                make gui slot 39 with yellow stained glass pane named " "
+                make gui slot 40 with yellow stained glass pane named " "
+                make gui slot 41 with yellow stained glass pane named " "
+                make gui slot 42 with yellow stained glass pane named " "
+                make gui slot 43 with gray stained glass pane named " "
+                make gui slot 44 with gray stained glass pane named " "
+                make gui slot 45 with arrow named "&e&l Go Back" with lore "&7&oGo back to the previous page.":
+                    make player execute "shop blocks2"
+                make gui slot 53 with arrow named "&e&lNext Page &7&m-->" with lore "&7&oView more items":
+                    make player execute "shop blocks4"
+            open last gui to player
+        if arg-1 is "blocks4":
+            create a gui with virtual chest inventory with 6 rows named "Shop > &eBuilding Blocks 4":
+                make gui slot 36 with gray stained glass pane named " "
+                make gui slot 37 with gray stained glass pane named " "
+                make gui slot 38 with yellow stained glass pane named " "
+                make gui slot 39 with yellow stained glass pane named " "
+                make gui slot 40 with yellow stained glass pane named " "
+                make gui slot 41 with yellow stained glass pane named " "
+                make gui slot 42 with yellow stained glass pane named " "
+                make gui slot 43 with gray stained glass pane named " "
+                make gui slot 44 with gray stained glass pane named " "
+                make gui slot 45 with arrow named "&e&l Go Back" with lore "&7&oGo back to the previous page.":
+                    make player execute "shop blocks3"
+            open last gui to player
+        if arg-1 is "gens":
+            create a gui with virtual chest inventory with 6 rows named "Shop > &eGenerators":
+                make gui slot 13 with white wool named "&e&lWhite Generator" with lore "&fClick to purchase." and "&eCost: &fFREE":
+                    if player's balance is more than or equal to 0:
+                        play sound "block_note_block_pling" at volume 5
+                        execute console command "givegen %player% 1 1"
+                    else:
+                        send "&cYou do not have enough money. You need &f$50&c."
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 36 with gray stained glass pane named " "
+                make gui slot 37 with gray stained glass pane named " "
+                make gui slot 38 with yellow stained glass pane named " "
+                make gui slot 39 with yellow stained glass pane named " "
+                make gui slot 40 with yellow stained glass pane named " "
+                make gui slot 41 with yellow stained glass pane named " "
+                make gui slot 42 with yellow stained glass pane named " "
+                make gui slot 43 with gray stained glass pane named " "
+                make gui slot 44 with gray stained glass pane named " "
+                make gui slot 45 with arrow named "&e&l Go Back" with lore "&7&oGo back to the previous page.":
+                    make player execute "shop"
+            open last gui to player
+        else if arg-1 is "token":
+            create a gui with virtual chest inventory with 6 rows named "Shop > &eToken":
+                make gui slot 10 with white wool named "&e&l+1 Gen slot" with lore "&fClick to purchase." and "&eCost: &f1,000 Tokens":
+                    if {tokens::%player's uuid%} >= 1000:
+                        play sound "block_note_block_pling" at volume 5
+                        add 1 to {gencap::%player's uuid%}
+                        send "{@prefix}&7Your max gens has increased by one!" to player
+                        remove 1000 from {tokens::%player's uuid%}
+                    else:
+                        send "&cYou do not have enough tokens. Get tokens at /mine"
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 12 with pink glazed terracotta named "&e&l+0.01 Sell Multiplier" with lore "&fClick to purchase." and "&eCost: &f7,000 Tokens":
+                    if {tokens::%player's uuid%} >= 7000:
+                        play sound "block_note_block_pling" at volume 5
+                        add 0.01 to {multi::%player's uuid%}
+                        send "{@prefix}&7Your sell multi has increased by point zero one!" to player
+                        remove 7000 from {tokens::%player's uuid%}
+                    else:
+                        send "&cYou do not have enough tokens. Get tokens at /mine"
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 14 with yellow glazed terracotta named "&e&l+0.01 Mine Multiplier" with lore "&fClick to purchase." and "&eCost: &f10,000 Tokens":
+                    if {tokens::%player's uuid%} >= 10000:
+                        play sound "block_note_block_pling" at volume 5
+                        add 0.01 to {minemulti::%player's uuid%}
+                        send "{@prefix}&7Your sell multi has increased by point zero one!" to player
+                        remove 10000 from {tokens::%player's uuid%}
+                    else:
+                        send "&cYou do not have enough tokens. Get tokens at /mine"
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 19 with stick named "&e&lx1.10 Sellwand" with lore "&fClick to purchase." and "&eCost: &f2,000 Tokens":
+                    if {tokens::%player's uuid%} >= 2000:
+                        play sound "block_note_block_pling" at volume 5
+                        execute console command "sellwand %player% 1.10"
+                        send "{@prefix}&7Your sell multi has increased by point zero one!" to player
+                        remove 2000 from {tokens::%player's uuid%}
+                    else:
+                        send "&cYou do not have enough tokens. Get tokens at /mine"
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 22 with stick named "&e&lx1.15 Sellwand" with lore "&fClick to purchase." and "&eCost: &f5,000 Tokens":
+                    if {tokens::%player's uuid%} >= 5000:
+                        play sound "block_note_block_pling" at volume 5
+                        execute console command "sellwand %player% 1.15"
+                        send "{@prefix}&7Your sell multi has increased by point zero one!" to player
+                        remove 5000 from {tokens::%player's uuid%}
+                    else:
+                        send "&cYou do not have enough tokens. Get tokens at /mine"
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 25 with stick named "&e&lx1.20 Sellwand" with lore "&fClick to purchase." and "&eCost: &f10,000 Tokens":
+                    if {tokens::%player's uuid%} >= 10000:
+                        play sound "block_note_block_pling" at volume 5
+                        execute console command "sellwand %player% 1.20"
+                        send "{@prefix}&7Your sell multi has increased by point zero one!" to player
+                        remove 10000 from {tokens::%player's uuid%}
+                    else:
+                        send "&cYou do not have enough tokens. Get tokens at /mine"
+                        play sound "block_note_block_bass" at volume 5
+                make gui slot 36 with gray stained glass pane named " "
+                make gui slot 37 with gray stained glass pane named " "
+                make gui slot 38 with yellow stained glass pane named " "
+                make gui slot 39 with yellow stained glass pane named " "
+                make gui slot 40 with yellow stained glass pane named " "
+                make gui slot 41 with yellow stained glass pane named " "
+                make gui slot 42 with yellow stained glass pane named " "
+                make gui slot 43 with gray stained glass pane named " "
+                make gui slot 44 with gray stained glass pane named " "
+                make gui slot 45 with arrow named "&e&l Go Back" with lore "&7&oGo back to the previous page.":
+                    make player execute "shop"
+            open last gui to player

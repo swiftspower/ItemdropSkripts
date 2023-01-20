@@ -1,0 +1,44 @@
+options:
+    prefix: "&4&lFRGens &8&l| &7"
+    maincolor: <##8bb4ff>
+    highlightcolor: <##e29999>
+
+on join:
+    if {multi::%uuid of player%} is not set:
+        set {multi::%uuid of player%} to 1
+    if {minemulti::%player's uuid%} is not set:
+        set {minemulti::%player's uuid%} to 1
+
+
+command /resetmulti:
+    permission: op
+    trigger:
+        delete {multi::*}
+        set {globalminemulti} to 1
+        set {globalmulti} to 1
+
+command /multi [<text>] [<player>] [<number>]:
+    permission: op
+    trigger:
+        if arg-1 is "add":
+            add arg-3 to {multi::%uuid of arg-2%}
+            send "&4&lFRGens &8&l| &7Your multi is now %{multi::%arg-2's uuid%}%" to arg-2
+        else if arg-1 is "remove":
+            remove arg-3 from {multi::%uuid of arg-2%}
+            send "&4&lFRGens &8&l| &7Your multi is now %{multi::%arg-2's uuid%}%" to arg-2
+        else if arg-1 is "set":
+            set {multi::%uuid of arg-2%} to arg-3
+            send "&4&lFRGens &8&l| &7Your multi is now %{multi::%arg-2's uuid%}%" to arg-2
+
+command /minemulti [<text>] [<player>] [<number>]:
+    permission: op
+    trigger:
+        if arg-1 is "add":
+            add arg-3 to {minemulti::%uuid of arg-2%}
+            send "&4&lFRGens &8&l| &7Your multi is now %{minemulti::%arg-2's uuid%}%" to arg-2
+        else if arg-1 is "remove":
+            remove arg-3 from {minemulti::%uuid of arg-2%}
+            send "&4&lFRGens &8&l| &7Your multi is now %{minemulti::%arg-2's uuid%}%" to arg-2
+        else if arg-1 is "set":
+            set {minemulti::%uuid of arg-2%} to arg-3
+            send "&4&lFRGens &8&l| &7Your multi is now %{minemulti::%arg-2's uuid%}%" to arg-2

@@ -1,0 +1,24 @@
+on chat:
+    if {bold::%player's uuid%} is set:
+        if {underline::%player's uuid%} is set:
+            if {italic::%player's uuid%} is set:
+                set chat format to "&8&l(%prefix(player)%&8&l) %{chatcolor::%player's uuid%}%&l&n&o%player's displayname% &8&l- %{chatcolor::%player's uuid%}% %message%"
+            else:
+                set chat format to "&8&l(%prefix(player)%&8&l) %{chatcolor::%player's uuid%}%&l&n%player's displayname% &8&l- %{chatcolor::%player's uuid%}% %message%"
+        else if {italic::%player's uuid%} is set:
+            set chat format to "&8&l(%prefix(player)%&8&l) %{chatcolor::%player's uuid%}%&l&o%player's displayname% &8&l- %{chatcolor::%player's uuid%}% %message%"
+        else:
+            set chat format to "&8&l(%prefix(player)%&8&l) %{chatcolor::%player's uuid%}%&l%player's displayname% &8&l- %{chatcolor::%player's uuid%}% %message%"
+    else if {underline::%player's uuid%} is set:
+        if {italic::%player's uuid%} is set:
+            set chat format to "&8&l(%prefix(player)%&8&l) %{chatcolor::%player's uuid%}%&n&o%player's displayname% &8&l- %{chatcolor::%player's uuid%}% %message%"
+        else:
+            set chat format to "&8&l(%prefix(player)%&8&l) %{chatcolor::%player's uuid%}%&n%player's displayname% &8&l- %{chatcolor::%player's uuid%}% %message%"
+    else if {italic::%player's uuid%} is set:
+        set chat format to "&8&l(%prefix(player)%&8&l) %{chatcolor::%player's uuid%}%&o%player's displayname% &8&l- %{chatcolor::%player's uuid%}% %message%"
+    else:
+        set chat format to "&8&l(%prefix(player)%&8&l) %{chatcolor::%player's uuid%}%%player's displayname% &8&l- %{chatcolor::%player's uuid%}% %message%"
+
+on join:
+    if {chatcolor::%player's uuid%} is not set:
+        set {chatcolor::%player's uuid%} to "&7"

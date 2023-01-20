@@ -1,0 +1,197 @@
+on hunger bar change:
+    cancel event
+	
+on break of any wool:
+	if {gens::*} contains location of event-block:
+		cancel event
+
+
+on craft of any shulker box:
+	cancel event
+
+on craft of blue shulker box:
+	cancel event
+
+command /craft:
+	permission: worker
+	trigger:
+		open crafting table to player
+
+command /tools:
+	permission: op
+	trigger:
+		give player a diamond pickaxe of efficiency 5
+		give player a diamond shovel of efficiency 5
+
+on break of snow block:
+	cancel drops
+
+on craft of any dye:
+	cancel event
+	
+on craft of any wool:
+	cancel event
+
+on craft of boat:
+	cancel event
+	
+on craft of armor stand:
+	cancel event
+
+every 10 seconds:
+	delete {gencooldown::*}
+	
+command /copyright:
+	trigger:
+		send "&eThe only copied skript from this server is parts of /shop. &eFrom &bgenied"
+on respawn:
+	teleport player to {spawn}
+
+command minecraft:me:
+	trigger:
+		send "&3no" to player
+command me:
+	trigger:
+		send "&3no" to player
+
+on chat:
+	player does not have permission "staff"
+	wait 1 tick
+	set {chatcooldown::%player%} to true
+	wait 3 seconds
+	set {chatcooldown::%player%} to false
+on load:
+	delete {chatcooldown::*}
+every 1 minute:
+	delete {chatcooldown::*}
+	
+on chat:
+	if {chatcooldown::%player%} is true:
+		cancel event
+		send "&b&lITEM &3&lDROP &8&l- &bYou need to wait a total of &33 seconds &bto chat again."
+on item damage:
+	cancel event
+
+command /crates:
+	trigger:
+		teleport player to {warps::crates}
+
+on chat:
+    {chatcooldown::%player%} is not set
+    if message contains "how" and "gen":
+        wait 5 ticks
+        broadcast "&4&lHELP &8&l- &7You can go back to your plot/gens by doing &3/plot home"
+    else if message contains "how" and "plot":
+        wait 5 ticks
+        broadcast "&4&lHELP &8&l- &7You can go back to your plot/gens by doing &3/plot home"
+    else if message contains "how" and "token":
+        wait 5 ticks
+        broadcast "&4&lHELP &8&l- &7You can get tokens at &3/farm &7or &3/fish &7or &3/mine"
+    else if message contains "gens" and "how":
+        wait 5 ticks
+        broadcast "&4&lHELP &8&l- &7You can get tokens at &3/farm &7or &3/fish &7or &3/mine"
+    else if message contains "spawn" and "how":
+        wait 5 ticks
+        broadcast "&4&lHELP &8&l- &7You can get to spawn with &3/spawn"
+    else if message contains "crate" and "how":
+        wait 5 ticks
+        broadcast "&4&lHELP &8&l- &7You can get to crates by doing &3/spawn &7then turn around and walk down the crate path"
+    else if message contains "rank" and "how":
+        wait 5 ticks
+        broadcast "&4&lHELP &8&l- &7You can get ranks at &3/rankup"
+
+on block break:
+	if player's world = "spawn":
+		if event-block is wheat or dark oak wood:
+			stop
+		else if player has permission "op":
+			stop
+		else:
+			cancel event
+
+
+command /setwarp <text>:
+    permission: op
+    trigger:
+        set {warps::%arg-1%} to location of player
+
+command /warp <text>:
+    trigger:
+        teleport player to {warps::%arg-1%}
+
+command /fish:
+    aliases: fishing
+    trigger:
+        teleport player to {warps::fish}
+
+command /mine:
+    aliases: mining, mines
+    trigger:
+        teleport player to {warps::mine}
+command /farm:
+    aliases: farms, farming
+    trigger:
+        teleport player to {warps::farm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+command /genslotfix:
+    cooldown: 1 minute
+    trigger:
+        set {_test} to fixxgens(player, 1)
+        add fixxgens(player, 2) to {_test}
+        add fixxgens(player, 3) to {_test}
+        add fixxgens(player, 4) to {_test}
+        add fixxgens(player, 5) to {_test}
+        add fixxgens(player, 6) to {_test}
+        add fixxgens(player, 7) to {_test}
+        add fixxgens(player, 8) to {_test}
+        add fixxgens(player, 9) to {_test}
+        add fixxgens(player, 10) to {_test}
+        add fixxgens(player, 11) to {_test}
+        add fixxgens(player, 12) to {_test}
+        add fixxgens(player, 13) to {_test}
+        add fixxgens(player, 14) to {_test}
+        add fixxgens(player, 15) to {_test}
+        add fixxgens(player, 16) to {_test}
+        if {_test} < {placedgens::%player's uuid%}:
+            send "Currently: %{_test}% / %{placedgens::%player's uuid%}%" to player
+            set {placedgens::%player's uuid%} to {_test}
+            send "Set to: %{_test}% / %{placedgens::%player's uuid%}%" to player
+
+
+function fixxgens(p: player, tier: integer) :: integer:
+    set {_uuid} to uuid of {_p}
+    if {_tt} is not set:
+        loop indices of {gens::%{_uuid}%::%{_tier}%::*}:
+            set {_chunk} to loop-value
+            loop {gens::%{_uuid}%::%{_tier}%::%loop-value%::*}:
+                if block at location of loop-value-2 is any wool:
+                    add 1 to {_notbroke}
+    return {_notbroke}
+

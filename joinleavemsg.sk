@@ -1,0 +1,39 @@
+options:
+    prefix: &bItem&3 Drop &8- &7
+    maincolor: <##00FEEF>
+    highlightcolor: <##25818E>
+
+
+on join:
+    if player has not played before:
+        set join message to "&7Welcome {@highlightcolor}%player% &7for the first time!"
+        wait 3 ticks
+        send "{@highlightcolor}&m                               {@maincolor}" to player
+        send "" to player
+        send "{@maincolor}Welcome to &bItem&3 Drop!" to player
+        send "{@maincolor}" to player
+        send "{@maincolor}In this server you get items then sell them!" to player
+        send "{@maincolor}When selling an item you get in-game money!" to player
+        send "{@maincolor}Compete to win payouts at the end of the season!" to player
+        send "{@maincolor}" to player
+        send "{@maincolor}To start do {@highlightcolor}/start " to player
+        send "{@highlightcolor}&m                               {@maincolor}" to player
+        send title "&6&lWELCOME!" with subtitle "&e&lDo /start" to player
+        wait 3 seconds
+        execute player command "freestuff"
+        execute player command "start"
+    else:
+        set join message to "&8[&a+&8] &7%player%"
+        wait 3 ticks
+        send "{@highlightcolor}&m                               {@maincolor}" to player
+        send "" to player
+        send "{@maincolor}Welcome back to &bItem&3 Drop!" to player
+        send "" to player
+        send formatted "<link:https://discord.gg/vekrotic>&9&l&nDISCORD:&r &e&l<link:https://discord.gg/vekrotic>CLICK HERE" to player
+        send "" to player
+        send "{@highlightcolor}&m                               {@maincolor}" to player
+        
+
+
+on leave:
+    set leave message to "&8[&c-&8] &7%player%"

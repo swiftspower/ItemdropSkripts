@@ -1,0 +1,18 @@
+command /daily:
+    trigger:
+        create gui with virtual chest inventory with 3 rows named "&bDaily &3Reward":
+            make gui slot 13 with book named "&eDaily Reward" with lore "&bRewards:" and "" and "&73 Gen slots" and "&7+0.01 Sell Multi":
+                if {daily::%player%} is not set:
+                    set {daily::%player%} to true
+                    execute console command "eco give %player% 100000"
+                    add 0.00 to {multi::%player's uuid%}
+                    broadcast "&3&lDAILY &8&l- &b%player% has claimed their &3/daily &breward"
+                    wait 24 hours
+                    delete {daily::%player%}
+                else:
+                    send action bar "&bYou already claimed your &3daily &breward" to player
+                    close player's inventory
+            open last gui to player
+
+on load:
+    delete {daily::*}

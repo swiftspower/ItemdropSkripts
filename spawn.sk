@@ -1,0 +1,10 @@
+command /spawn:
+    trigger:
+        teleport player to {spawn}
+
+on join:
+	teleport player to {spawn}
+		
+on first join:
+    wait 10 ticks
+    teleport player to {spawn}

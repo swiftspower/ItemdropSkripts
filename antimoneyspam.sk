@@ -1,0 +1,12 @@
+on command:
+	if "%command%" contains "pay":
+		if {cooldownpay::%player%} is true:
+			cancel event
+		else:
+			set {cooldownpay::%player%} to true
+			wait 5 seconds
+			delete {cooldownpay::%player%}
+
+every 3 minutes:
+	delete {cooldownpay::*}
+

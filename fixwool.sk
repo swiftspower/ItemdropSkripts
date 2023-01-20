@@ -1,3 +1,5 @@
+
+
 on join:
     wait 1 second
     replacewool(player, orange wool, 2)

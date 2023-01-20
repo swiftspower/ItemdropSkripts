@@ -1,0 +1,20 @@
+command /ad <text>:
+	permission: elite
+	cooldown: 1 hour
+	trigger:
+		{mutechat} is not set
+		broadcast ""
+		broadcast "&d[AD] &e%player% &8&l - &b&l%arg-1%"
+		broadcast ""
+
+
+on join:
+    if {joined::newstartertool::%Player%} is not set:
+        set {joined::newstartertool::%Player%} to true
+        give player 1 warped wart block named "&b&lINFORMATION" with lore "" and "&e| &7Place to use"
+
+on place of warped wart block:
+    cancel event
+    send "&e&lINFORMATION: &7When starting this server do /p auto to claim a plot. That area of land is a place you can edit and is now your property. Place down your wool in  that area. Wool will generate items every 10 second, 20 seconds or 30 seconds (Depends on the wool rarity). When you get a good amount of dye from the wool you can sell it with /sell. Using this money you can upgrade your gen by shift right clicking on the wool (Refer to wool as a gen). You can pickup your gen by breaking it. But you can only pickup YOUR gen! You can get tokens by /farm, /mine and /fish." to Player
+    send "" to player
+    send formatted "&b&lSTORE: <link:vekrotic.tebex.io> &a&lvekrotic.tebex.io" to player

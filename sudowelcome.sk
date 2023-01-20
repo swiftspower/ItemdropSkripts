@@ -1,0 +1,22 @@
+command /welcomemsg:
+    permission: staff
+    trigger:
+        if {welcomemsg::%player%} is not set:
+            set {welcomemsg::%player%} to player
+            send "&b&lITEM &3&lDROP &8&l &7Welcome messages are now &3on"
+        else:
+            delete {welcomemsg::%player%}
+            send "&b&lITEM &3&lDROP &8&l &7Welcome messages are now &3off"
+
+
+on join:
+    if player has played before:
+        loop all players:
+            if {welcomemsg::%loop-player%} is set:
+                wait 3 seconds
+                execute console command "sudo %{welcomemsg::%loop-player%}% c:Welcome back %player%!"
+    else:
+        loop all players:
+            if {welcomemsg::%loop-player%} is set:
+                wait 3 seconds
+                execute console command "sudo %{welcomemsg::%loop-player%}% c:Welcome %player%! Ask me your questions."

@@ -1,0 +1,54 @@
+on join:
+    while player is online:
+        set title of player's scoreboard to " &b&lITEM &3&lDROP"
+        set line 15 of player's scoreboard to "&7"
+        set line 14 of player's scoreboard to "&7 &7 &3&lYou"
+        set line 13 of player's scoreboard to "&8&l| &fBalance: &b%convert(player's balance)%"
+        set line 12 of player's scoreboard to "&8&l| &fGens: &b%convert({placedgens::%player's uuid%})%&8&l/&b%convert({gencap::%player's uuid%})%"
+        set line 11 of player's scoreboard to "&8&l| &fTokens: &b%convert({tokens::%player's uuid%})%"
+        set line 10 of player's scoreboard to "&7"
+        set line 9 of player's scoreboard to "&8&l| &fSell Multi: &b%{multi::%player's uuid%}%"
+        set line 8 of player's scoreboard to "&8&l| &fMine Multi: &b%{minemulti::%player's uuid%}%"
+        set line 7 of player's scoreboard to "&8&l| &fRank: %prefix(player)%"
+        wait 3 seconds
+		
+		
+function prefix(p: player) :: text:
+	if {_p} has permission "op":
+		return "&4&lAdmin"
+	if {_p} has permission "staff":
+		return "&dStaff"
+	else if {_p} has permission "mfo":
+		return "&eMinefort Owner"
+	else if {_p} has permission "donar":
+		return "&6&lDONATOR"
+	else if {rankup::past::%{_p}'s uuid%} >= 2:
+		return "&e&l%{rankup::past::%{_p}'s uuid%} - 1%"
+	else if {_p} has permission "titan":
+		return "&b&lTITAN"
+	else if {_p} has permission "godest":
+		return "<##86FF9D>Godess"
+	else if {_p} has permission "wizard":
+		return "<##2E009D>Wizard"
+	else if {_p} has permission "expert":
+		return "&fExpert"
+	else if {_p} has permission "champion":
+		return "<##C3C100>Champion"
+	else if {_p} has permission "president":
+		return "<##FF6F6F>President"
+	else if {_p} has permission "mayor":
+		return "<##00FF12>Mayor"
+	else if {_p} has permission "elite":
+		return "<##4B81C8>Elite"
+	else if {_p} has permission "pro":
+		return "<##D32975>Pro"
+	else if {_p} has permission "boss":
+		return "<##B74B23>Boss"
+	else if {_p} has permission "teacher":
+		return "<##7A62B7>Teacher"
+	else if {_p} has permission "worker":
+		return "<##5B5B5B>Worker"
+	else if {_p} has permission "amateur":
+		return "<##FBBD6A>Amateur"
+	else:
+		return "&7None"

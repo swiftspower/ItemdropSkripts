@@ -1,0 +1,29 @@
+command prestige:
+    trigger:
+        create a gui with virtual chest inventory with 3 rows named "&ePrestige":
+            make gui slot 13 with clock named "&ePrestige &8(&7&oClick&8)" with lore "&7Cost: &f%{prestigecost::%player's uuid%}%" and "&7Token Cost: &f%{prestigeTokencost::%player's uuid%}%" and "" and "&eRewards:" and "&71 Prestige Crate Key" and "&7+5 Gen Slots" and "&7+0.3 Sell Multi":
+                if player's balance >= {prestigecost::%player's uuid%}:
+                    if {tokens::%player's uuid%} >= {prestigeTokencost::%player's uuid%}:
+                        remove {prestigecost::%player's uuid%} from player's balance
+                        remove {prestigeTokencost::%player's uuid%} from {tokens::%player's uuid%}
+                        add 1 to {prestige::%player's uuid%}
+                        broadcast ""
+                        broadcast "&4&l/PRESTIGE &8&l| &e%player% &7just got to prestige &e%{prestige::%player's uuid%}%"
+                        broadcast ""
+                        execute console command "addgens %player% 5"
+                        execute console command "crate givekey %player% prestige 1"
+                        execute console command "multi add %player% 0.3"
+                        set {prestigeTokencost::%player's uuid%} to {prestigeTokencost::%player's uuid%}*2
+                        set {prestigecost::%player's uuid%} to {prestigecost::%player's uuid%}*2
+                        close player's inventory
+                    else:
+                        send "&eYou need more tokens!" to player
+                else:
+                    send "&eYou need more money" to player
+        open last gui to player
+    
+on join:
+    if {prestigecost::%player's uuid%} is not set:
+        set {prestigecost::%player's uuid%} to 1000000
+    if {prestigeTokencost::%player's uuid%} is not set:
+        set {prestigeTokencost::%player's uuid%} to 3000

@@ -1,0 +1,31 @@
+
+command /bold:
+    permission: titan
+    trigger:
+        if {bold::%player's uuid%} is not set:
+            set {bold::%player's uuid%} to true
+            send "&b&lITEM &3&lDROP &8&l- &7You enabled &3bold&7. You will now have a bold name in chat" to player
+        else:
+            delete {bold::%player's uuid%}
+            send "&b&lITEM &3&lDROP &8&l- &7You disabled &3bold&7." to player
+
+
+command /underline:
+    permission: titan
+    trigger:
+        if {underline::%player's uuid%} is not set:
+            set {underline::%player's uuid%} to true
+            send "&b&lITEM &3&lDROP &8&l- &7You enabled &3underline&7. You will now have a underline name in chat" to player
+        else:
+            delete {underline::%player's uuid%}
+            send "&b&lITEM &3&lDROP &8&l- &7You disabled &3underline&7." to player
+
+command /italic:
+    permission: titan
+    trigger:
+        if {italic::%player's uuid%} is not set:
+            set {italic::%player's uuid%} to true
+            send "&b&lITEM &3&lDROP &8&l- &7You enabled &3italic&7. You will now have a italic name in chat" to player
+        else:
+            delete {italic::%player's uuid%}
+            send "&b&lITEM &3&lDROP &8&l- &7You disabled &3italic&7." to player

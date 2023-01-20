@@ -1,0 +1,30 @@
+
+command /chatreaction [<text>]:
+    permission: op
+    trigger:
+        if arg-1 is not set:
+            chatreaction()
+        else:
+            add arg-1 to {reaction::list::word::*}
+
+function chatreaction():
+    set {reaction::type} to "word"
+    set {reaction::word} to "%random element of {reaction::list::word::*}%"
+    broadcast ""
+    broadcast "&3&lA NEW CHAT REACTION!"
+    broadcast "&b First to say &e%{Counqerland is cool}% &bgets a rankup key!"
+    broadcast ""
+    stop
+
+on chat:
+    if message contains "%{Counqerland is cool}%":
+        if "%message%" = "%{Counqerland is cool}%":
+            if {reaction::word} = "":
+                stop
+            else:
+                broadcast "&6&l%player% &3Won the &3&lCHAT REACTION!"
+                set {reaction::word} to ""
+                execute console command "goldencrates:crates givekey %player% rankup 1"
+
+every 3 minutes:
+    chatreaction()

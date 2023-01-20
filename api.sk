@@ -1,0 +1,69 @@
+
+
+function sound_click(plr: player):
+	play sound "ui.button.click" with volume 1 with pitch 1 at location of {_plr} for {_plr}
+
+function sound_bass(plr: player):
+	play sound "block.note_block.bass" with volume 1 with pitch 1 at location of {_plr} for {_plr}
+
+function sound_harp(plr: player):
+	play sound "block.note_block.harp" with volume 1 with pitch 1 at location of {_plr} for {_plr}
+
+function sound_pling(plr: player):
+	play sound "block.note_block.pling" with volume 1 with pitch 1 at location of {_plr} for {_plr}
+
+function sound_bit(plr: player):
+	play sound "block.note_block.bit" with volume 1 with pitch 1 at location of {_plr} for {_plr}
+
+function sound_pageTurn(plr: player):
+	play sound "item.book.page_turn" with volume 1 with pitch 1 at location of {_plr} for {_plr}
+
+function sound_orbPickup(plr: player):
+	play sound "entity.experience_orb.pickup" with volume 1 with pitch 1 at location of {_plr} for {_plr}
+
+function sound_levelup(plr: player):
+	play sound "entity.player.levelup" with volume 1 with pitch 1 at location of {_plr} for {_plr}
+
+function sound_completed(plr: player):
+	play sound "ui.toast.challenge_complete" with volume 1 with pitch 1 at location of {_plr} for {_plr}
+
+function sound_no(plr: player):
+	play sound "entity.villager.no" with volume 1 with pitch 1 at location of {_plr} for {_plr}
+
+function sound_yes(plr: player):
+	play sound "entity.villager.yes" with volume 1 with pitch 1 at location of {_plr} for {_plr}
+
+function convert(n: number) :: string:
+	set {_n} to 0 if {_n} is not set
+	set {_l::*} to split "K|M|B|T|Qn|Qi|Sx|Sp|Oc|Ud|Td|Qad|Ocd" at "|"
+	set {_i} to min(floor(log({_n})/3), size of {_l::*})
+	return "%{_n}%" if {_i} <= 0
+	set {_i2} to 1000^{_i}
+	return "%{_n}/{_i2}%%{_l::%{_i}%}%"
+
+function scoreboard(p: player, n: integer, t: text, title: boolean):
+    if {_title} is false:
+        set line {_n} of {_p}'s scoreboard to "%{_t}%"
+    else:
+        set title of {_p}'s scoreboard to "%{_t}%"
+
+function message(p: player, t: text, m: text):
+    send "&8(<##5ae7fa>Success&8)" to {_p} if {_t} is "success"
+    send "&8(<##eb8383>Fail&8)" to {_p} if {_t} is "fail"
+    send "&8↪ &7%{_m}%" to {_p}
+    sound_yes({_p}) if {_t} is "success"
+    sound_no({_p}) if {_t} is "fail"
+
+function title(p: player, title: text, s: text, t: string):
+    send title "&e%{_title}%" with subtitle "&a%{_s}%" to {_p} for 3 seconds
+    sound_yes({_p}) if {_t} is "success"
+    sound_no({_p}) if {_t} is "fail"
+    sound_pling({_p}) if {_t} is not "success" or "fail"
+
+function actionbar(p: player, title: text):
+    send action bar "&e%{_title}%" to {_p}
+
+function random_number(f: integer, t: integer) :: integer:
+    set {_number} to random integer between {_f} and {_t}
+    return {_number}
+

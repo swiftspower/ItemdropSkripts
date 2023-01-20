@@ -1,0 +1,71 @@
+on load:
+  set {AlertCooldown} to 0
+options:
+  max-entities: 500
+  check-area: 32
+
+
+
+
+
+
+on place of armor stand:
+	cancel event
+
+on craft of armor stand:
+	cancel event
+command /almighty:
+  permission: op
+  trigger:
+    send "&eAlmighty&8 |&f Permissions for Almighty:"
+    send "&ealmighty.alert &f Alerts"
+    send "&ealmighty.tps &f TPS bar"
+on spawn:
+  loop entities in radius {@check-area} of event-entities's location:
+    add 1 to {_totalentitiesinchunk}
+  if {_totalentitiesinchunk} >= {@max-entities}:
+    cancel event
+    loop all players:
+      if loop-player has permission "almighty.alert":
+        if {AlertCooldown} is 0:
+          wait 1 tick
+          set {AlertCooldown} to 200
+          set {_loc} to location of event-entity
+          send "&eAlmighty&8 |&f The entity cap was exceeded at %{_totalentitiesinchunk}% entities (%{_loc}%)" to loop-player
+# Show TPS to all players
+
+every 5 tick:
+  if {AlertCooldown} > 0:
+    subtract 1 from {AlertCooldown}
+  loop all players:
+    if loop-player has permission "almighty.tps":
+      set {_tps} to tps from the last 1 minute
+      if {_tps} >= 19.99:
+        send action bar "&eAlmighty&8 | &a%{_tps}%&7 is the current TPS" to loop-player
+      else if {_tps} >= 14.99:
+        send action bar "&eAlmighty&8 | &e%{_tps}%&7 is the current TPS" to loop-player
+      else if {_tps} >= 9.99:
+        send action bar "&eAlmighty&8 | &6%{_tps}%&7 is the current TPS" to loop-player
+      else if {_tps} >= 4.99:
+        send action bar "&eAlmighty&8 | &c%{_tps}%&7 is the current TPS" to loop-player
+      else if {_tps} >= 0.99:
+        send action bar "&eAlmighty&8 | &4%{_tps}%&7 is the current TPS" to loop-player
+
+every 10 minutes:
+  loop all players:
+    if loop-player has permission "almighty.alert":
+      send "&eAlmighty&8 |&f Purge check outdated, beginning a new purge..." to loop-player
+    loop entities in radius 32 of loop-player's location:
+      add 1 to {_totalentitiesinchunk}
+      if loop-entity-2 is not a player:
+        kill loop-entity-2
+    if {_totalentitiesinchunk} >= 1200:
+      loop all players:
+        if loop-player-2 has permission "almighty.alert":
+          set {AlertCooldown} to 50
+          set {_loc} to location of loop-player-1
+          send "&eAlmighty&8 |&f The purge detected that the entity cap was exceeded at %{_totalentitiesinchunk}% entities near %loop-player-1%" to loop-player-2
+    else:
+      loop all players:
+        if loop-player-2 has permission "almighty.alert":
+          send "&eAlmighty&8 |&f Purge complete, no unusual amounts of entities exist in the world!" to loop-player-2

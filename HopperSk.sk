@@ -863,84 +863,84 @@ on join:
         spawnitems(player, 5)
 on join:
     while player is online:
-        wait 20 seconds
+        wait 40 seconds
         spawnitems(player, 6)
 on join:
     while player is online:
-        wait 20 seconds
+        wait 40 seconds
         spawnitems(player, 7)
 on join:
     while player is online:
-        wait 20 seconds
+        wait 40 seconds
         spawnitems(player, 8)
 on join:
     while player is online:
-        wait 20 seconds
+        wait 40 seconds
         spawnitems(player, 9)
 on join:
     while player is online:
-        wait 20 seconds
+        wait 40 seconds
         spawnitems(player, 10)
 on join:
     while player is online:
-        wait 30 seconds
+        wait 60 seconds
         spawnitems(player, 11)
 on join:
     while player is online:
-        wait 30 seconds
+        wait 60 seconds
         spawnitems(player, 12)
 on join:
     while player is online:
-        wait 30 seconds
+        wait 60 seconds
         spawnitems(player, 13)
 on join:
     while player is online:
-        wait 30 seconds
+        wait 60 seconds
         spawnitems(player, 14)
 on join:
     while player is online:
-        wait 30 seconds
+        wait 60 seconds
         spawnitems(player, 15)
 on join:
     while player is online:
-        wait 40 seconds
+        wait 80 seconds
         spawnitems(player, 16)
 
 on join:
     while player is online:
-        wait 40 seconds
+        wait 80 seconds
         spawnitems(player, 17)
 on join:
     while player is online:
-        wait 40 seconds
+        wait 80 seconds
         spawnitems(player, 18)
 on join:
     while player is online:
-        wait 40 seconds
+        wait 80 seconds
         spawnitems(player, 19)
 on join:
     while player is online:
-        wait 40 seconds
+        wait 80 seconds
         spawnitems(player, 20)
 on join:
     while player is online:
-        wait 50 seconds
+        wait 100 seconds
         spawnitems(player, 21)
 on join:
     while player is online:
-        wait 50 seconds
+        wait 100 seconds
         spawnitems(player, 22)
 on join:
     while player is online:
-        wait 50 seconds
+        wait 100 seconds
         spawnitems(player, 23)
 on join:
     while player is online:
-        wait 50 seconds
+        wait 100 seconds
         spawnitems(player, 24)
 on join:
     while player is online:
-        wait 50 seconds
+        wait 100 seconds
         spawnitems(player, 25)
 
 

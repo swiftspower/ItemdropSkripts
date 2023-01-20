@@ -351,7 +351,6 @@ command /rankup:
                         remove (10000000000 * ({rankup::past::%player's uuid%}+ 1 * 2)) from player's balance
                         execute console command "addgens %player% 10"
                         execute console command "crate givekey %player% rankup 1"
-                        execute console command "lp user %player% meta addprefix %{rankup::past::%player's uuid%} + 20% ""&b&lTITAN T%{rankup::past::%player's uuid%}% """
                         add 1 to {multi::%player's uuid%}
                         broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought &e&l%{rankup::past::%player's uuid%}% &bRank at &e/rankup"
                         close player's inventory

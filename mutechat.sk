@@ -1,0 +1,17 @@
+command /mutechat [<text>]:
+	trigger:
+		if player has permission "mutechat.use":
+			if {mutechat} is not set:
+				broadcast "&3♢ &bChat has been muted by &3&l%player%"
+				set {mutechat} to true
+			else:
+				broadcast "&3♢ &bChat has been unmuted by &3&l%player%"
+				delete {mutechat}
+		else:
+			send "&4(!) &cYou do not have the required permission to run this command."
+		
+on chat:
+	if {mutechat} is set:
+		player doesn't have permission "mutechat.bypas"
+		cancel event
+		send "&cChat is currently disabled!"

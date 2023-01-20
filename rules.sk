@@ -1,0 +1,9 @@
+command /rules:
+	trigger:
+		send "&e&l* &bRespect all players" to player
+		send "&e&l* &bNo advertising another server. (even with /ad)" to player
+		send "&e&l* &bNo lag machines" to player
+		send "&e&l* &bListen to staff" to player
+		send "&e&l* &bDon't abuse a bug" to player
+		send "&e&l* &bNo loop-holes" to player
+		send "&e&l* &bCommon sense" to player

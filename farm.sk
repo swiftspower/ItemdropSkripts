@@ -1,0 +1,23 @@
+on mine of wheat[age=7]:
+	player's world = "spawn"
+	cancel event
+	give player 1 wheat named "Wheat" with lore "&7Worth: &f%{minemulti::%player's uuid%}%" and "&7Right-Click to sell"
+	set event-block to air
+	wait 10 seconds
+	set event-block to wheat[age=1]
+	wait 10 seconds
+	set event-block to wheat[age=4]
+	wait 10 seconds
+	set event-block to wheat[age=7]
+
+on mine of wheat:
+	player's world = "spawn"
+	cancel event
+
+on right click:
+	if name of player's held item contains "Wheat":
+		set {_amount} to amount of wheat in player's inventory
+		set {_price} to {_amount}*{minemulti::%player's uuid%}
+		send action bar "&bYou sold &3%{_amount}% &bof wheat for &3%{_price}% &btokens" to player
+		add {_price} to {tokens::%player's uuid%}
+		remove all wheat from player's inventory

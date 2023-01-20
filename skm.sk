@@ -1,0 +1,151 @@
+# SkManager
+
+
+
+# DO NOT EDIT CODE.
+
+
+
+on connect:
+    delete {alt.%player%}
+    loop all players:
+        if {skm.lockdown} is not true:
+            if ip of player = ip of loop-player:
+                if {skm.antiraid} is true:
+                    kick player due to "SkManager - You are already connected to this server on a different account!"
+                    loop all players where [input has permission "skm.alerts"]:
+                        send "&cSk&fManager&0 -&7 %player% was automatically denied access to the server because they have the same IP as %loop-player-1%" to loop-player-2
+                else:
+                    set {alt.%player%} to loop-player
+                    set {alt.%loop-player%} to player
+        else:
+            kick player due to "SkManager - You cannot connect to this server because a server moderator has initiated lockdown!"
+on inventory click:
+    event-inventory = (metadata tag "skmhelp" of player):
+        cancel event
+command /skm [<string>] [<player>]:
+    permission: skm.execute
+    trigger:
+        if arg-1 is not set:
+            set metadata tag "skmhelp" of player to chest inventory with 3 rows named "&cSk&fManager&7 Help Menu"
+            set {_temp} to 0
+            loop 27 times:
+                set slot {_temp} of metadata tag "skmhelp" of player to black stained glass pane named "&0"
+                add 1 to {_temp}
+            set slot 4 of metadata tag "skmhelp" of player to red stained glass pane named "&cSk&fManager"
+            set slot 11 of metadata tag "skmhelp" of player to nametag named "&cPlayer Information" with lore "&fTo get player information, use" and "&7/skm info (player)"
+            set slot 12 of metadata tag "skmhelp" of player to nametag named "&cServer Information" with lore "&fTo get server information, use" and "&7/skm info"
+            set slot 13 of metadata tag "skmhelp" of player to nametag named "&cQuarantine Player" with lore "&fQuarantining a player will" and "&fcompletely disable all actions." and "&fThe player will be" and "&fStuck until you unquarantine." and "&fUseful for raids / warnings." and "&7/skm quarantine (player)" and "&7/skm unquarantine (player)"
+            set slot 14 of metadata tag "skmhelp" of player to nametag named "&cLockdown" with lore "&flockdown will stop any joins" and "&fand will stop player commands." and "&fUseful if you are being bot raided." and "&7/skm lockdown (Note; this feature toggles.)"
+            set slot 15 of metadata tag "skmhelp" of player to nametag named "&cAnti-Raid" with lore "&fStops player's with the" and "&fsame IP from joining." and "&fAlso checks for same-tick joins" and "&fand other suspicious activity" and "&7/skm antiraid (Note; this feature toggles.)"
+            open (metadata tag "skmhelp" of player) to player
+            send "&cSk&fManager&0 -&7 Opening Help Menu"            
+        else if arg-1 is "info":
+            if arg-2 is not set:
+                if player has permission "skm.info.server":
+                    send "&cSk&fManager&7 Server Information"
+                    send "&fWorlds:&7 %all worlds%"
+                    loop all worlds:
+                        send "&fTime in %loop-world%:&7 %time in loop-world%"
+                    set {_c} to 0
+                    set {_s} to 0
+                    set {_a} to 0
+                    set {_sp} to 0
+                    loop all players:
+                        loop-player's gamemode is survival:
+                            add 1 to {_s}
+                        loop-player's gamemode is creative:
+                            add 1 to {_c}
+                        loop-player's gamemode is adventure:
+                            add 1 to {_a}
+                        loop-player's gamemode is spectator:
+                            add 1 to {_sp}
+                        add loop-player to {_pc::*}
+                    send "&fPlayer(s) in survival:&7 %{_s}%"
+                    send "&fPlayer(s) in creative:&7 %{_c}%"
+                    send "&fPlayer(s) in adventure:&7 %{_a}%"
+                    send "&fPlayer(s) in spectator:&7 %{_sp}%"
+                    send "&fPlayercount:&7 %size of all players%"
+                    send "&fPlayer's Online:&7 %{_pc::*}%"
+                    send "&fLast Spawned Entity:&7 %last spawned entity%"
+                    send "&fTicks Per Second:&7 %tps%"
+                else:
+                    send "&cSk&fManager&0 -&7 You do not have the required permission to execute this command!"
+            else:
+                if player has permission "skm.info.server":
+                    send "&cSk&fManager&7 %arg-2% Information"
+                    send "&fWorld:&7 %the world of arg-2%"
+                    send "&fUUID:&7 %arg-2's uuid%"
+                    if {alt.%arg-2%} is set:
+                        send "&fIP:&c %arg-2's ip%"
+                        send "&c    - Has the same IP as %{alt.%arg-2%}%"
+                    else:
+                        send "&fIP:&7 %arg-2's ip%"
+                    send "&fGamemode:&7 %arg-2's gamemode%"
+        else if arg-1 is "quarantine":
+            if player has permission "skm.quarantine":
+                if arg-2 is not set:
+                    send "&cSk&fManager&0 -&7 You must specify a user to quarantine!"
+                else if arg-2 has permission "skm.exclude":
+                    send "&cSk&fManager&0 -&7 This player has a permission that does not allow you to quarantine them!"
+                else:
+                    add arg-2 to {skm.quarantined::*}
+                    send "&cSk&fManager&0 -&7 Successfully quarantined this player!"
+            else:
+                send "&cSk&fManager&0 -&7 You do not have the required permission to execute this command!"
+        else if arg-1 is "unquarantine":
+            if player has permission "skm.unquarantine":
+                if arg-2 is not set:
+                    send "&cSk&fManager&0 -&7 You must specify a user to unquarantine!"
+                else if {skm.quarantined::*} contains arg-2:
+                    remove arg-2 from {skm.quarantined::*}
+                    send "&cSk&fManager&0 -&7 Successfully unquarantined this player!"
+                else:
+                    send "&cSk&fManager&0 -&7 This user is not quarantined!"
+            else:
+                send "&cSk&fManager&0 -&7 You do not have the required permission to execute this command!"
+        else if arg-1 is "lockdown":
+            if player has permission "skm.lockdown":
+                if {skm.lockdown} is true:
+                    set {skm.lockdown} to false
+                    send "&cSk&fManager&0 -&7 The server is no longer under lockdown."
+                else:
+                    set {skm.lockdown} to true
+                    send "&cSk&fManager&0 -&7 The server is now under lockdown."
+        else if arg-1 is "antiraid":
+            if player has permission "skm.antiraid":
+                if {skm.antiraid} is true:
+                    set {skm.antiraid} to false
+                    send "&cSk&fManager&0 -&7 The server is no longer using Anti-Raid."
+                else:
+                    set {skm.antiraid} to true
+                    send "&cSk&fManager&0 -&7 The server is now using Anti-Raid."
+        else:
+            send "&cSk&fManager&0 -&7 Did not understand the argument &f""%arg-1%""&7. Did you spell it correctly?"
+
+# quarantine
+
+on player move:
+    if {skm.quarantined::*} contains player:
+        cancel event
+        send "&cSk&fManager&0 -&7 You are currently quarantined!"
+on command:
+    if {skm.quarantined::*} contains player:
+        cancel event
+        send "&cSk&fManager&0 -&7 You are currently quarantined!"
+on left click:
+    if {skm.quarantined::*} contains player:
+        cancel event
+        send "&cSk&fManager&0 -&7 You are currently quarantined!"
+on right click:
+    if {skm.quarantined::*} contains player:
+        cancel event
+        send "&cSk&fManager&0 -&7 You are currently quarantined!"
+on block break:
+    if {skm.quarantined::*} contains player:
+        cancel event
+        send "&cSk&fManager&0 -&7 You are currently quarantined!"
+on block place:
+    if {skm.quarantined::*} contains player:
+        cancel event
+        send "&cSk&fManager&0 -&7 You are currently quarantined!"
