@@ -1,9 +1,11 @@
 command /rules:
 	trigger:
-		send "&e&l* &bRespect all players" to player
-		send "&e&l* &bNo advertising another server. (even with /ad)" to player
-		send "&e&l* &bNo lag machines" to player
-		send "&e&l* &bListen to staff" to player
-		send "&e&l* &bDon't abuse a bug" to player
-		send "&e&l* &bNo loop-holes" to player
-		send "&e&l* &bCommon sense" to player
+		send "&l[&cITEMDROP RULES&f]"
+		send "&e* &bRespect all members on the server." to player
+		send "&e* &bAdvertising other servers is strictly prohibited." to player
+		send "&e* &bCreating a lag machine will lead to a ban and a wipe of your plot." to player
+		send "&e* &bThe highest ranked staff member online has the final say." to player
+		send "&e* &bRepeated bug abuse will lead to a ban." to player
+		send "&e* &bUsing cheats for malicious purposes will lead to a ban." to player
+		send "&e* &bSpamming chat will result in a mute." to player
+		send "&e* &bAll cheats besides 'Auto-Fish' are bannable."

@@ -33,27 +33,3 @@ on right click:
             broadcast "&d+0.6 Mine Multi"
         broadcast "&7&oget your own from &e&n/buy!"
         broadcast ""
-
-command /givevoucher <player> <text>:
-    permission: op
-    trigger:
-        if arg-2 is "coal":
-            give arg-1 a paper named "&8&lCOAL &eRank Voucher &8(&7Click2Use&8)" with lore "&7When you click" and "&7You will get the" and "&7Coal rank from /buy"
-        else if arg-2 is "burn":
-            give arg-1 a paper named "&4&lBURN &eRank Voucher &8(&7Click2Use&8)" with lore "&7When you click" and "&7You will get the" and "&7Burn rank from /buy"
-
-on right click:
-    if player's held item is a paper named "&8&lCOAL &eRank Voucher &8(&7Click2Use&8)":
-        set player's held item to air
-        execute console command "lp user %player% parent add coal"
-        broadcast ""
-        broadcast "&e%player% &bjust used a &8&lCoal &b rank voucher!"
-        broadcast "&7You can get a rank from &e&n/buy!"
-        broadcast ""
-    else if player's held item is a paper named "&4&lBURN &eRank Voucher &8(&7Click2Use&8)":
-        set player's held item to air
-        execute console command "lp user %player% parent add burn"
-        broadcast ""
-        broadcast "&e%player% &bjust used a &4&lBURN &b rank voucher!"
-        broadcast "&7You can get a rank from &e&n/buy!"
-        broadcast ""

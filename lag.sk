@@ -51,7 +51,7 @@ every 5 tick:
       else if {_tps} >= 0.99:
         send action bar "&eAlmighty&8 | &4%{_tps}%&7 is the current TPS" to loop-player
 
-every 10 minutes:
+every 5 minutes:
   loop all players:
     if loop-player has permission "almighty.alert":
       send "&eAlmighty&8 |&f Purge check outdated, beginning a new purge..." to loop-player
@@ -59,7 +59,7 @@ every 10 minutes:
       add 1 to {_totalentitiesinchunk}
       if loop-entity-2 is not a player:
         kill loop-entity-2
-    if {_totalentitiesinchunk} >= 1200:
+    if {_totalentitiesinchunk} >= 400:
       loop all players:
         if loop-player-2 has permission "almighty.alert":
           set {AlertCooldown} to 50

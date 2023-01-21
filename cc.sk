@@ -2,6 +2,6 @@ command /clearchat:
 	aliases: /cc
 	permission: cc.2g
 	trigger:	
-		loop 300 times:
+		loop 600 times:
 			send " " to all players
-		send "&b&l%player% &bhas cleared chat!" to all players
+		send "&b&l%player% &bhas cleared the chat chat!" to all players

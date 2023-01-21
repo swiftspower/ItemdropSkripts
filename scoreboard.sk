@@ -16,18 +16,16 @@ on join:
 function prefix(p: player) :: text:
 	if {_p} has permission "op":
 		return "&4&lAdmin"
-	if {_p} has permission "staff":
-		return "&dStaff"
-	else if {_p} has permission "mfo":
-		return "&eMinefort Owner"
+	else if {_p} has permission "staff":
+		return "&bStaff Team"
 	else if {_p} has permission "donar":
 		return "&6&lDONATOR"
 	else if {rankup::past::%{_p}'s uuid%} >= 2:
-		return "&e&l%{rankup::past::%{_p}'s uuid%} - 1%"
+		return "&b&lTITAN R%{rankup::past::%{_p}'s uuid%} - 1%"
 	else if {_p} has permission "titan":
 		return "&b&lTITAN"
 	else if {_p} has permission "godest":
-		return "<##86FF9D>Godess"
+		return "<##86FF9D>Godest"
 	else if {_p} has permission "wizard":
 		return "<##2E009D>Wizard"
 	else if {_p} has permission "expert":

@@ -18,7 +18,3 @@ on chat:
         set chat format to "&8&l(%prefix(player)%&8&l) %{chatcolor::%player's uuid%}%&o%player's displayname% &8&l- %{chatcolor::%player's uuid%}% %message%"
     else:
         set chat format to "&8&l(%prefix(player)%&8&l) %{chatcolor::%player's uuid%}%%player's displayname% &8&l- %{chatcolor::%player's uuid%}% %message%"
-
-on join:
-    if {chatcolor::%player's uuid%} is not set:
-        set {chatcolor::%player's uuid%} to "&7"

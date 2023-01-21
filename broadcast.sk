@@ -2,6 +2,7 @@ options:
 	maincolor: <##8bb4ff>
 	
 command /discord:
+	permission: op
 	trigger:
 		send formatted "<link:https://discord.gg/vekrotic>&4&lDISCORD &8&l <link:https://discord.gg/vekrotic>{@maincolor}Join our discord! <link:https://discord.gg/vekrotic>&e&l&nCLICK HERE" to player
 

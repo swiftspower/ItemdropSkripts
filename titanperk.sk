@@ -1,6 +1,6 @@
 
 command /bold:
-    permission: titan
+    permission: zeus
     trigger:
         if {bold::%player's uuid%} is not set:
             set {bold::%player's uuid%} to true
@@ -11,7 +11,7 @@ command /bold:
 
 
 command /underline:
-    permission: titan
+    permission: zeus
     trigger:
         if {underline::%player's uuid%} is not set:
             set {underline::%player's uuid%} to true
@@ -21,7 +21,7 @@ command /underline:
             send "&b&lITEM &3&lDROP &8&l- &7You disabled &3underline&7." to player
 
 command /italic:
-    permission: titan
+    permission: zeus
     trigger:
         if {italic::%player's uuid%} is not set:
             set {italic::%player's uuid%} to true

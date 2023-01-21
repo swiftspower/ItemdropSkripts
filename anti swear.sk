@@ -5,14 +5,14 @@ options:
 	Censored: true
 	
 on chat:
-	if message contains "shit" or "fuck" or "gay" or "retard" or "damn" or "shit" or "bastard" or "fucker" or "dick" or "cock" or "bitch" or "cunt" or "fuck off" or "nigga" or "nigger" or "niger" or "stfu" or "shut the fuck up" or "fck" or "wtf" or "what the fuck" or "fuck you" or "fok" or "homo" or "asf" or "pennis" or "rape" or "porn" or "prn" or "peni" or "sex" or "piss" or "ass" or "sht" or "feg" or "tits" or "fyc" or "anal" or "fap" or "ffs" or "sx" or "aids" or "mofo" or "niggah" or "lesbian" or "ngga" or "dumbass" or "kys" or "fucking" or "pussy" or "pussies":
+	if message contains "retard" or "bastard" or "dick" or "cock" or "cunt"  or "nigga" or "nigger" or "niger" or "asf" or "pennis" or "rape" or "porn" or "prn" or "peni" or "sex" or "piss" or "ass" or "sht" or "feg" or "tits" or "fyc" or "anal" or "fap" or "ffs" or "sx" or "aids" or "mofo" or "niggah" or "lesbian" or "ngga" or "dumbass" or "kys" or "fucking" or "pussy" or "pussies" or "nga" or "nigger" or "niga" or "faggot" or "fag" or "chink" or "beaner":
 		if player has permission "{@BypassPermission}":
 			stop
 		if {@Censored} is true:
 			cancel the event
 		if {@AlertMessage} is true:
 			send "&8&m-------------------------"
-			send "&c&lPlease do not swear"
+			send "&4&lYou can't say that!"
 			send "&8&m-------------------------"
 		else:
 			loop all players:

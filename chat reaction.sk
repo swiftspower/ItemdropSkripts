@@ -1,4 +1,4 @@
-set {random element of {reaction::list::word::*}} to "Counqerland", "Seaclusion", "Gens", "Itemdrop", "Fishing", "Farming", "Mining", "Foraging", "Vekrotic", "Minecraft", "Minehut", "Keygreed", "Cash Finder" and "Crates"
+set {random element of {reaction::list::word::*}} to "Counqerland", "Seaclusion", "dd_8", "Gens", "Itemdrop", "Fishing", "Farming", "Mining", "Foraging", "Vekrotic", "Minecraft", "Minehut", "Keygreed", "Cash Finder" and "Crates"
 
 command /chatreaction [<text>]:
     permission: op

@@ -1,8 +1,11 @@
 command /silentjoin:
     permission: staff
     trigger:
-        if player does not have permission "{@silentjoin}"
-        make console execute "/lp user"
+        if player does not have permission "{@silentjoin}":
+            make console execute "/lp user %player% parent add silentjoin"
+
+        else:
+            make console execute "/lp user %player% parent remove silentjoin"
 
 options:
     prefix: &bItem&3 Drop &8- &7
@@ -13,6 +16,7 @@ options:
 on join:
 
     if player has permission "{@silentjoin}":
+        cancel event
     else if player has not played before:
         set join message to "&7Welcome {@highlightcolor}%player% &7for the first time!"
         wait 3 ticks

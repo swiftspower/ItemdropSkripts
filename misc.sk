@@ -76,30 +76,6 @@ command /crates:
 	trigger:
 		teleport player to {warps::crates}
 
-on chat:
-    {chatcooldown::%player%} is not set
-    if message contains "how" and "gen":
-        wait 5 ticks
-        broadcast "&4&lHELP &8&l- &7You can go back to your plot/gens by doing &3/plot home"
-    else if message contains "how" and "plot":
-        wait 5 ticks
-        broadcast "&4&lHELP &8&l- &7You can go back to your plot/gens by doing &3/plot home"
-    else if message contains "how" and "token":
-        wait 5 ticks
-        broadcast "&4&lHELP &8&l- &7You can get tokens at &3/farm &7or &3/fish &7or &3/mine"
-    else if message contains "gens" and "how":
-        wait 5 ticks
-        broadcast "&4&lHELP &8&l- &7You can get tokens at &3/farm &7or &3/fish &7or &3/mine"
-    else if message contains "spawn" and "how":
-        wait 5 ticks
-        broadcast "&4&lHELP &8&l- &7You can get to spawn with &3/spawn"
-    else if message contains "crate" and "how":
-        wait 5 ticks
-        broadcast "&4&lHELP &8&l- &7You can get to crates by doing &3/spawn &7then turn around and walk down the crate path"
-    else if message contains "rank" and "how":
-        wait 5 ticks
-        broadcast "&4&lHELP &8&l- &7You can get ranks at &3/rankup"
-
 on block break:
 	if player's world = "spawn":
 		if event-block is wheat or dark oak wood:

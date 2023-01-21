@@ -1090,7 +1090,7 @@ command /shop [<text>]:
                         send "{@prefix}&7Your max gens has increased by one!" to player
                         remove 1000 from {tokens::%player's uuid%}
                     else:
-                        send "&cYou do not have enough tokens. Get tokens at /mine"
+                        send "&cYou do not have enough tokens. Get tokens at /mine or /farm"
                         play sound "block_note_block_bass" at volume 5
                 make gui slot 12 with pink glazed terracotta named "&e&l+0.01 Sell Multiplier" with lore "&fClick to purchase." and "&eCost: &f7,000 Tokens":
                     if {tokens::%player's uuid%} >= 7000:
@@ -1099,16 +1099,16 @@ command /shop [<text>]:
                         send "{@prefix}&7Your sell multi has increased by point zero one!" to player
                         remove 7000 from {tokens::%player's uuid%}
                     else:
-                        send "&cYou do not have enough tokens. Get tokens at /mine"
+                        send "&cYou do not have enough tokens. Get tokens at /mine or /farm"
                         play sound "block_note_block_bass" at volume 5
-                make gui slot 14 with yellow glazed terracotta named "&e&l+0.01 Mine Multiplier" with lore "&fClick to purchase." and "&eCost: &f10,000 Tokens":
+                make gui slot 14 with yellow glazed terracotta named "&e&l+0.25 Farm Multiplier" with lore "&fClick to purchase." and "&eCost: &f10,000 Tokens":
                     if {tokens::%player's uuid%} >= 10000:
                         play sound "block_note_block_pling" at volume 5
-                        add 0.01 to {minemulti::%player's uuid%}
-                        send "{@prefix}&7Your sell multi has increased by point zero one!" to player
+                        add 0.25 to {minemulti::%player's uuid%}
+                        send "{@prefix}&7Your sell multi has increased by 0.25!" to player
                         remove 10000 from {tokens::%player's uuid%}
                     else:
-                        send "&cYou do not have enough tokens. Get tokens at /mine"
+                        send "&cYou do not have enough tokens. Get tokens at /mine or /farm"
                         play sound "block_note_block_bass" at volume 5
                 make gui slot 19 with stick named "&e&lx1.10 Sellwand" with lore "&fClick to purchase." and "&eCost: &f2,000 Tokens":
                     if {tokens::%player's uuid%} >= 2000:
@@ -1117,7 +1117,7 @@ command /shop [<text>]:
                         send "{@prefix}&7Your sell multi has increased by point zero one!" to player
                         remove 2000 from {tokens::%player's uuid%}
                     else:
-                        send "&cYou do not have enough tokens. Get tokens at /mine"
+                        send "&cYou do not have enough tokens. Get tokens at /mine or /farm"
                         play sound "block_note_block_bass" at volume 5
                 make gui slot 22 with stick named "&e&lx1.15 Sellwand" with lore "&fClick to purchase." and "&eCost: &f5,000 Tokens":
                     if {tokens::%player's uuid%} >= 5000:
@@ -1126,7 +1126,7 @@ command /shop [<text>]:
                         send "{@prefix}&7Your sell multi has increased by point zero one!" to player
                         remove 5000 from {tokens::%player's uuid%}
                     else:
-                        send "&cYou do not have enough tokens. Get tokens at /mine"
+                        send "&cYou do not have enough tokens. Get tokens at /mine or /farm"
                         play sound "block_note_block_bass" at volume 5
                 make gui slot 25 with stick named "&e&lx1.20 Sellwand" with lore "&fClick to purchase." and "&eCost: &f10,000 Tokens":
                     if {tokens::%player's uuid%} >= 10000:
@@ -1135,7 +1135,7 @@ command /shop [<text>]:
                         send "{@prefix}&7Your sell multi has increased by point zero one!" to player
                         remove 10000 from {tokens::%player's uuid%}
                     else:
-                        send "&cYou do not have enough tokens. Get tokens at /mine"
+                        send "&cYou do not have enough tokens. Get tokens at /mine or /farm"
                         play sound "block_note_block_bass" at volume 5
                 make gui slot 36 with gray stained glass pane named " "
                 make gui slot 37 with gray stained glass pane named " "
