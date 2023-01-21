@@ -1,3 +1,4 @@
+set {random element of {reaction::list::word::*}} to "Counqerland", "Seaclusion", "Gens", "Itemdrop", "Fishing", "Farming", "Mining", "Foraging", "Vekrotic", "Minecraft", "Minehut", "Keygreed", "Cash Finder" and "Crates"
 
 command /chatreaction [<text>]:
     permission: op
@@ -12,7 +13,7 @@ function chatreaction():
     set {reaction::word} to "%random element of {reaction::list::word::*}%"
     broadcast ""
     broadcast "&3&lA NEW CHAT REACTION!"
-    broadcast "&b First to say &e%{Counqerland is cool}% &bgets a rankup key!"
+    broadcast "&b First to say &e%random element of {reaction::list::word::*}%% &bgets a rankup key!"
     broadcast ""
     stop
 

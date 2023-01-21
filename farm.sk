@@ -3,11 +3,13 @@ on mine of wheat[age=7]:
 	cancel event
 	give player 1 wheat named "Wheat" with lore "&7Worth: &f%{minemulti::%player's uuid%}%" and "&7Right-Click to sell"
 	set event-block to air
-	wait 10 seconds
+	wait 3 seconds
 	set event-block to wheat[age=1]
-	wait 10 seconds
-	set event-block to wheat[age=4]
-	wait 10 seconds
+	wait 3 seconds
+	set event-block to wheat[age=3]
+	wait 3 seconds
+	set event-block to wheat[age=5]
+	wait 3 seconds 
 	set event-block to wheat[age=7]
 
 on mine of wheat:
