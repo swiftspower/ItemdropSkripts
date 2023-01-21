@@ -11,9 +11,9 @@ command /rankup:
                 make gui slot 14 with book named "<##875d60>Ares Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
                 make gui slot 13 with book named "<##5d6087>Hermes Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
                 make gui slot 12 with book named "<##60875d>Hephaestus Rank" with lore "&4&lERROR" and "&7You must claim the Aphrodite rank" and "&7before claiming this!"
-                make gui slot 11 with paper named "<##805D87>Aphrodite Rank" with lore "&bCost: &f$7,500" and "&7 &e&lREWARDS:" and "&7+1 Gen slot" and "&71 Rankup crate key" and "&7+ 0.03 Sell multi":
-                    if player's balance >= 5000:
-                        remove 5000 from player's balance
+                make gui slot 11 with paper named "<##805D87>Aphrodite Rank" with lore "&bCost: &f$75,000" and "&7 &e&lREWARDS:" and "&7+1 Gen slot" and "&71 Rankup crate key" and "&7+ 0.03 Sell multi":
+                    if player's balance >= 75000:
+                        remove 75000 from player's balance
                         execute console command "addgens %player% 1"
                         execute console command "crate givekey %player% rankup 1"
                         execute console command "lp user %player% parent add aphrodite"
@@ -21,7 +21,7 @@ command /rankup:
                         broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought <##805D87>Aphrodite &bRank at &e/rankup"
                         close player's inventory
                     else:
-                        send action bar "&bRemember, you need &3$7,500 &bto do this!" to player
+                        send action bar "&bRemember, you need &3$75,000 &bto do this!" to player
                         close player's inventory
             else if player does not have permission "hephaestus":
                 make gui slot 0, 1, 2, 9, 10, 18, 19, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
@@ -32,9 +32,9 @@ command /rankup:
                 make gui slot 14 with book named "<##875d60>Ares Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
                 make gui slot 13 with book named "<##5d6087>Hermes Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
                 make gui slot 11 with paper named "<##805D87>Aphrodite Rank" with lore "&4&lERROR" and "&7You already have this!"
-                make gui slot 12 with paper named "<##60875d>Hephaestus Rank" with lore "&bCost: &f25,000" and "&7 &e&lREWARDS:" and "&7+3 Gen slots" and "&71 Rankup crate key" and "&7+ 0.04 Sell multi" and "&7Permission for /craft":
-                    if player's balance >= 25000:
-                        remove 25000 from player's balance
+                make gui slot 12 with paper named "<##60875d>Hephaestus Rank" with lore "&bCost: &f500,000" and "&7 &e&lREWARDS:" and "&7+3 Gen slots" and "&71 Rankup crate key" and "&7+ 0.04 Sell multi" and "&7Permission for /craft":
+                    if player's balance >= 500000:
+                        remove 5000000 from player's balance
                         execute console command "addgens %player% 3"
                         execute console command "crate givekey %player% rankup 1"
                         execute console command "lp user %player% parent add hephaestus"
@@ -42,7 +42,7 @@ command /rankup:
                         broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought <##60875d>Hephaestus &bRank at &e/rankup"
                         close player's inventory
                     else:
-                        send action bar "&bRemember, you need &3$25,000 &bto do this!" to player
+                        send action bar "&bRemember, you need &3$500,000 &bto do this!" to player
                         close player's inventory
             else if player does not have permission "hermes":
                 make gui slot 0, 3, 5, 6, 7, 8, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 1, 2, 9, 10, 18, 19, 24, 30, 31, 32, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
@@ -53,9 +53,9 @@ command /rankup:
                 make gui slot 14 with book named "<##875d60>Ares Rank" with lore "&4&lERROR" and "&7You must claim the ranks" and "bellow this one first!"
                 make gui slot 11 with paper named "<##805D87>Aphrodite Rank" with lore "&4&lERROR" and "&7You already have this!"
                 make gui slot 12 with paper named "<##60875d>Hephaestus Rank" with lore "&4&lERROR" and "&7You already have this!"
-                make gui slot 13 with paper named "<##5d6087>Hermes Rank" with lore "&bCost: &f100,000" and "&7 &e&lREWARDS:" and "&7+5 Gen slots" and "&71 Rankup crate key" and "&7+ 0.05 Sell multi" and "&7Permission for /craft" and "&7Total 2 plots":
-                    if player's balance >= 100000:
-                        remove 100000 from player's balance
+                make gui slot 13 with paper named "<##5d6087>Hermes Rank" with lore "&bCost: &f$10,000,000" and "&7 &e&lREWARDS:" and "&7+5 Gen slots" and "&71 Rankup crate key" and "&7+ 0.05 Sell multi" and "&7Permission for /craft" and "&7Total 2 plots":
+                    if player's balance >= 10000000:
+                        remove 10000000 from player's balance
                         execute console command "addgens %player% 3"
                         execute console command "crate givekey %player% rankup 1"
                         execute console command "lp user %player% parent add hermes"
@@ -63,7 +63,7 @@ command /rankup:
                         broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought <##5d6087>Hermes &bRank at &e/rankup"
                         close player's inventory
                     else:
-                        send action bar "&bRemember, you need &3$100,000 &bto do this!" to player
+                        send action bar "&bRemember, you need &3$10,000,000 &bto do this!" to player
                         close player's inventory
             else if player does not have permission "ares":
                 make gui slot 0, 3, 5, 6, 7, 8, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 1, 2, 9, 10, 18, 19, 24, 30, 31, 32, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
@@ -74,9 +74,9 @@ command /rankup:
                 make gui slot 13 with paper named "<##5d6087>Hermes Rank" with lore "&4&lERROR" and "&7You already have this!"
                 make gui slot 11 with paper named "<##805D87>Aphrodite Rank" with lore "&4&lERROR" and "&7You already have this!"
                 make gui slot 12 with paper named "<##60875d>Hephaestus Rank" with lore "&4&lERROR" and "&7You already have this!"
-                make gui slot 14 with paper named "<##875d60>Ares Rank" with lore "&bCost: &f500,000" and "&7 &e&lREWARDS:" and "&7+10 Gen slots" and "&71 Rankup crate key" and "&7+ 0.06 Sell multi" and "&7Permission for /craft" and "&7Total 2 plots" and "&7permission for /beezooka":
-                    if player's balance >= 500000:
-                        remove 500000 from player's balance
+                make gui slot 14 with paper named "<##875d60>Ares Rank" with lore "&bCost: &f$100,000,000" and "&7 &e&lREWARDS:" and "&7+10 Gen slots" and "&71 Rankup crate key" and "&7+ 0.06 Sell multi" and "&7Permission for /craft" and "&7Total 2 plots" and "&7permission for /beezooka":
+                    if player's balance >= 100000000:
+                        remove 100000000 from player's balance
                         execute console command "addgens %player% 10"
                         execute console command "crate givekey %player% rankup 1"
                         execute console command "lp user %player% parent add ares"
@@ -84,7 +84,7 @@ command /rankup:
                         broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought <##875d60>Ares &bRank at &e/rankup"
                         close player's inventory
                     else:
-                        send action bar "&bRemember, you need &3$500,000 &bto do this!" to player
+                        send action bar "&bRemember, you need &3$100,000,000 &bto do this!" to player
                         close player's inventory
             else if player does not have permission "demeter":
                 make gui slot 0, 3, 5, 6, 7, 8, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 1, 2, 9, 10, 18, 19, 24, 30, 31, 32, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
@@ -95,9 +95,9 @@ command /rankup:
                 make gui slot 11 with paper named "<##805D87>Aphrodite Rank" with lore "&4&lERROR" and "&7You already have this!"
                 make gui slot 12 with paper named "<##60875d>Hephaestus Rank" with lore "&4&lERROR" and "&7You already have this!"
                 make gui slot 14 with paper named "<##875d60>Ares Rank" with lore "&4&lERROR" and "&7You already have this!"
-                make gui slot 15 with paper named "<##aa721d>Demeter Rank" with lore "&bCost: &f1,000,000" and "&7 &e&lREWARDS:" and "&7+13 Gen slots" and "&71 Rankup crate key" and "&7+ 0.07 Sell multi" and "&7Permission for /craft" and "&7Total 3 plots" and "&7permission for /beezooka":
-                    if player's balance >= 1000000:
-                        remove 1000000 from player's balance
+                make gui slot 15 with paper named "<##aa721d>Demeter Rank" with lore "&bCost: &f750,000,000" and "&7 &e&lREWARDS:" and "&7+13 Gen slots" and "&71 Rankup crate key" and "&7+ 0.07 Sell multi" and "&7Permission for /craft" and "&7Total 3 plots" and "&7permission for /beezooka":
+                    if player's balance >= 750000000:
+                        remove 750000000 from player's balance
                         execute console command "addgens %player% 13"
                         execute console command "crate givekey %player% rankup 1"
                         execute console command "lp user %player% parent add demeter"
@@ -105,7 +105,7 @@ command /rankup:
                         broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought <##aa721d>Demeter &bRank at &e/rankup"
                         close player's inventory
                     else:
-                        send action bar "&bRemember, you need &3$1,000,000 &bto do this!" to player
+                        send action bar "&bRemember, you need &3$750,000,000 &bto do this!" to player
                         close player's inventory
             else if player does not have permission "poseiden":
                 make gui slot 0, 3, 5, 6, 7, 8, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 1, 2, 9, 10, 18, 19, 24, 30, 31, 32, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
@@ -116,9 +116,9 @@ command /rankup:
                 make gui slot 11 with paper named "<##805D87>Aphrodite Rank" with lore "&4&lERROR" and "&7You already have this!"
                 make gui slot 12 with paper named "<##60875d>Hephaestus Rank" with lore "&4&lERROR" and "&7You already have this!"
                 make gui slot 15 with paper named "<##aa721d>Demeter Rank" with lore "&4&lERROR" and "&7You already have this!"
-                make gui slot 20 with paper named "<##4B81C8>Poseiden Rank" with lore "&bCost: &f5,000,000" and "&7 &e&lREWARDS:" and "&7+15 Gen slots" and "&71 Rankup crate key" and "&7+ 0.08 Sell multi" and "&7Permission for /craft" and "&7Total 3 plots" and "&7permission for /beezooka" and "&7permission for /ad":
-                    if player's balance >= 5000000:
-                        remove 5000000 from player's balance
+                make gui slot 20 with paper named "<##4B81C8>Poseiden Rank" with lore "&bCost: &f1,500,000,000" and "&7 &e&lREWARDS:" and "&7+15 Gen slots" and "&71 Rankup crate key" and "&7+ 0.08 Sell multi" and "&7Permission for /craft" and "&7Total 3 plots" and "&7permission for /beezooka" and "&7permission for /ad":
+                    if player's balance >= 1500000000:
+                        remove 1500000000 from player's balance
                         execute console command "addgens %player% 15"
                         execute console command "crate givekey %player% rankup 1"
                         execute console command "lp user %player% parent add poseiden"
@@ -126,7 +126,7 @@ command /rankup:
                         broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought <##4B81C8>Poseiden &bRank at &e/rankup"
                         close player's inventory
                     else:
-                        send action bar "&bRemember, you need &3$5,000,000 &bto do this!" to player
+                        send action bar "&bRemember, you need &3$1,500,000,000 &bto do this!" to player
                         close player's inventory
             else if player does not have permission "hera":
                 make gui slot 0, 3, 5, 6, 7, 8, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 1, 2, 9, 10, 18, 19, 24, 30, 31, 32, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
@@ -137,9 +137,9 @@ command /rankup:
                 make gui slot 11 with paper named "<##805D87>Aphrodite Rank" with lore "&4&lERROR" and "&7You already have this!"
                 make gui slot 12 with paper named "<##60875d>Hephaestus Rank" with lore "&4&lERROR" and "&7You already have this!"
                 make gui slot 15 with paper named "<##aa721d>Demeter Rank" with lore "&4&lERROR" and "&7You already have this!"
-                make gui slot 21 with paper named "<##00FF12>Hera Rank" with lore "&bCost: &f15,000,000" and "&7 &e&lREWARDS:" and "&7+20 Gen slots" and "&71 Rankup crate key" and "&7+ 0.09 Sell multi" and "&7Permission for /craft" and "&7Total 3 plots" and "&7permission for /beezooka" and "&7permission for /ad" and "&7permission for /fly":
-                    if player's balance >= 15000000:
-                        remove 15000000 from player's balance
+                make gui slot 21 with paper named "<##00FF12>Hera Rank" with lore "&bCost: &f3,000,000,000" and "&7 &e&lREWARDS:" and "&7+20 Gen slots" and "&71 Rankup crate key" and "&7+ 0.09 Sell multi" and "&7Permission for /craft" and "&7Total 3 plots" and "&7permission for /beezooka" and "&7permission for /ad" and "&7permission for /fly":
+                    if player's balance >= 3000000000:
+                        remove 3000000000 from player's balance
                         execute console command "addgens %player% 20"
                         execute console command "crate givekey %player% rankup 1"
                         execute console command "lp user %player% parent add hera"
@@ -147,7 +147,7 @@ command /rankup:
                         broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought <##00FF12>Hera &bRank at &e/rankup"
                         close player's inventory
                     else:
-                        send action bar "&bRemember, you need &3$15,000,000 &bto do this!" to player
+                        send action bar "&bRemember, you need &3$3,000,000,000 &bto do this!" to player
                         close player's inventory
             else if player does not have permission "zeus":
                 make gui slot 0, 3, 5, 6, 7, 8, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 1, 2, 9, 10, 18, 19, 24, 30, 31, 32, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
@@ -158,9 +158,9 @@ command /rankup:
                 make gui slot 11 with paper named "<##805D87>Aphrodite Rank" with lore "&4&lERROR" and "&7You already have this!"
                 make gui slot 12 with paper named "<##60875d>Hephaestus Rank" with lore "&4&lERROR" and "&7You already have this!"
                 make gui slot 15 with paper named "<##aa721d>Demeter Rank" with lore "&4&lERROR" and "&7You already have this!"
-                make gui slot 22 with paper named "<##FF6F6F>Zeus Rank" with lore "&bCost: &f50,000,000" and "&7 &e&lREWARDS:" and "&7+30 Gen slots" and "&71 Rankup crate key" and "&7+ 0.10 Sell multi" and "&7Permission for /craft" and "&7Total 4 plots" and "&7permission for /beezooka" and "&7permission for /ad" and "&7permission for /fly":
-                    if player's balance >= 50000000:
-                        remove 50000000 from player's balance
+                make gui slot 22 with paper named "<##FF6F6F>Zeus Rank" with lore "&bCost: &f5,000,000,000" and "&7 &e&lREWARDS:" and "&7+30 Gen slots" and "&71 Rankup crate key" and "&7+ 0.10 Sell multi" and "&7Permission for /craft" and "&7Total 4 plots" and "&7permission for /beezooka" and "&7permission for /ad" and "&7permission for /fly":
+                    if player's balance >= 5000000000:
+                        remove 5000000000 from player's balance
                         execute console command "addgens %player% 30"
                         execute console command "crate givekey %player% rankup 1"
                         execute console command "lp user %player% parent add zues"
@@ -168,7 +168,7 @@ command /rankup:
                         broadcast "&3&l/RANKUP &8&l- &e%player% &bjust bought <##FF6F6F>Zeus &bRank at &e/rankup"
                         close player's inventory
                     else:
-                        send action bar "&bRemember, you need &3$50,000,000 &bto do this!" to player
+                        send action bar "&bRemember, you need &3$5,000,000,000 &bto do this!" to player
                         close player's inventory
             else:
                 if {rankup::past::%player's uuid%} is not set:
@@ -176,9 +176,9 @@ command /rankup:
                 make gui slot 0, 3, 5, 6, 7, 8, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 1, 2, 9, 10, 18, 19, 24, 30, 31, 32, 27, 28, 29, 6, 7, 8, 16, 17, 25, 26, 33, 34 and 35 with pink stained glass pane named "&7"
                 make gui slot 22 with paper named "&e&l%{rankup::past::%player's uuid%}% &6&lRank" with lore "" and "&7All perks from you current rank" and "&7+10 Gen Slots" and "&7+1 Rankup key" and "" and "&bCost: &3&l$%10000000000 * ({rankup::past::%player's uuid%}+ 1 * 2)%":
                     send "tt" to player
-                    if player's balance >= (10000000000 * ({rankup::past::%player's uuid%}+ 1 * 2)):
+                    if player's balance >= (300000000 * ({rankup::past::%player's uuid%}+ 1 * 2)):
                         send "ttt" to player
-                        remove (10000000000 * ({rankup::past::%player's uuid%}+ 1 * 2)) from player's balance
+                        remove (3000000000 * ({rankup::past::%player's uuid%}+ 1 * 2)) from player's balance
                         execute console command "addgens %player% 10"
                         execute console command "crate givekey %player% rankup 1"
                         execute console command "lp user %player% meta setprefix 14 ZUES T%{rankup::past::%player's uuid%}%"
@@ -187,6 +187,6 @@ command /rankup:
                         close player's inventory
                         add 1 to {rankup::past::%player's uuid%}
                     else:
-                        send action bar "&bRemember, you need &3$%(10000000000 * ({rankup::past::%player's uuid%}+ 1 * 2))% &bto do this!" to player
+                        send action bar "&bRemember, you need &3$%(3000000000 * ({rankup::past::%player's uuid%}+ 1 * 2))% &bto do this!" to player
                         close player's inventory
         open last gui to player 
