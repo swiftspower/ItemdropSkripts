@@ -1,7 +1,8 @@
 command /silentjoin:
     permission: staff
     trigger:
-    
+        if player does not have permission "{@silentjoin}"
+        make console execute "/lp user"
 
 options:
     prefix: &bItem&3 Drop &8- &7
