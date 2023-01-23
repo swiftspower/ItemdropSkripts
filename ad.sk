@@ -1,5 +1,5 @@
 command /ad <text>:
-	permission: elite
+	permission: ares
 	cooldown: 1 hour
 	trigger:
 		{mutechat} is not set
