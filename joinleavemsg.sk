@@ -1,11 +1,12 @@
 command /silentjoin:
     permission: staff
     trigger:
-        if player does not have permission "{@silentjoin}":
-            make console execute "/lp user %player% parent add silentjoin"
-
+        if player does not have permission "{@silentjoin}"
+            make console execute "/lp user"
+            send "&aSilent join has been enabled!" to player
         else:
             make console execute "/lp user %player% parent remove silentjoin"
+            send "&cSilent join has been disabled!" to player
 
 options:
     prefix: &bItem&3 Drop &8- &7
