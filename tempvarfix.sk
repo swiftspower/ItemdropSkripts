@@ -1,0 +1,3 @@
+command /spawn:
+    trigger:
+        make player execute "/warp spawn"
