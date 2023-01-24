@@ -13,3 +13,7 @@ command /fish:
 command /mine:
     trigger:
         make player execute "/warp mine"
+        
+command /crate:
+    trigger:
+        make player execute "/warp crate"
