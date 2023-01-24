@@ -1,3 +1,15 @@
 command /spawn:
     trigger:
         make player execute "/warp spawn"
+
+command /farm:
+    trigger:
+        make player execute "/warp farm"
+        
+command /fish:
+    trigger:
+        make player execute "/warp fish"
+        
+command /mine:
+    trigger:
+        make player execute "/warp mine"
