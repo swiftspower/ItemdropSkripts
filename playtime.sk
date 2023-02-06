@@ -1,3 +1,6 @@
-command /playtime <player>:
+command /playtime [<offline player>]:
 	trigger:
-		send "%the time played of arg-1%" to player
+        if arg-1 is set:
+		    send "%the time played of arg-1%" to player
+        else:
+            send "%the time played of player%" to player
