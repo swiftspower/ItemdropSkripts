@@ -10,6 +10,7 @@ on join:
         set line 9 of player's scoreboard to "&8&l| &fSell Multi: &b%{multi::%player's uuid%}%"
         set line 8 of player's scoreboard to "&8&l| &fMine Multi: &b%{minemulti::%player's uuid%}%"
         set line 7 of player's scoreboard to "&8&l| &fRank: %prefix(player)%"
+	set line 5 of player's scoreboard to ""
 	set line 6 of player's scoreboard to "&7&oitemdropgens.minehut.gg"
         wait 3 seconds
 		
