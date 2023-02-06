@@ -93,103 +93,97 @@ command /givegen <player> <integer> [<integer>]:
         gengive(arg-1, 1, arg-2)
 
 on place of any wool or any shulker box:
-    if {gencooldown::%player%} is not set:
-        set {gencooldown::%player%} to true
-        if name of player's tool contains "{@maincolor}" and "Generator":
-            if {placedgens::%player's uuid%} >= {gencap::%player's uuid%}:
-                cancel event
-                message(player, "fail", "{@maincolor} You have %{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}% {@maincolor} Gens Placed")
-                sound_no(player)
-                stop
-            wait 3 ticks
-            the event is not cancelled
-            sound_completed(player)
-            if event-block is white wool:
-                add location of event-block to {gens::%player's uuid%::1::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-                set {_loc} to location of event-block
-                add 1.3 to y-coordinate of {_loc}
-                create hologram "&e&lHOW TO UPGRADE" at {_loc} for 5 seconds
-                remove 0.4 from y-coordinate of {_loc}
-                create hologram "&7Shift-right click me to upgrade" at {_loc} for 5 seconds
-            if event-block is orange wool:
-                add location of event-block to {gens::%player's uuid%::2::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is magenta wool:
-                add location of event-block to {gens::%player's uuid%::3::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is light blue wool:
-                add location of event-block to {gens::%player's uuid%::4::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is yellow wool:
-                add location of event-block to {gens::%player's uuid%::5::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is lime wool:
-                add location of event-block to {gens::%player's uuid%::6::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is pink wool:
-                add location of event-block to {gens::%player's uuid%::7::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is gray wool:
-                add location of event-block to {gens::%player's uuid%::8::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is light gray wool:
-                add location of event-block to {gens::%player's uuid%::9::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is cyan wool:
-                add location of event-block to {gens::%player's uuid%::10::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is purple wool:
-                add location of event-block to {gens::%player's uuid%::11::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is blue wool:
-                add location of event-block to {gens::%player's uuid%::12::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is brown wool:
-                add location of event-block to {gens::%player's uuid%::13::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is green wool:
-                add location of event-block to {gens::%player's uuid%::14::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is red wool:
-                add location of event-block to {gens::%player's uuid%::15::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is black wool:
-                add location of event-block to {gens::%player's uuid%::16::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is white shulker box:
-                add location of event-block to {gens::%player's uuid%::17::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is orange shulker box:
-                add location of event-block to {gens::%player's uuid%::18::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is magenta shulker box:
-                add location of event-block to {gens::%player's uuid%::19::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is light blue shulker box:
-                add location of event-block to {gens::%player's uuid%::20::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is yellow shulker box:
-                add location of event-block to {gens::%player's uuid%::21::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is lime shulker box:
-                add location of event-block to {gens::%player's uuid%::22::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is pink shulker box:
-                add location of event-block to {gens::%player's uuid%::23::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is gray shulker box:
-                add location of event-block to {gens::%player's uuid%::24::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            if event-block is light gray shulker box:
-                add location of event-block to {gens::%player's uuid%::25::%chunk at event-block%::*}
-                add 1 to {placedgens::%player's uuid%}
-            send action bar "{@maincolor}You have placed a generator &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
-            wait 1 tick
-            delete {gencooldown::%player%}
-    else:
-        send action bar "{@maincolor}You are on gen place cooldown!" to player
-        cancel event
+    if name of player's tool contains "{@maincolor}" and "Generator":
+        if {placedgens::%player's uuid%} >= {gencap::%player's uuid%}:
+            cancel event
+            message(player, "fail", "{@maincolor} You have %{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}% {@maincolor} Gens Placed")
+            sound_no(player)
+            stop
+        wait 3 ticks
+        the event is not cancelled
+        sound_completed(player)
+        if event-block is white wool:
+            add location of event-block to {gens::%player's uuid%::1::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+            set {_loc} to location of event-block
+            add 1.3 to y-coordinate of {_loc}
+            create hologram "&e&lHOW TO UPGRADE" at {_loc} for 5 seconds
+            remove 0.4 from y-coordinate of {_loc}
+            create hologram "&7Shift-right click me to upgrade" at {_loc} for 5 seconds
+        if event-block is orange wool:
+            add location of event-block to {gens::%player's uuid%::2::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is magenta wool:
+            add location of event-block to {gens::%player's uuid%::3::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is light blue wool:
+            add location of event-block to {gens::%player's uuid%::4::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is yellow wool:
+            add location of event-block to {gens::%player's uuid%::5::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is lime wool:
+            add location of event-block to {gens::%player's uuid%::6::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is pink wool:
+            add location of event-block to {gens::%player's uuid%::7::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is gray wool:
+            add location of event-block to {gens::%player's uuid%::8::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is light gray wool:
+            add location of event-block to {gens::%player's uuid%::9::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is cyan wool:
+            add location of event-block to {gens::%player's uuid%::10::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is purple wool:
+            add location of event-block to {gens::%player's uuid%::11::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is blue wool:
+            add location of event-block to {gens::%player's uuid%::12::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is brown wool:
+            add location of event-block to {gens::%player's uuid%::13::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is green wool:
+            add location of event-block to {gens::%player's uuid%::14::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is red wool:
+            add location of event-block to {gens::%player's uuid%::15::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is black wool:
+            add location of event-block to {gens::%player's uuid%::16::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is white shulker box:
+            add location of event-block to {gens::%player's uuid%::17::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is orange shulker box:
+            add location of event-block to {gens::%player's uuid%::18::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is magenta shulker box:
+            add location of event-block to {gens::%player's uuid%::19::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is light blue shulker box:
+            add location of event-block to {gens::%player's uuid%::20::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is yellow shulker box:
+            add location of event-block to {gens::%player's uuid%::21::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is lime shulker box:
+            add location of event-block to {gens::%player's uuid%::22::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is pink shulker box:
+            add location of event-block to {gens::%player's uuid%::23::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is gray shulker box:
+            add location of event-block to {gens::%player's uuid%::24::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        if event-block is light gray shulker box:
+            add location of event-block to {gens::%player's uuid%::25::%chunk at event-block%::*}
+            add 1 to {placedgens::%player's uuid%}
+        send action bar "{@maincolor}You have placed a generator &8&l| &r%{placedgens::%player's uuid%}% &8&l/ {@highlightcolor}%{gencap::%player's uuid%}%" to player
+        wait 1 tick
 
 on right click on any shulker box:
     wait 1 tick
@@ -431,7 +425,6 @@ on left click on an wool or any shulker box:
 
 on right click on any wool or any shulker box:
     player is sneaking
-    if {_lmaoidkwhattoputhere} is not set:
         if player's held item is any wool or any shulker box:
             send action bar "{@maincolor}You can't be holding a generator when upgrading!" to player
             sound_no(player)
@@ -780,7 +773,6 @@ on right click on any wool or any shulker box:
             sound_no(player)
             message(player, "fail", "This gen is already at a max level")
         wait 10 ticks
-        delete {genplacecooldown::%player%}
 
 
 function gengive(p: player, amount: integer, tier: integer):
