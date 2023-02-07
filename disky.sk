@@ -1,0 +1,110 @@
+define new bot named "Vekrotic1": 
+
+    token: hahahaha
+
+    intents: default intents
+    policy: all
+    auto reconnect: true
+    compression: none
+
+on load:	
+	set online status of bot "Vekrotic1" to do not disturb
+	#set presence of bot "Vekrotic" to watching "%best players%"
+	set the presence of the bot named "Vekrotic1" to watching "vekrotic.club"
+
+on join: 
+	set {reportban::%player%} to false
+	
+
+command /report <player> <text>:
+	cooldown: 30 seconds
+	cooldown message: &cYou are on cooldown!
+	usage: /report <player> <reason>
+	trigger:
+		if {reportban::%player%} is false:
+			post "**Itemdrop Reports** | **%player%** has reported **%arg-1%** for the reason **%arg-2%**" to guild channel with id "1071590684051656704"
+			send "&cYour report has been sent to staff!" to player
+		else:
+			send "&cYou are report banned!"
+			
+			
+command /reportban <player>:
+	permission: itemdrop.report.ban
+	trigger:
+		set {reportban::%arg-1%} to true
+		send "&cYou have report banned %arg-1%!"
+		post "**Report Ban** | **%player%** has report banned %arg-1%!" to guild channel with id "1072587124370583705"
+		
+command /reportunban <player>:
+	permission: itemdrop.report.unban
+	trigger:
+		set {reportban::%arg-1%} to false
+		send "&cYou have un report banned %arg-1%!"
+		post "**Report Unban** | **%player%** has un report banned %arg-1%!" to guild channel with id "1072587124370583705"
+		
+discord command reportban <player>:
+    prefixes: v!
+    permissions: view audit logs
+    permission message: ❌ - You need **view audit logs** to complete this action!
+    trigger:
+        set {reportban::%arg-1%} to true
+        reply with "✅ - You have successfully report banned **%arg-1%**!"
+        post "**Report Ban** | **%event-member%** has report banned %arg-1%!" to guild channel with id "1072587124370583705"
+
+discord command unreportban <player>:
+    prefixes: v!
+    permissions: view audit logs
+    permission message: ❌ - You need **view audit logs** to complete this action!
+    trigger:
+        set {reportban::%arg-1%} to false
+        reply with "✅ - You have successfully unreport banned **%arg-1%**!"
+        post "**Report Unban** | **%event-member%** has un report banned %arg-1%!" to guild channel with id "1072587124370583705"
+		
+discord command spromote <text> <text> <text>:
+    prefixes: v!
+    permissions: view audit logs
+    permission message: ❌ - You need **view audit logs** to complete this action!
+    trigger:
+        post "**Promotion! :tada:** | **%event-member%** has promoted **%arg-1%** to **%arg-2%** for **%arg-3%**!" to guild channel with id "1046157263909425212"
+        post "**Promotion! :tada:** | **%event-member%** has promoted **%arg-1%** to **%arg-2%** for **%arg-3%**!" to guild channel with id "1072600770475724850"
+		
+discord command sdemote <text> <text> <text>:
+    prefixes: v!
+    permissions: view audit logs
+    permission message: ❌ - You need **view audit logs** to complete this action!
+    trigger:
+        post "**Demotion! :x:** | **%event-member%** has demoted **%arg-1%** to **%arg-2%** for **%arg-3%**!" to guild channel with id "1046157263909425212"
+        post "**Demotion! :x:** | **%event-member%** has demoted **%arg-1%** to **%arg-2%** for **%arg-3%**!" to guild channel with id "1072600770475724850"
+		
+discord command saccept <text> <text>:
+    prefixes: v!
+    permissions: view audit logs
+    permission message: ❌ - You need **view audit logs** to complete this action!
+    trigger:
+        post "**Accepted! :tada:** | **%event-member%** has accepted **%arg-1%** as an employee. They will be working in the **%arg-2%** division!" to guild channel with id "1046157263909425212"
+        post "**Accepted! :tada:** | **%event-member%** has accepted **%arg-1%** as an employee. They will be working in the **%arg-2%** division!" to guild channel with id "1072600770475724850"
+
+
+discord command rank <player> <text>:
+	prefixes: v!
+	permissions: administrator
+	permission message: :x: - You need **administrator** to complete this action!
+	trigger:
+		execute console command "lp user %arg-1% parent add %arg-2%"
+		reply with "✅ - You have given **%arg-1% %arg-2%** rank!"
+		post "**%event-member%** has given **%arg-1% %arg-2%** rank!" to guild channel with id "1072631917163315211"
+
+
+
+		
+
+
+
+        
+			
+		
+	
+
+	
+	
+	
