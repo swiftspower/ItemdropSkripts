@@ -1,7 +1,7 @@
 define new bot named "Vekrotic1": 
 
-    token: hahahaha
-
+    token: discord bot token for the discord bot that has the discord bot token
+    
     intents: default intents
     policy: all
     auto reconnect: true
@@ -9,8 +9,7 @@ define new bot named "Vekrotic1":
 
 on load:	
 	set online status of bot "Vekrotic1" to do not disturb
-	#set presence of bot "Vekrotic" to watching "%best players%"
-	set the presence of the bot named "Vekrotic1" to watching "vekrotic.club"
+	set presence of bot "Vekrotic1" to watching "%best players%/75 | vekrotic.club"
 
 on join: 
 	set {reportban::%player%} to false
@@ -22,43 +21,43 @@ command /report <player> <text>:
 	usage: /report <player> <reason>
 	trigger:
 		if {reportban::%player%} is false:
-			post "**Itemdrop Reports** | **%player%** has reported **%arg-1%** for the reason **%arg-2%**" to guild channel with id "1071590684051656704"
+			post "**Itemdrop Reports** | **%player%** has reported **%arg-1%** for the reason **%arg-2%**" to guild channel with id "1072898738344972318"
 			send "&cYour report has been sent to staff!" to player
 		else:
 			send "&cYou are report banned!"
 			
 			
-command /reportban <player>:
+command /reportban <text>:
 	permission: itemdrop.report.ban
 	trigger:
 		set {reportban::%arg-1%} to true
 		send "&cYou have report banned %arg-1%!"
-		post "**Report Ban** | **%player%** has report banned %arg-1%!" to guild channel with id "1072587124370583705"
+		post "**Report Ban** | **%player%** has report banned %arg-1%!" to guild channel with id "1072898738344972318"
 		
-command /reportunban <player>:
+command /reportunban <text>:
 	permission: itemdrop.report.unban
 	trigger:
 		set {reportban::%arg-1%} to false
 		send "&cYou have un report banned %arg-1%!"
-		post "**Report Unban** | **%player%** has un report banned %arg-1%!" to guild channel with id "1072587124370583705"
+		post "**Report Unban** | **%player%** has un report banned %arg-1%!" to guild channel with id "1072898738344972318"
 		
-discord command reportban <player>:
+discord command reportban <text>:
     prefixes: v!
     permissions: view audit logs
     permission message: ❌ - You need **view audit logs** to complete this action!
     trigger:
         set {reportban::%arg-1%} to true
         reply with "✅ - You have successfully report banned **%arg-1%**!"
-        post "**Report Ban** | **%event-member%** has report banned %arg-1%!" to guild channel with id "1072587124370583705"
+        post "**Report Ban** | **%event-member%** has report banned %arg-1%!" to guild channel with id "1072898738344972318"
 
-discord command unreportban <player>:
+discord command unreportban <text>:
     prefixes: v!
     permissions: view audit logs
     permission message: ❌ - You need **view audit logs** to complete this action!
     trigger:
         set {reportban::%arg-1%} to false
         reply with "✅ - You have successfully unreport banned **%arg-1%**!"
-        post "**Report Unban** | **%event-member%** has un report banned %arg-1%!" to guild channel with id "1072587124370583705"
+        post "**Report Unban** | **%event-member%** has un report banned %arg-1%!" to guild channel with id "1072898738344972318"
 		
 discord command spromote <text> <text> <text>:
     prefixes: v!
@@ -66,7 +65,7 @@ discord command spromote <text> <text> <text>:
     permission message: ❌ - You need **view audit logs** to complete this action!
     trigger:
         post "**Promotion! :tada:** | **%event-member%** has promoted **%arg-1%** to **%arg-2%** for **%arg-3%**!" to guild channel with id "1046157263909425212"
-        post "**Promotion! :tada:** | **%event-member%** has promoted **%arg-1%** to **%arg-2%** for **%arg-3%**!" to guild channel with id "1072600770475724850"
+        post "**Promotion! :tada:** | **%event-member%** has promoted **%arg-1%** to **%arg-2%** for **%arg-3%**!" to guild channel with id "1072898738344972318"
 		
 discord command sdemote <text> <text> <text>:
     prefixes: v!
@@ -74,7 +73,7 @@ discord command sdemote <text> <text> <text>:
     permission message: ❌ - You need **view audit logs** to complete this action!
     trigger:
         post "**Demotion! :x:** | **%event-member%** has demoted **%arg-1%** to **%arg-2%** for **%arg-3%**!" to guild channel with id "1046157263909425212"
-        post "**Demotion! :x:** | **%event-member%** has demoted **%arg-1%** to **%arg-2%** for **%arg-3%**!" to guild channel with id "1072600770475724850"
+        post "**Demotion! :x:** | **%event-member%** has demoted **%arg-1%** to **%arg-2%** for **%arg-3%**!" to guild channel with id "1072898738344972318"
 		
 discord command saccept <text> <text>:
     prefixes: v!
@@ -82,21 +81,108 @@ discord command saccept <text> <text>:
     permission message: ❌ - You need **view audit logs** to complete this action!
     trigger:
         post "**Accepted! :tada:** | **%event-member%** has accepted **%arg-1%** as an employee. They will be working in the **%arg-2%** division!" to guild channel with id "1046157263909425212"
-        post "**Accepted! :tada:** | **%event-member%** has accepted **%arg-1%** as an employee. They will be working in the **%arg-2%** division!" to guild channel with id "1072600770475724850"
+        post "**Accepted! :tada:** | **%event-member%** has accepted **%arg-1%** as an employee. They will be working in the **%arg-2%** division!" to guild channel with id "1072898738344972318"
 
 
 discord command rank <player> <text>:
 	prefixes: v!
-	permissions: administrator
-	permission message: :x: - You need **administrator** to complete this action!
+	permissions: view audit logs
+	permission message: :x: - You need **view audit logs** to complete this action!
 	trigger:
 		execute console command "lp user %arg-1% parent add %arg-2%"
 		reply with "✅ - You have given **%arg-1% %arg-2%** rank!"
-		post "**%event-member%** has given **%arg-1% %arg-2%** rank!" to guild channel with id "1072631917163315211"
-
-
-
+		post "**%event-member%** has given **%arg-1% %arg-2%** rank!" to guild channel with id "1072898738344972318"
 		
+discord command removerank <player> <text>:
+	prefixes: v!
+	permissions: view audit logs
+	permission message: :x: - You need **view audit logs** to complete this action!
+	trigger:
+		execute console command "lp user %arg-1% parent remove %arg-2%"
+		reply with "✅ - You have removed **%arg-2%** from **%arg-1%**!"
+		post "**%event-member%** has removed **%arg-2%** from **%arg-1%**!" to guild channel with id "1072898738344972318"
+		
+discord command broadcast <text>:
+    prefixes: v!
+    aliases: bc
+    permissions: view audit logs
+    permission message: :x: - You need **view audit logs** to complete this action.
+    trigger:
+        execute console command "bc %arg-1%"
+        reply with "✅ - You have broadcasted **%arg-1%** to all online players!"
+        post "**%event-member%** has broadcasted **%arg-1%**!" to guild channel with id "1072898738344972318"
+		
+discord command help:
+	prefixes: v!
+	trigger:
+		make embed:
+			set title of embed to "Vekrotic - Itemdrop | Commands"
+			set author of the embed to "%event-member%"
+			set author icon of embed to "https://cdn.discordapp.com/avatars/1072185041410588793/1b634a4ec8b3599986f742385e572da3.png?width=468&height=468"
+			set embed color of the embed to purple
+			add field named "General Commands" with value "**v!help** - Displays all publicly executable commands." to fields of embed
+			add field named "Staff Commands" with value "**v!sreportban (player) [VIEW AUDIT LOGS]** - Bans the player from using the **/report** system. %nl% ---- %nl% **v!sunreportban (player) [VIEW AUDIT LOGS]** - Unbans the player from using the **/report** system.%nl% ---- %nl% **v!saccept (discord member) (division the member was accepted to) [VIEW AUDIT LOGS]** - Posts a message in Employee Movements announcing their acceptance.%nl% ---- %nl% **v!sdeny (discord member) [VIEW AUDIT LOGS]** - Posts a message in Employee Movements announcing their denial.%nl% ---- %nl% **v!spromote (discord member) (rank the user is getting promoted to) (reason for promotion) [VIEW AUDIT LOGS]** - Posts a message in Employee Movements announcing their acceptance.%nl% ---- %nl% **v!srank (player) (rank to assign user) [VIEW AUDIT LOGS]** - Gives said user the ingame rank requested.%nl% ---- %nl% **v!sremoverank (discord member) (rank to remove user from) [VIEW AUDIT LOGS]** - Removes said user's ingame rank.%nl% ---- %nl% **v!sban (player) (reason) [ADMINISTRATOR]** - Ban's the player.%nl% ---- %nl% **v!stempban (player) (timespan) (reason) [ADMINISTRATOR]** - Tempban's the player.%nl% ---- %nl% **v!skick (player) (reason) [ADMINISTRATOR]** - Kick's the player." to fields of embed
+		reply with last embed
+
+on chat:
+	post "**%player%** >> %message%" to guild channel with id "1072840770081529856"
+	
+discord command smute <offline player> <text> <text>:
+  prefixes: v!
+  permissions: manage messages
+  permission message: :x: - You need **manage messages** to complete this action!
+  trigger:
+    execute console command "mute %arg-1% %arg-2% %arg-3% | This mute was issued by %event-member%"
+    post "%event-member% has muted %arg-1% for %arg-2% for reason %arg-3%!" in guild channel with id "1072898738344972318"
+    reply with "✅ - You have successfully muted %arg-1% for %arg-2% for the reason %arg-3%"
+	
+discord command sunmute <player>:
+  prefixes: v!
+  permissions: manage messages
+  permission message: :x: - You need **manage messages** to complete this action!
+  trigger:
+    execute console command "mute %arg-1%| This unmute was issued by %event-member%"
+    post "%event-member% has unmuted %arg-1%!" in guild channel with id "1072898738344972318"
+    reply with "✅ - You have successfully unmuted **%arg-1%**. If used incorrectly, this will perm mute the player!"
+	
+discord command skick <player> <text>:
+	prefixes: v!
+	permissions: administrator
+	permission message: :x: - You need **administrator** to complete this action!
+	trigger:
+		execute console command "kick %arg-1% %arg-2% | This was executed by %event-member%!"
+		post "%event-member% has kicked %arg-1% for reason %arg-2%" to guild channel with id "1072898738344972318"
+		reply with ":white_check_mark: - You have successfully kicked %arg-1%!"
+		
+discord command stempban <offline player> <text> <text>:
+	prefixes: v!
+	permissions: administrator
+	permission message: :x: - You need **administrator** to complete this action!
+	trigger:
+		execute console command "tempban %arg-1% %arg-2% %arg-3% | This was executed by %event-member%!"
+		post "%event-member% has tempbanned %arg-1% for %arg-2% for reason %arg-3%!" to guild channel with id "1072898738344972318"
+		reply with ":white_check_mark: - You have successfully banned %arg-1% for %arg-2%!"
+		
+		
+discord command sban <offline player> <text>:
+	prefixes: v!
+	permissions: administrator
+	permission message: :x: - You need **administrator** to complete this action!
+	trigger:
+		execute console command "ban %arg-1% %arg-2% | This was executed by %event-member%!"
+		post "%event-member% has banned %arg-1% for reason %arg-2%!" to guild channel with id "1072898738344972318"
+		reply with ":white_check_mark: - You have successfully banned %arg-1%!"
+		
+discord command sunban <offline player>:
+	prefixes: v!
+	permissions: administrator
+	permission message: :x: - You need **administrator** to complete this action!
+	trigger:
+		execute console command "pardon %arg-1%"
+		post "%event-member% has unbanned %arg-1%!" to guild channel with id "1072898738344972318"
+		reply with ":white_check_mark: - You have successfully unbanned %arg-1%!"
+		
+
 
 
 
