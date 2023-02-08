@@ -1,22 +1,15 @@
-define new bot named "Vekrotic1": 
-
-    token: discord bot token for the discord bot that has the discord bot token
-    
-    intents: default intents
-    policy: all
-    auto reconnect: true
-    compression: none
+define new bot named "Vekrotic1":
+	token: ""
+	intents: default intents
+	policy: all
+	auto reconnect: true
+	compression: none
 
 on load:	
 	set online status of bot "Vekrotic1" to do not disturb
-	set presence of bot "Vekrotic1" to watching "%best players%/75 | vekrotic.club"
 
 on join: 
-	if {reportbanset::%player%} = true:
-		cancel event
-	else:
-		set {reportban::%player%} to false
-		set {reportbanset::%player%} to true
+	set {reportban::%player%} to false
 	
 
 command /report <player> <text>:
@@ -185,16 +178,43 @@ discord command sunban <offline player>:
 		execute console command "pardon %arg-1%"
 		post "%event-member% has unbanned %arg-1%!" to guild channel with id "1072898738344972318"
 		reply with ":white_check_mark: - You have successfully unbanned %arg-1%!"
-		
 
 
+command link:
+    trigger:
+        set {_code} to a random integer between 11111 and 99999
+        set {code::%{_code}%} to player
+        send "<##2F2F31>[<##515178>DISCORD<##2F2F31>] <##515178>Established connection with Discord."
+        send "&7&l| &r<##515178>Your code is: <##6C6CBE>%{_code}% <##515178>link your account in the discord using <##6C6CBE>!link %{_code}%"#
+        wait 1 minute
+        delete {code::%{_code}%}
 
+discord command link [<text>]:
+    prefixes: !
+    trigger:
+        if arg-1 is not set:
+            reply with "Syntax: !link (code)"
+            stop
+        if {code::%arg-1%} is not set:
+            reply with "Invalid code"
+            stop
+        set {discord::%discord id of event-member%::username} to {code::%arg-1%}
+        reply with "You have linked with the Minecraft account %{code::%arg-1%}%."
+        delete {code::%arg-1%}
 
-        
-			
-		
-	
+discord command linked [<text>]:
+    prefixes: !
+    trigger:
+        if {discord::%discord id of event-member%::username} is set:
+            reply with "You're account is linked with the minecraft account: **%{discord::%discord id of event-member%::username}%**"
 
-	
-	
-	
+discord command unlink [<text>]:
+    prefixes: !
+    trigger:
+        if {discord::%discord id of event-member%::username} is set:
+            clear {discord::%discord id of event-member%::username}
+            reply with "Your account has been unlinked!"
+
+command /unlink [<text>]:
+    trigger:
+        send "<##DF7171>This can only be executed via Discord (!unlink)" to player
