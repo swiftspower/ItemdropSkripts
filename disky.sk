@@ -1,5 +1,5 @@
 define new bot named "Vekrotic1":
-	token: ""
+	token: "MTAyNjU2NTg1OTkzMTU5ODk0OQ.GYcVz7.4VhKmXbJWi0xN9APCK7pdgucBvWnw_2PMZCGCo"
 	intents: default intents
 	policy: all
 	auto reconnect: true
@@ -200,6 +200,9 @@ discord command link [<text>]:
             stop
         set {discord::%discord id of event-member%::username} to {code::%arg-1%}
         reply with "You have linked with the Minecraft account %{code::%arg-1%}%."
+        if {done::%{done::%{discord::%discord id of event-member%::username}%}%} isn't set:
+            execute console command "/sellwand %{discord::%discord id of event-member%::username}% 1.5"
+            set {done::%{discord::%discord id of event-member%::username}%} to true
         delete {code::%arg-1%}
 
 discord command linked [<text>]:
@@ -218,3 +221,14 @@ discord command unlink [<text>]:
 command /unlink [<text>]:
     trigger:
         send "<##DF7171>This can only be executed via Discord (!unlink)" to player
+
+
+command /fire [<offline player>]:
+    permission:  op
+    trigger:
+        if arg-1 is set:
+            execute console command "/lp user %arg-1% parent set default"
+            send "<##6B8EBC>%arg-1%<##47576D> Has been removed from staff team."
+            send "<##BA5A5A>You have been FIRED from the staff team." to arg-1
+        else:
+            send "<##6B8EBC>Enter a player's username."
