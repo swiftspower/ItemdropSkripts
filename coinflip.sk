@@ -1,0 +1,188 @@
+#The balance variable is %player's balance% (Vault)#
+#The tokens variable is {tokens::%player's uuid%} (listed in shop.sk, should be global since we have PlaceholderAPI)#
+
+command /coinflip [<integer>]:
+    aliases: /cf
+    trigger:
+        if arg-1 isn't set:
+            create a gui with virtual chest inventory named "&6&lCOINFLIPS":
+                make gui 12 with golden nugget named "&6&lTokens" with lore "&8&l| &r&fToken flipping":
+                    create a gui with virtual chest inventory with 1 row named "&6&lCOINFLIPS&r &f&l→ &6&lToken Flipping":
+                        make gui 4 with oak sign named "&7Input" with lore "&8&l| &r&fHow many tokens":
+                            close player's inventory
+                            send "&7&l(&r&cCOINFLIP&7&l) &r&fPut the amount of tokens you want to bet in chat:"
+                            set {coinflip::%player's uuid%} to true
+                            set {type::%player's uuid%} to "token"
+                            
+                    open last gui to player
+                make gui 14 with green dye named "&2&lBalance" with lore "&8&l| &r&fBalance flipping":
+                    create a gui with virtual chest inventory with 1 row named "&6&lCOINFLIPS&r &f&l→ &6&lBalance Flipping":
+                        make gui 4 with oak sign named "&7Input" with lore "&8&l| &r&fHow much cash":
+                            close player's inventory
+                            send "&7&l(&r&cCOINFLIP&7&l) &r&fPut the amount of cash you want to bet in chat:"
+                            set {coinflip::%player's uuid%} to true
+                            set {type::%player's uuid%} to "cash"
+                            
+                    open last gui to player
+
+        open last gui to player
+
+
+on chat:
+    set {_m} to "%message%" parsed as an integer
+    set {_c} to "%player's balance%" parsed as an integer
+    if {type::%player's uuid%} is "token":
+        if {_m} < {tokens::%player's uuid%}:
+            if {coinflip::%player's uuid%} is true:
+                if {_m} <= 0:
+                    cancel event
+                    send "&7> &c&l0"
+                    wait 1 second
+                    send "&7&l(&r&cCOINFLIP&7&l) &r&fPut the amount of tokens you want to bet in chat:"
+                    stop
+                else:
+                    set {coinflip::%player's uuid%} to false
+                    cancel event
+                    send "&6You have selected to flip: &r&f&l%{_m}% &6&ltokens." to player
+                    set {selection::%player's uuid%} to true
+                    set {betting::%player's uuid%} to {_m}
+                    send "&eWould you like to select, &cHEADS &eor &2TAILS &7&l(CASE SENSITIVE):"
+                    stop
+        else if {_m} isn't player's balance:
+            if {coinflip::%player's uuid%} is true:
+                send "&cInsufficient funds, try again later." to player
+                make player execute "/cancel"
+                cancel event
+        else:
+            if {coinflip::%player's uuid%} is true:
+                if {_m} <= 0:
+                    cancel event
+                    send "&7> &c&l0"
+                    wait 1 second
+                    send "&7&l(&r&cCOINFLIP&7&l) &r&fPut the amount of cash you want to bet in chat:"
+                    stop
+                else:
+                    set {coinflip::%player's uuid%} to false
+                    cancel event
+                    send "&6You have selected to flip: &r&f&l%{_m}% &6&lcash." to player
+                    set {selection::%player's uuid%} to true
+                    set {betting::%player's uuid%} to {_m}
+                    send "&eWould you like to select, &cHEADS &eor &2TAILS &7&l(CASE SENSITIVE):"
+                    stop
+        if {selection::%player's uuid%} is true:
+            if "%message%" contains "HEADS":
+                cancel event
+                set {selection::%player's uuid%} to "HEADS"
+                send "&7| &f&lYou have selected &cHEADS"
+                flipCoin(player, true)
+                stop
+            if "%message%" contains "TAILS":
+                cancel event
+                set {selection::%player's uuid%} to "TAILS"
+                send "&7| &f&lYou have selected &2TAILS"
+                flipCoin(player, true)
+                stop
+            else: 
+                cancel event
+                send "&cCap sensitive, try again. &cHEADS &eor &2TAILS"
+                stop
+    else:
+        if {_m} <= player's balance:
+            if {coinflip::%player's uuid%} is true:
+                if {_m} <= 0:
+                    cancel event
+                    send "&7> &c&l0"
+                    wait 1 second
+                    send "&7&l(&r&cCOINFLIP&7&l) &r&fPut the amount of cash you want to bet in chat:"
+                    stop
+                else:
+                    set {coinflip::%player's uuid%} to false
+                    cancel event
+                    send "&6You have selected to flip: &r&f&l%{_m}% &6&lcash." to player
+                    set {selection::%player's uuid%} to true
+                    set {betting::%player's uuid%} to {_m}
+                    send "&eWould you like to select, &cHEADS &eor &2TAILS &7&l(CASE SENSITIVE):"
+                    stop
+        else if {_m} isn't player's balance:
+            if {coinflip::%player's uuid%} is true:
+                send "&cInsufficient funds, try again later." to player
+                make player execute "/cancel"
+                cancel event
+        else:
+            if {coinflip::%player's uuid%} is true:
+                if {_m} <= 0:
+                    cancel event
+                    send "&7> &c&l0"
+                    wait 1 second
+                    send "&7&l(&r&cCOINFLIP&7&l) &r&fPut the amount of cash you want to bet in chat:"
+                    stop
+                else:
+                    set {coinflip::%player's uuid%} to false
+                    cancel event
+                    send "&6You have selected to flip: &r&f&l%{_m}% &6&lcash." to player
+                    set {selection::%player's uuid%} to true
+                    set {betting::%player's uuid%} to {_m}
+                    send "&eWould you like to select, &cHEADS &eor &2TAILS &7&l(CASE SENSITIVE):"
+                    stop
+        if {selection::%player's uuid%} is true:
+            if "%message%" contains "HEADS":
+                cancel event
+                set {selection::%player's uuid%} to "HEADS"
+                send "&7| &f&lYou have selected &cHEADS"
+                flipCoin(player, false)
+                stop
+            if "%message%" contains "TAILS":
+                cancel event
+                set {selection::%player's uuid%} to "TAILS"
+                send "&7| &f&lYou have selected &2TAILS"
+                flipCoin(player, false)
+                stop
+            else: 
+                cancel event
+                send "&cCap sensitive, try again. &cHEADS &eor &2TAILS"
+                stop
+
+
+command /cancel:
+    trigger:
+        set {betting::%player's uuid%} to 0
+        clear {coinflip::%player's uuid%}
+        clear {selection::%player's uuid%}
+
+
+
+
+function flipCoin(p: player, t: boolean):
+    wait 5 seconds
+    if {selection::%{_p}'s uuid%} is "HEADS" or "TAILS": 
+        set {_m} to a random number between 1 and 9
+        if {_m} >= 5:
+            send "&cHeads &fhas won the match!" to {_p}
+            if {selection::%{_p}'s uuid%} is "HEADS":
+                set {_winnings} to ({betting::%{_p}'s uuid%} * 2)
+                if {_t} is true:
+                    add {_winnings} to {tokens::%{_p}'s uuid%}
+                else:
+                    add {_winnings} to {_p}'s balance
+                send "&e%{_winnings}% has been added to your funds." to {_p}
+            else:
+                send "&cYou lost!" to {_p}
+                if {_t} is true:
+                    remove {betting::%{_p}'s uuid%} from {tokens::%{_p}'s uuid%}
+                else:
+                    remove {betting::%{_p}'s uuid%} from {_p}'s balance
+        else:
+            send "&2Tails &fhas won the match!" to {_p}
+            if {selection::%{_p}'s uuid%} isn't "HEADS":
+                set {_winnings} to ({betting::%{_p}'s uuid%} * 2)
+                if {_t} is true:
+                    add {_winnings} to {tokens::%{_p}'s uuid%}
+                else:
+                    add {_winnings} to {_p}'s balance
+                send "&e%{_winnings}% has been added to your funds." to {_p}
+            else:
+                send "&cYou lost!" to {_p}
+                if {_t} is true:
+                    remove {betting::%{_p}'s uuid%} from {tokens::%{_p}'s uuid%}
+                else:
+                    remove {betting::%{_p}'s uuid%} from {_p}'s balance
