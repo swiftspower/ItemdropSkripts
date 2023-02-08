@@ -12,7 +12,11 @@ on load:
 	set presence of bot "Vekrotic1" to watching "%best players%/75 | vekrotic.club"
 
 on join: 
-	set {reportban::%player%} to false
+	if {reportbanset::%player%} = true:
+		cancel event
+	else:
+		set {reportban::%player%} to false
+		set {reportbanset::%player%} to true
 	
 
 command /report <player> <text>:
